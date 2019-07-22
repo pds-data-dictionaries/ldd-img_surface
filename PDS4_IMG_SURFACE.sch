@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 Schematron for Name Space Id:img_surface  Version:1.1.0.0 - Fri May 03 12:25:11 PDT 2019 -->
+  <!-- PDS4 Schematron for Name Space Id:img_surface  Version:1.1.1.0 - Wed Jun 19 08:56:25 PDT 2019 -->
   <!-- Generated from the PDS4 Information Model Version 1.11.1.0 - System Build 9b -->
   <!-- *** This PDS4 schematron file is an operational deliverable. *** -->
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -18,12 +18,6 @@
 		   <!--        lists. These two types of rules have been -->
 		   <!--        merged together in the rules below.       -->
 		   <!-- ================================================ -->
-  <sch:pattern>
-    <sch:rule context="//img_surface:Derived_Product_Parameters">
-      <sch:assert test="not(img_surface:derived_image_type_name) or img_surface:derived_image_type_name = ('IMAGE', 'DISPARITY_MAP', 'DISPARITY_LINE_MAP', 'DISPARITY_SAMPLE_MAP', 'DISPARITY_ERROR_MAP', 'DELTA_DISPARITY_MAP', 'DELTA_DISPARITY_LINE_MAP', 'DELTA_DISPARITY_SAMPLE_MAP', 'MASK', 'XYZ_MAP', 'XYZ_ERROR_MAP', 'X_MAP', 'Y_MAP', 'Z_MAP', 'ANGLE_MAP', 'RANGE_MAP', 'RANGE_ERROR_MAP', 'UVW_MAP', 'U_MAP', 'V_MAP', 'W_MAP', 'ROUGHNESS_MAP', 'REACHABILITY_MAP', 'PRELOAD_MAP', 'SLOPE_MAP', 'RADIAL_SLOPE_MAP', 'SLOPE_HEADING_MAP', 'SLOPE_MAGNITUDE_MAP', 'NORTHERLY_TILT_MAP', 'SOLAR_ENERGY_MAP', 'IEP_MAP', 'TERRAIN_PROBABILITY_MAP', 'TERRAIN_CLASSIFICATION_MAP', 'AEGIS_MAP', 'ICM_MAP', 'IDX_MAP', 'INST_TILT_MAP', 'INST_DELTA_TILT_MAP', 'INST_Z_MAP', 'INST_UVW_MAP', 'INST_ROUGHNESS_MAP', 'INST_WORKSPACE_MAP', 'GOODNESS_MAP', 'XYZ_MAP', 'ELEVATION_MAP')">
-        IMG_SURFACE:error:derived_image_type_name: The attribute img_surface:derived_image_type_name must be equal to one of the following values: 'IMAGE', 'DISPARITY_MAP', 'DISPARITY_LINE_MAP', 'DISPARITY_SAMPLE_MAP', 'DISPARITY_ERROR_MAP', 'DELTA_DISPARITY_MAP', 'DELTA_DISPARITY_LINE_MAP', 'DELTA_DISPARITY_SAMPLE_MAP', 'MASK', 'XYZ_MAP', 'XYZ_ERROR_MAP', 'X_MAP', 'Y_MAP', 'Z_MAP', 'ANGLE_MAP', 'RANGE_MAP', 'RANGE_ERROR_MAP', 'UVW_MAP', 'U_MAP', 'V_MAP', 'W_MAP', 'ROUGHNESS_MAP', 'REACHABILITY_MAP', 'PRELOAD_MAP', 'SLOPE_MAP', 'RADIAL_SLOPE_MAP', 'SLOPE_HEADING_MAP', 'SLOPE_MAGNITUDE_MAP', 'NORTHERLY_TILT_MAP', 'SOLAR_ENERGY_MAP', 'IEP_MAP', 'TERRAIN_PROBABILITY_MAP', 'TERRAIN_CLASSIFICATION_MAP', 'AEGIS_MAP', 'ICM_MAP', 'IDX_MAP', 'INST_TILT_MAP', 'INST_DELTA_TILT_MAP', 'INST_Z_MAP', 'INST_UVW_MAP', 'INST_ROUGHNESS_MAP', 'INST_WORKSPACE_MAP', 'GOODNESS_MAP', 'XYZ_MAP', 'ELEVATION_MAP'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
   <sch:pattern>
     <sch:rule context="img_surface:Derived_Product_Parameters/img_surface:horizon_mask_elevation">
       <sch:assert test="@unit = ('arcmin', 'arcsec', 'deg', 'hr', 'mrad', 'rad')">

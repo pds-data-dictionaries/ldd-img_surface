@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 XML/Schema for Name Space Id:img_surface  Version:1.1.0.0 - Fri May 03 12:25:11 PDT 2019 -->
+  <!-- PDS4 XML/Schema for Name Space Id:img_surface  Version:1.1.1.0 - Wed Jun 19 08:56:25 PDT 2019 -->
   <!-- Generated from the PDS4 Information Model Version 1.11.1.0 - System Build 9b -->
   <!-- *** This PDS4 product schema is an operational deliverable. *** -->
   <!--                                                                           -->
   <!--               Dictionary Stack                                            -->
   <!-- 1.11.1.0 - pds: - Common Dictionary - N/A                                 -->
   <!-- 1.7.0.0 - geom: - Geometry Dictionary Full - /Users/decesare/Documents/De -->
-  <!-- 1.1.0.0 - img_surface: - Surface Imaging - PDS4_IMG_SURFACE_IngestLDD_1B1 -->
+  <!-- 1.1.1.0 - img_surface: - Surface Imaging - PDS4_IMG_SURFACE_IngestLDD_1B1 -->
   <!--                                                                           -->
   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     targetNamespace="http://pds.nasa.gov/pds4/img_surface/v1"
@@ -15,7 +15,7 @@
     xmlns:geom="http://pds.nasa.gov/pds4/geom/v1"
     elementFormDefault="qualified"
     attributeFormDefault="unqualified"
-    version="1.1.0.0">
+    version="1.1.1.0">
  
     <xs:import namespace="http://pds.nasa.gov/pds4/pds/v1" schemaLocation="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1B10.xsd"/>
     <xs:import namespace="http://pds.nasa.gov/pds4/geom/v1" schemaLocation="https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1B10_1700.xsd"/>
@@ -33,6 +33,9 @@
       - Renamed Surface_Imaging_Parameters to Surface_Imaging, Error_Model_Information to Error_Model, 
         Geometry_Projection_Parameters to Geometry_Projection, and Pointing_Correction_Parameters to Pointing_Correction.
       - Added new attribute to Instrument_Information: ops_instrument_key
+      
+      1.1.1.0
+      - Removed Pointing_Correction and its child attributes/classes (moved to IMG)
     
     </xs:documentation>
   </xs:annotation>
@@ -51,7 +54,6 @@
       <xs:element name="horizon_mask_elevation" type="img_surface:horizon_mask_elevation" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="Placement_Target_Instrument" type="img_surface:Placement_Target_Instrument" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="Vector_Range_Origin" type="img_surface:Vector_Range_Origin" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="Pointing_Correction" type="img_surface:Pointing_Correction" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element ref="geom:Coordinate_Space_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
     </xs:sequence>
   </xs:complexType>
@@ -164,34 +166,6 @@
     <xs:sequence>
       <xs:element name="name" type="pds:name" minOccurs="1" maxOccurs="1"> </xs:element>
       <xs:element ref="pds:Internal_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="Pointing_Correction">
-    <xs:annotation>
-      <xs:documentation>The Pointing_Correction class contains
-        attributes used to identify and describe the camera model
-        transformations completed in order to update pointing
-        information. </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="pointing_model_name" type="img_surface:pointing_model_name" minOccurs="1" maxOccurs="1"> </xs:element>
-      <xs:element name="pointing_model_solution_id" type="img_surface:pointing_model_solution_id" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="Pointing_Model_Parameter" type="img_surface:Pointing_Model_Parameter" minOccurs="0" maxOccurs="unbounded"> </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="Pointing_Model_Parameter">
-    <xs:annotation>
-      <xs:documentation>The Pointing_Model_Parameter class specifies the
-        name and value (numeric) parameters needed by the pointing model
-        identified by the pointing_model_name attribute in the
-        Pointing_Correction parent class. The meaning of any given
-        parameter is defined by the pointing model. </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="name" type="pds:name" minOccurs="1" maxOccurs="1"> </xs:element>
-      <xs:element name="value" type="pds:value" minOccurs="1" maxOccurs="1"> </xs:element>
     </xs:sequence>
   </xs:complexType>
 
@@ -521,50 +495,6 @@
 	   </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="pointing_model_name">
-    <xs:annotation>
-      <xs:documentation>The pointing_model_name attribute specifies
-        which of several "pointing models" were used to transform the
-        camera model based on updated pointing information. These
-        updates are typically derived from mosaic seam corrections. This
-        attribute and the associated Pointing_Model_Index classes define
-        what the updated pointing information is, providing enough
-        information to re-create the camera model from calibration data.
-        If present, this attribute overrides the default pointing based
-        on telemetry. The special value "NONE" shall be interpreted the
-        same as if the attribute is absent (i.e. the default pointing
-        model should be used). New model names can be created at any
-        time; the models themselves should be described in a
-        mission-specific ancillary file. See also the geom:solution_id
-        attribute within the geom:Camera_Model_Parameters
-        class.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
-     <xs:minLength value="1"/>
-     <xs:maxLength value="255"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="pointing_model_solution_id">
-    <xs:annotation>
-      <xs:documentation>The pointing_model_solution_id attribute
-        specifies the identifier of the pointing correction solution
-        used to derive the model specified via the enclosing
-        Pointing_Correction class. This identifier should also appear in
-        the pointing correction file referenced by the
-        Data_Correction_File. If there is only one identifier in the
-        correction file, then pointing_model_solution_id may be omitted.
-        The pointing_model_solution_id attribute may be reused in the
-        context of pointing corrections, although uniqueness is
-        recommended. The pointing correction solution ID namespace is
-        separate from the coordinate system namespace.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
-     <xs:minLength value="1"/>
-     <xs:maxLength value="255"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
   <xs:simpleType name="sample">
     <xs:annotation>
       <xs:documentation>The sample attribute specifies the sample number
@@ -674,7 +604,7 @@
     "dataDictionary": {
       "Title": "PDS4 Data Dictionary" ,
       "Version": "1.11.1.0" ,
-      "Date": "Fri May 03 12:25:11 PDT 2019" ,
+      "Date": "Wed Jun 19 08:56:25 PDT 2019" ,
       "Description": "This document is a dump of the contents of the PDS4 Data Dictionary" ,
       "PropertyMapDictionary": [
       ]

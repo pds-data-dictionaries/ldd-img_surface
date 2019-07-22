@@ -1,13 +1,13 @@
 PDS4 Local Data Dictionary Processing Report
 
 Configuration:
-   LDDTool Version        0.2.2.4
-   LDD Version Id:        1.1.0.0
+   LDDTool Version        0.2.2.5
+   LDD Version Id:        1.1.1.0
    LDD Label Version Id:  1.0
    LDD Discipline (T/F):  true
    LDD Namespace URL:     http://pds.nasa.gov/pds4/
    LDD URN Prefix:        urn:nasa:pds:
-   Time                   Fri May 03 12:25:11 PDT 2019
+   Time                   Wed Jun 19 08:56:25 PDT 2019
    Common Schema          [PDS4_PDS_1B10.xsd]
    Common Schematron      [PDS4_PDS_1B10.sch]
    IM Version Id:         1.11.1.0
@@ -29,16 +29,14 @@ Parameters:
    Merge with Master      false
 
 Summary:
-   Classes                15
-   Attributes             29
-   Associations           54
+   Classes                13
+   Attributes             25
+   Associations           48
    Error messages         0
-   Warning messages       3
+   Warning messages       1
    Information messages   5
 
 Detailed validation messages
-   WARNING  Attribute: <index_name> - This local attribute was not used in an Association.
-   WARNING  Attribute: <index_value_real> - This local attribute was not used in an Association.
    WARNING  Header:  - New namespace id has been specified:img_surface
    INFO     Attribute: <instrument_type> - This local attribute has a duplicate in the PDS4 data dictionary.
    INFO     Attribute: <instrument_serial_number> - This local attribute has a duplicate in the PDS4 data dictionary.
@@ -48,7 +46,7 @@ Detailed validation messages
 
 Parsed Input - Header:
    LDD Name               Surface Imaging
-   LDD Version            1.1.0.0
+   LDD Version            1.1.1.0
    Full Name              Cristina De Cesare
    Steward                img
    Namespace Id           img_surface
@@ -63,6 +61,9 @@ Parsed Input - Header:
       - Renamed Surface_Imaging_Parameters to Surface_Imaging, Error_Model_Information to Error_Model, 
         Geometry_Projection_Parameters to Geometry_Projection, and Pointing_Correction_Parameters to Pointing_Correction.
       - Added new attribute to Instrument_Information: ops_instrument_key
+      
+      1.1.1.0
+      - Removed Pointing_Correction and its child attributes/classes (moved to IMG)
     
    Last Modification Time 2019-05-02T14:00:00
    PDS4 Merge Flag        false
@@ -223,26 +224,6 @@ Parsed Input - Attributes:
    description            The z component of a Cartesian position vector.
    unit of measure type   Units_of_Length
 
-   name                   pointing_model_name
-   version                1.11
-   value data type        ASCII_Short_String_Collapsed
-   description            The pointing_model_name attribute specifies which of several "pointing models" were used to transform the camera model based on updated pointing information. These updates are typically derived from mosaic seam corrections. This attribute and the associated Pointing_Model_Index classes define what the updated pointing information is, providing enough information to re-create the camera model from calibration data. If present, this attribute overrides the default pointing based on telemetry. The special value "NONE" shall be interpreted the same as if the attribute is absent (i.e. the default pointing model should be used). New model names can be created at any time; the models themselves should be described in a mission-specific ancillary file. See also the geom:solution_id attribute within the geom:Camera_Model_Parameters class.
-
-   name                   pointing_model_solution_id
-   version                1.11
-   value data type        ASCII_Short_String_Collapsed
-   description            The pointing_model_solution_id attribute specifies the identifier of the pointing correction solution used to derive the model specified via the enclosing Pointing_Correction class. This identifier should also appear in the pointing correction file referenced by the Data_Correction_File. If there is only one identifier in the correction file, then pointing_model_solution_id may be omitted. The pointing_model_solution_id attribute may be reused in the context of pointing corrections, although uniqueness is recommended. The pointing correction solution ID namespace is separate from the coordinate system namespace.
-
-   name                   index_name
-   version                1.0
-   value data type        ASCII_Short_String_Collapsed
-   description            The index_name attribute supplies the formal name for the associated value in a group of related values.
-
-   name                   index_value_real
-   version                1.0
-   value data type        ASCII_Real
-   description            The index_value_real attribute provides the real number value as named by the associated index_id or index_name.
-
 Parsed Input - Classes:
 
    name                   Surface_Imaging
@@ -398,11 +379,6 @@ Parsed Input - Classes:
       reference type        component_of
 
       local identifier      Vector_Range_Origin
-      minimum occurrences   0
-      maximum occurrences   1
-      reference type        component_of
-
-      local identifier      Pointing_Correction
       minimum occurrences   0
       maximum occurrences   1
       reference type        component_of
@@ -590,47 +566,6 @@ Parsed Input - Classes:
       reference type        attribute_of
 
       local identifier      z_position
-      minimum occurrences   1
-      maximum occurrences   1
-      reference type        attribute_of
-
-   name                   Pointing_Correction
-   description            The Pointing_Correction class contains attributes used to identify and describe the camera model transformations completed in order to update pointing information. 
-   is abstract            false
-   is choice              false
-   subclass of            USER
-
-   Associations
-
-      local identifier      pointing_model_name
-      minimum occurrences   1
-      maximum occurrences   1
-      reference type        attribute_of
-
-      local identifier      pointing_model_solution_id
-      minimum occurrences   0
-      maximum occurrences   1
-      reference type        attribute_of
-
-      local identifier      Pointing_Model_Parameter
-      minimum occurrences   0
-      maximum occurrences   *
-      reference type        component_of
-
-   name                   Pointing_Model_Parameter
-   description            The Pointing_Model_Parameter class specifies the name and value (numeric) parameters needed by the pointing model identified by the pointing_model_name attribute in the Pointing_Correction parent class. The meaning of any given parameter is defined by the pointing model. 
-   is abstract            false
-   is choice              false
-   subclass of            USER
-
-   Associations
-
-      local identifier      pds.name
-      minimum occurrences   1
-      maximum occurrences   1
-      reference type        attribute_of
-
-      local identifier      pds.value
       minimum occurrences   1
       maximum occurrences   1
       reference type        attribute_of

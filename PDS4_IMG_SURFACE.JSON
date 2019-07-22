@@ -3,7 +3,7 @@
     "dataDictionary": {
       "Title": "PDS4 Data Dictionary" ,
       "Version": "1.11.1.0" ,
-      "Date": "Fri May 03 12:25:11 PDT 2019" ,
+      "Date": "Wed Jun 19 08:56:25 PDT 2019" ,
       "Description": "This document is a dump of the contents of the PDS4 Data Dictionary" ,
       "classDictionary": [
         {
@@ -77,21 +77,6 @@
               }
             }
            , {"association": {
-                "identifier": "0001_NASA_PDS_1.img_surface.Derived_Product_Parameters.img_surface.Pointing_Correction" ,
-                "title": "null" ,
-                "assocType": "component_of" ,
-                "isAttribute": "false" ,
-                "isChoice": "false" ,
-                "isAny": "false" ,
-                "minimumCardinality": "0" ,
-                "maximumCardinality": "1" ,
-                "classOrder": "1050" ,
-                "classId": [
-                   "0001_NASA_PDS_1.img_surface.Pointing_Correction"
-                 ]
-              }
-            }
-           , {"association": {
                 "identifier": "0001_NASA_PDS_1.img_surface.Derived_Product_Parameters.geom.geom.Coordinate_Space_Reference" ,
                 "title": "null" ,
                 "assocType": "component_of" ,
@@ -100,7 +85,7 @@
                 "isAny": "false" ,
                 "minimumCardinality": "0" ,
                 "maximumCardinality": "1" ,
-                "classOrder": "1060" ,
+                "classOrder": "1050" ,
                 "classId": [
                    "0001_NASA_PDS_1.geom.Coordinate_Space_Reference"
                  ]
@@ -585,107 +570,6 @@
                 "classOrder": "1020" ,
                 "classId": [
                    "0001_NASA_PDS_1.pds.Internal_Reference"
-                 ]
-              }
-            }
-           ]
-          }
-        }
-      , {
-          "class": {
-            "identifier": "0001_NASA_PDS_1.img_surface.Pointing_Correction" ,
-            "title": "Pointing_Correction" ,
-            "registrationAuthorityId": "0001_NASA_PDS_1" ,
-            "nameSpaceId": "img_surface" ,
-            "steward": "img" ,
-            "versionId": "1.0.0.0" ,
-            "description": "The Pointing_Correction class contains attributes used to identify and describe the camera model transformations completed in order to update pointing information. "
-              , "associationList": [
-             {"association": {
-                "identifier": "0001_NASA_PDS_1.img_surface.Pointing_Correction.img_surface.pointing_model_name" ,
-                "title": "null" ,
-                "assocType": "attribute_of" ,
-                "isAttribute": "true" ,
-                "isChoice": "false" ,
-                "isAny": "false" ,
-                "minimumCardinality": "1" ,
-                "maximumCardinality": "1" ,
-                "classOrder": "1010" ,
-                "attributeId": [
-                  "0001_NASA_PDS_1.img_surface.Pointing_Correction.img_surface.pointing_model_name"
-                 ]
-              }
-            }
-           , {"association": {
-                "identifier": "0001_NASA_PDS_1.img_surface.Pointing_Correction.img_surface.pointing_model_solution_id" ,
-                "title": "null" ,
-                "assocType": "attribute_of" ,
-                "isAttribute": "true" ,
-                "isChoice": "false" ,
-                "isAny": "false" ,
-                "minimumCardinality": "0" ,
-                "maximumCardinality": "1" ,
-                "classOrder": "1020" ,
-                "attributeId": [
-                  "0001_NASA_PDS_1.img_surface.Pointing_Correction.img_surface.pointing_model_solution_id"
-                 ]
-              }
-            }
-           , {"association": {
-                "identifier": "0001_NASA_PDS_1.img_surface.Pointing_Correction.img_surface.Pointing_Model_Parameter" ,
-                "title": "null" ,
-                "assocType": "component_of" ,
-                "isAttribute": "false" ,
-                "isChoice": "false" ,
-                "isAny": "false" ,
-                "minimumCardinality": "0" ,
-                "maximumCardinality": "*" ,
-                "classOrder": "1030" ,
-                "classId": [
-                   "0001_NASA_PDS_1.img_surface.Pointing_Model_Parameter"
-                 ]
-              }
-            }
-           ]
-          }
-        }
-      , {
-          "class": {
-            "identifier": "0001_NASA_PDS_1.img_surface.Pointing_Model_Parameter" ,
-            "title": "Pointing_Model_Parameter" ,
-            "registrationAuthorityId": "0001_NASA_PDS_1" ,
-            "nameSpaceId": "img_surface" ,
-            "steward": "img" ,
-            "versionId": "1.0.0.0" ,
-            "description": "The Pointing_Model_Parameter class specifies the name and value (numeric) parameters needed by the pointing model identified by the pointing_model_name attribute in the Pointing_Correction parent class. The meaning of any given parameter is defined by the pointing model. "
-              , "associationList": [
-             {"association": {
-                "identifier": "0001_NASA_PDS_1.img_surface.Pointing_Model_Parameter.pds.name" ,
-                "title": "null" ,
-                "assocType": "attribute_of" ,
-                "isAttribute": "true" ,
-                "isChoice": "false" ,
-                "isAny": "false" ,
-                "minimumCardinality": "1" ,
-                "maximumCardinality": "1" ,
-                "classOrder": "1010" ,
-                "attributeId": [
-                  "0001_NASA_PDS_1.img_surface.Pointing_Model_Parameter.pds.name"
-                 ]
-              }
-            }
-           , {"association": {
-                "identifier": "0001_NASA_PDS_1.img_surface.Pointing_Model_Parameter.pds.value" ,
-                "title": "null" ,
-                "assocType": "attribute_of" ,
-                "isAttribute": "true" ,
-                "isChoice": "false" ,
-                "isAny": "false" ,
-                "minimumCardinality": "1" ,
-                "maximumCardinality": "1" ,
-                "classOrder": "1020" ,
-                "attributeId": [
-                  "0001_NASA_PDS_1.img_surface.Pointing_Model_Parameter.pds.value"
                  ]
               }
             }
@@ -1537,54 +1421,6 @@
             "isEnumerated": "false" ,
             "dataType": "ASCII_Short_String_Preserved" ,
             "dataTypeId": "0001_NASA_PDS_1.pds.ASCII_Short_String_Preserved" ,
-            "minimumCharacters": "1" ,
-            "maximumCharacters": "255" ,
-            "minimumValue": "Unbounded" ,
-            "maximumValue": "Unbounded" ,
-            "pattern": "null" ,
-            "unitOfMeasure": "null" ,
-            "unitOfMeasureId": "null" ,
-            "unitId": "null" ,
-            "defaultUnitId": "null"
-          }
-        }
-      , {
-          "attribute": {
-            "identifier": "0001_NASA_PDS_1.img_surface.Pointing_Correction.img_surface.pointing_model_name" ,
-            "title": "pointing_model_name" ,
-            "registrationAuthorityId": "0001_NASA_PDS_1" ,
-            "nameSpaceId": "img_surface" ,
-            "steward": "img" ,
-            "versionId": "1.11" ,
-            "description": "The pointing_model_name attribute specifies which of several \"pointing models\" were used to transform the camera model based on updated pointing information. These updates are typically derived from mosaic seam corrections. This attribute and the associated Pointing_Model_Index classes define what the updated pointing information is, providing enough information to re-create the camera model from calibration data. If present, this attribute overrides the default pointing based on telemetry. The special value \"NONE\" shall be interpreted the same as if the attribute is absent (i.e. the default pointing model should be used). New model names can be created at any time; the models themselves should be described in a mission-specific ancillary file. See also the geom:solution_id attribute within the geom:Camera_Model_Parameters class." ,
-            "isNillable": "false" ,
-            "isEnumerated": "false" ,
-            "dataType": "ASCII_Short_String_Collapsed" ,
-            "dataTypeId": "0001_NASA_PDS_1.pds.ASCII_Short_String_Collapsed" ,
-            "minimumCharacters": "1" ,
-            "maximumCharacters": "255" ,
-            "minimumValue": "Unbounded" ,
-            "maximumValue": "Unbounded" ,
-            "pattern": "null" ,
-            "unitOfMeasure": "null" ,
-            "unitOfMeasureId": "null" ,
-            "unitId": "null" ,
-            "defaultUnitId": "null"
-          }
-        }
-      , {
-          "attribute": {
-            "identifier": "0001_NASA_PDS_1.img_surface.Pointing_Correction.img_surface.pointing_model_solution_id" ,
-            "title": "pointing_model_solution_id" ,
-            "registrationAuthorityId": "0001_NASA_PDS_1" ,
-            "nameSpaceId": "img_surface" ,
-            "steward": "img" ,
-            "versionId": "1.11" ,
-            "description": "The pointing_model_solution_id attribute specifies the identifier of the pointing correction solution used to derive the model specified via the enclosing Pointing_Correction class. This identifier should also appear in the pointing correction file referenced by the Data_Correction_File. If there is only one identifier in the correction file, then pointing_model_solution_id may be omitted. The pointing_model_solution_id attribute may be reused in the context of pointing corrections, although uniqueness is recommended. The pointing correction solution ID namespace is separate from the coordinate system namespace." ,
-            "isNillable": "false" ,
-            "isEnumerated": "false" ,
-            "dataType": "ASCII_Short_String_Collapsed" ,
-            "dataTypeId": "0001_NASA_PDS_1.pds.ASCII_Short_String_Collapsed" ,
             "minimumCharacters": "1" ,
             "maximumCharacters": "255" ,
             "minimumValue": "Unbounded" ,

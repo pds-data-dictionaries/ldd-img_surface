@@ -10,7 +10,7 @@
     xmlns:pds="http://pds.nasa.gov/pds4/pds/v1"
     xsi:schemaLocation="https://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1B10.xsd     http://pds.nasa.gov/pds4/geom/v1 https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1B10_1700.xsd   ">
     <name>Surface Imaging</name>
-    <ldd_version_id>1.1.0.0</ldd_version_id>
+    <ldd_version_id>1.1.1.0</ldd_version_id>
     <full_name>Cristina De Cesare</full_name>
     <steward_id>img</steward_id>
     <namespace_id>img_surface</namespace_id>
@@ -25,6 +25,9 @@
       - Renamed Surface_Imaging_Parameters to Surface_Imaging, Error_Model_Information to Error_Model, 
         Geometry_Projection_Parameters to Geometry_Projection, and Pointing_Correction_Parameters to Pointing_Correction.
       - Added new attribute to Instrument_Information: ops_instrument_key
+      
+      1.1.1.0
+      - Removed Pointing_Correction and its child attributes/classes (moved to IMG)
     </comment>
     <last_modification_date_time>2019-05-02T14:00:00</last_modification_date_time>
   
@@ -578,81 +581,6 @@
     </DD_Value_Domain>
   </DD_Attribute>
   <!-- End attributes for Vector_Range_Origin Parameters -->
-  
-  <!-- Attributes: Pointing_Correction   -->
-  <DD_Attribute>
-    <name>pointing_model_name</name>
-    <version_id>1.0</version_id>
-    <local_identifier>pointing_model_name</local_identifier>
-    <nillable_flag>false</nillable_flag>
-    <submitter_name>Jordan Padams</submitter_name>
-    <definition>The pointing_model_name attribute specifies which of several "pointing models" were
-      used to transform the camera model based on updated pointing information. These updates are
-      typically derived from mosaic seam corrections. This attribute and the associated
-      Pointing_Model_Index classes define what the updated pointing information is, providing enough
-      information to re-create the camera model from calibration data. If present, this attribute
-      overrides the default pointing based on telemetry. The special value "NONE" shall be
-      interpreted the same as if the attribute is absent (i.e. the default pointing model should be
-      used). New model names can be created at any time; the models themselves should be described
-      in a mission-specific ancillary file. See also the geom:solution_id attribute within the
-      geom:Camera_Model_Parameters class.</definition>
-    <DD_Value_Domain>
-      <enumeration_flag>false</enumeration_flag>
-      <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
-      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
-    </DD_Value_Domain>
-  </DD_Attribute>
-  <DD_Attribute>
-    <name>pointing_model_solution_id</name>
-    <version_id>1.0</version_id>
-    <local_identifier>pointing_model_solution_id</local_identifier>
-    <nillable_flag>false</nillable_flag>
-    <submitter_name>Jordan Padams</submitter_name>
-    <definition>The pointing_model_solution_id attribute specifies the identifier of the pointing
-      correction solution used to derive the model specified via the enclosing
-      Pointing_Correction class. This identifier should also appear in the pointing
-      correction file referenced by the Data_Correction_File. If there is only one identifier in the
-      correction file, then pointing_model_solution_id may be omitted. The
-      pointing_model_solution_id attribute may be reused in the context of pointing corrections,
-      although uniqueness is recommended. The pointing correction solution ID namespace is separate
-      from the coordinate system namespace.</definition>
-    <DD_Value_Domain>
-      <enumeration_flag>false</enumeration_flag>
-      <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
-      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
-    </DD_Value_Domain>
-  </DD_Attribute>
-  
-  <!-- Attributes: Pointing_Model_Index   -->
-  <!-- TODO - this can eventually be deprecated once the Geometry dictionary is added to the model -->
-  <DD_Attribute>
-    <name>index_name</name>
-    <version_id>1.0</version_id>
-    <local_identifier>index_name</local_identifier>
-    <nillable_flag>false</nillable_flag>
-    <submitter_name>Jordan Padams</submitter_name>
-    <definition>The index_name attribute supplies the formal name for the associated value in a
-      group of related values.</definition>
-    <DD_Value_Domain>
-      <enumeration_flag>false</enumeration_flag>
-      <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
-      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
-    </DD_Value_Domain>
-  </DD_Attribute>
-  <DD_Attribute>
-    <name>index_value_real</name>
-    <version_id>1.0</version_id>
-    <local_identifier>index_value_real</local_identifier>
-    <nillable_flag>false</nillable_flag>
-    <submitter_name>Jordan Padams</submitter_name>
-    <definition>The index_value_real attribute provides the real number value as named by the
-      associated index_id or index_name.</definition>
-    <DD_Value_Domain>
-      <enumeration_flag>false</enumeration_flag>
-      <value_data_type>ASCII_Real</value_data_type>
-      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
-    </DD_Value_Domain>
-  </DD_Attribute>
 
 
   <!-- Begin Class definitions -->
@@ -856,12 +784,6 @@
     </DD_Association>
     <DD_Association>
       <identifier_reference>Vector_Range_Origin</identifier_reference>
-      <reference_type>component_of</reference_type>
-      <minimum_occurrences>0</minimum_occurrences>
-      <maximum_occurrences>1</maximum_occurrences>
-    </DD_Association>
-    <DD_Association>
-      <identifier_reference>Pointing_Correction</identifier_reference>
       <reference_type>component_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>1</maximum_occurrences>
@@ -1072,59 +994,6 @@
   </DD_Class>
   <!-- End of Vector_Range_Origin class defintion    -->
   
-  
-  <!-- Class: Pointing_Correction    -->
-  <DD_Class>
-    <name>Pointing_Correction</name>
-    <version_id>1.0</version_id>
-    <local_identifier>Pointing_Correction</local_identifier>
-    <submitter_name>Jordan Padams</submitter_name>
-    <definition>The Pointing_Correction class contains attributes used to identify and
-      describe the camera model transformations completed in order to update pointing information. </definition>
-    <DD_Association>
-      <identifier_reference>pointing_model_name</identifier_reference>
-      <reference_type>attribute_of</reference_type>
-      <minimum_occurrences>1</minimum_occurrences>
-      <maximum_occurrences>1</maximum_occurrences>
-    </DD_Association>
-    <DD_Association>
-      <identifier_reference>pointing_model_solution_id</identifier_reference>
-      <reference_type>attribute_of</reference_type>
-      <minimum_occurrences>0</minimum_occurrences>
-      <maximum_occurrences>1</maximum_occurrences>
-    </DD_Association>
-    <DD_Association>
-      <identifier_reference>Pointing_Model_Parameter</identifier_reference>
-      <reference_type>component_of</reference_type>
-      <minimum_occurrences>0</minimum_occurrences>
-      <maximum_occurrences>*</maximum_occurrences>
-    </DD_Association>
-  </DD_Class>
-  
-  <!-- Class: Pointing_Model_Parameter    -->
-  <DD_Class>
-    <name>Pointing_Model_Parameter</name>
-    <version_id>1.0</version_id>
-    <local_identifier>Pointing_Model_Parameter</local_identifier>
-    <submitter_name>Jordan Padams</submitter_name>
-    <definition>The Pointing_Model_Parameter class specifies the name and value (numeric) parameters
-      needed by the pointing model identified by the pointing_model_name attribute in the
-      Pointing_Correction parent class. The meaning of any given parameter is defined by
-      the pointing model. </definition>
-    <DD_Association>
-      <identifier_reference>pds.name</identifier_reference>
-      <reference_type>attribute_of</reference_type>
-      <minimum_occurrences>1</minimum_occurrences>
-      <maximum_occurrences>1</maximum_occurrences>
-    </DD_Association>
-    <DD_Association>
-      <identifier_reference>pds.value</identifier_reference>
-      <reference_type>attribute_of</reference_type>
-      <minimum_occurrences>1</minimum_occurrences>
-      <maximum_occurrences>1</maximum_occurrences>
-    </DD_Association>
-  </DD_Class>
-  
   <!-- End class definitions -->
   <!--                       -->
   
@@ -1161,6 +1030,8 @@
     </DD_Rule_Statement>
   </DD_Rule>
   
+  <!-- TODO find a way to make this rule trigger for only InSight labels -->
+  <!--
   <DD_Rule>
     <local_identifier>derived_image_type_name_value_check</local_identifier>
     <rule_context>//img_surface:Derived_Product_Parameters</rule_context>
@@ -1170,6 +1041,7 @@
       <rule_message>IMG_SURFACE:error:derived_image_type_name: The attribute img_surface:derived_image_type_name must be equal to one of the following values: 'IMAGE', 'DISPARITY_MAP', 'DISPARITY_LINE_MAP', 'DISPARITY_SAMPLE_MAP', 'DISPARITY_ERROR_MAP', 'DELTA_DISPARITY_MAP', 'DELTA_DISPARITY_LINE_MAP', 'DELTA_DISPARITY_SAMPLE_MAP', 'MASK', 'XYZ_MAP', 'XYZ_ERROR_MAP', 'X_MAP', 'Y_MAP', 'Z_MAP', 'ANGLE_MAP', 'RANGE_MAP', 'RANGE_ERROR_MAP', 'UVW_MAP', 'U_MAP', 'V_MAP', 'W_MAP', 'ROUGHNESS_MAP', 'REACHABILITY_MAP', 'PRELOAD_MAP', 'SLOPE_MAP', 'RADIAL_SLOPE_MAP', 'SLOPE_HEADING_MAP', 'SLOPE_MAGNITUDE_MAP', 'NORTHERLY_TILT_MAP', 'SOLAR_ENERGY_MAP', 'IEP_MAP', 'TERRAIN_PROBABILITY_MAP', 'TERRAIN_CLASSIFICATION_MAP', 'AEGIS_MAP', 'ICM_MAP', 'IDX_MAP', 'INST_TILT_MAP', 'INST_DELTA_TILT_MAP', 'INST_Z_MAP', 'INST_UVW_MAP', 'INST_ROUGHNESS_MAP', 'INST_WORKSPACE_MAP', 'GOODNESS_MAP', 'XYZ_MAP', 'ELEVATION_MAP'.</rule_message>
     </DD_Rule_Statement>
   </DD_Rule>
+  -->
   
   <DD_Rule>
     <local_identifier>local_reference_type_check_placement_instrument</local_identifier>
