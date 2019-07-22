@@ -1,90 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 XML/Schema for Name Space Id:img_surf  Version:1.9.0.0 - Tue Jan 23 16:37:46 PST 2018 -->
-  <!-- Generated from the PDS4 Information Model Version 1.9.0.0 - System Build 8a -->
+  <!-- PDS4 XML/Schema for Name Space Id:img_surface  Version:1.10.1.0 - Mon Jul 30 16:11:37 PDT 2018 -->
+  <!-- Generated from the PDS4 Information Model Version 1.10.1.0 - System Build 8b -->
   <!-- *** This PDS4 product schema is an operational deliverable. *** -->
   <!--                                                                           -->
   <!--               Dictionary Stack                                            -->
-  <!-- 1.9.0.0 - pds: - Common Dictionary - N/A                                  -->
-  <!-- 1.9.0.0 - img_surf: - Surface Imaging - PDS4_IMG_SURF_IngestLDD_1900.xml  -->
+  <!-- 1.10.1.0 - pds: - Common Dictionary - N/A                                 -->
+  <!-- 1.10.1.0 - geom: - Geometry Dictionary Full - input-PDS4_GEOM_1A10_1530.x -->
+  <!-- 1.10.1.0 - img_surface: - Surface Imaging - PDS4_IMG_SURFACE_IngestLDD_1A -->
   <!--                                                                           -->
   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://pds.nasa.gov/pds4/mission/img_surf/v1"
-    xmlns:img_surf="http://pds.nasa.gov/pds4/mission/img_surf/v1"
+    targetNamespace="http://pds.nasa.gov/pds4/mission/img_surface/v1"
+    xmlns:img_surface="http://pds.nasa.gov/pds4/mission/img_surface/v1"
     xmlns:pds="http://pds.nasa.gov/pds4/pds/v1"
+    xmlns:geom="http://pds.nasa.gov/pds4/geom/v1"
     elementFormDefault="qualified"
     attributeFormDefault="unqualified"
-    version="1.9.0.0">
+    version="1.10.1.0">
  
-    <xs:import namespace="http://pds.nasa.gov/pds4/pds/v1" schemaLocation="http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1900.xsd"/>
+    <xs:import namespace="http://pds.nasa.gov/pds4/pds/v1" schemaLocation="http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1A10.xsd"/>
+    <xs:import namespace="http://pds.nasa.gov/pds4/geom/v1" schemaLocation="http://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1A10.xsd"/>
  
   <xs:annotation>
     <xs:documentation>
-This XML schema file has been generated from the PDS4 Information Model.
+This XML schema file has been generated from the Information Model.
     </xs:documentation>
   </xs:annotation>
  
-  <xs:element name="Mars_Surface_Imaging_Parameters" type="img_surf:Mars_Surface_Imaging_Parameters"> </xs:element>
-
-  <xs:complexType name="Autoexposure_Algorithm_Parameters">
-    <xs:annotation>
-      <xs:documentation>The Autoexposure_Algorithm_Parameters class
-        contains the explicit input parameters for the autoexpsoure
-        algorithms used in surface-based imaging
-        products.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="local_identifier" type="pds:local_identifier" minOccurs="1" maxOccurs="1"> </xs:element>
-      <xs:choice minOccurs="1" maxOccurs="1">
-        <xs:element name="Maki_2003_Autoexposure" type="img_surf:Maki_2003_Autoexposure"> </xs:element>
-        <xs:element name="Maurice_2012_Autoexposure" type="img_surf:Maurice_2012_Autoexposure"> </xs:element>
-        <xs:element name="Smith_1997_Autoexposure" type="img_surf:Smith_1997_Autoexposure"> </xs:element>
-      </xs:choice>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="Coordinate_Space_Indexed">
-    <xs:annotation>
-      <xs:documentation>The Coordinate_Space_Indexed class contains the
-        attributes and classes identifying the indexed coordinate space.
-        </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="coordinate_space_frame_type" nillable="true" type="img_surf:coordinate_space_frame_type" minOccurs="1" maxOccurs="1"> </xs:element>
-      <xs:element name="Coordinate_Space_Index" type="geom:Coordinate_Space_Index" minOccurs="1" maxOccurs="unbounded"> </xs:element>
-      <xs:element name="solution_id" type="img_surf:solution_id" minOccurs="0" maxOccurs="1"> </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="Coordinate_Space_Reference">
-    <xs:annotation>
-      <xs:documentation>The Coordinate_Space_Reference class includes
-        the attributes that identify the reference coordinate space to
-        be used in relation to the spacecraft's present coordinate
-        space. The reference coordinate space is the space in which the
-        present coordinate space is defined. </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:choice minOccurs="1" maxOccurs="unbounded">
-        <xs:element name="Coordinate_Space_Indexed" type="img_surf:Coordinate_Space_Indexed"> </xs:element>
-      </xs:choice>
-    </xs:sequence>
-  </xs:complexType>
+  <xs:element name="Surface_Imaging_Parameters" type="img_surface:Surface_Imaging_Parameters"> </xs:element>
 
   <xs:complexType name="Derived_Product_Parameters">
     <xs:annotation>
       <xs:documentation>The Derived_Product_Parameters class contains
-        attributes used to identify and describe post processing
-        performed on products in order to produce a higher level
-        product. The processing performed after radiometric and
-        photometric correction is often cosmetic in nature. For example,
-        filtering, edge matching, seam correction, and
-        blending.</xs:documentation>
+        attributes used to identify and describe processing performed on
+        products in order to produce a higher level
+        product.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="derived_image_type" type="img_surf:derived_image_type" minOccurs="1" maxOccurs="1"> </xs:element>
-      <xs:element name="horizon_mask_elevation" type="img_surf:horizon_mask_elevation" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="Vector_Range_Origin" type="img_surf:Vector_Range_Origin" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="Coordinate_Space_Reference" type="img_surf:Coordinate_Space_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="derived_image_type_name" type="img_surface:derived_image_type_name" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="horizon_mask_elevation" type="img_surface:horizon_mask_elevation" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Placement_Target_Instrument" type="img_surface:Placement_Target_Instrument" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Vector_Range_Origin" type="img_surface:Vector_Range_Origin" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Pointing_Correction_Parameters" type="img_surface:Pointing_Correction_Parameters" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Coordinate_Space_Reference" type="geom:Coordinate_Space_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
     </xs:sequence>
   </xs:complexType>
 
@@ -97,8 +54,8 @@ This XML schema file has been generated from the PDS4 Information Model.
         missions.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="error_model_name" type="img_surf:error_model_name" minOccurs="1" maxOccurs="1"> </xs:element>
-      <xs:element name="Error_Model_Parameter" type="img_surf:Error_Model_Parameter" minOccurs="1" maxOccurs="unbounded"> </xs:element>
+      <xs:element name="error_model_name" type="img_surface:error_model_name" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="Error_Model_Parameter" type="img_surface:Error_Model_Parameter" minOccurs="1" maxOccurs="unbounded"> </xs:element>
       <xs:element ref="pds:Internal_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
     </xs:sequence>
   </xs:complexType>
@@ -115,127 +72,151 @@ This XML schema file has been generated from the PDS4 Information Model.
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="Error_Pixel">
+    <xs:annotation>
+      <xs:documentation> The Error_Pixel class specifies the line and
+        sample in the image where an error occurred.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="line" type="img_surface:line" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="sample" type="img_surface:sample" minOccurs="1" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="Geometry_Projection_Parameters">
     <xs:annotation>
-<xs:documentation>TODO</xs:documentation>
+      <xs:documentation>The Geometry_Projection_Parameters describes the
+        geometric projection or warping the image has undergone. It is
+        not the intent of this class to describe map projections, but
+        rather image warps such as linearization (stereo epipolar
+        alignment), geometric sensor correction, or rubber-sheeting. If
+        present, a linearization partner image can be referenced using
+        either an Internal_Reference or
+        External_Reference.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:choice minOccurs="1" maxOccurs="3">
-        <xs:element name="linearization_mode" type="img_surf:linearization_mode"> </xs:element>
-        <xs:element name="linearization_mode_fov" type="img_surf:linearization_mode_fov"> </xs:element>
-        <xs:element name="geometry_projection_type" type="img_surf:geometry_projection_type"> </xs:element>
-    </xs:choice>
+      <xs:element name="linearization_mode" type="img_surface:linearization_mode" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="linearization_mode_fov" type="img_surface:linearization_mode_fov" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="geometry_projection_type" type="img_surface:geometry_projection_type" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:choice minOccurs="0" maxOccurs="1">
+        <xs:element ref="pds:External_Reference"> </xs:element>
+        <xs:element ref="pds:Internal_Reference"> </xs:element>
+      </xs:choice>
     </xs:sequence>
     <!-- Begin assert statements for schematron - Enumerated Values -->
-    <!-- <xs:assert test="img_surf:linearization_mode = ('Actual', 'Nominal', 'None')"/> -->
-    <!-- <xs:assert test="img_surf:geometry_projection_type = ('Linearized', 'Raw')"/> -->
+    <!-- <xs:assert test="img_surface:linearization_mode = ('Actual', 'Nominal', 'None')"/> -->
+    <!-- <xs:assert test="img_surface:geometry_projection_type = ('Linearized', 'Raw')"/> -->
     <!-- End assert statements for schematron - Enumerated Values -->
   </xs:complexType>
 
-  <xs:complexType name="Maki_2003_Autoexposure">
+  <xs:complexType name="Image_Identifiers">
     <xs:annotation>
-      <xs:documentation>The Maki_2003_Autoexposure class contains
-        attributes used as necessary inputs for the Maki 2003 Histogram
-        Autoexposure (or Thresholding) algorithm. Autoexposure is
-        performed using histogramming in a manner similar to that
-        described in "Mars Exploration Rover Engineering Cameras". Maki,
-        J. N., et al. (2003), Mars Exploration Rover Engineering
-        Cameras, J. Geophys. Res., 108, 8071, doi:10.1029/2003JE002077,
-        E12.</xs:documentation>
+      <xs:documentation>The Image_Identifiers class contains items that
+        help to identify the image or guide how processing should be
+        done to the image.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="autoexposure_dn_max_threshold" type="img_surf:autoexposure_dn_max_threshold" minOccurs="1" maxOccurs="1"> </xs:element>
-      <xs:element name="autoexposure_pixel_fraction" type="img_surf:autoexposure_pixel_fraction" minOccurs="1" maxOccurs="1"> </xs:element>
-      <xs:element name="autoexposure_percent" type="img_surf:autoexposure_percent" minOccurs="1" maxOccurs="1"> </xs:element>
-      <xs:element name="autoexposure_max_iterations" type="img_surf:autoexposure_max_iterations" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="image_id" type="img_surface:image_id" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="mosaic_id" type="img_surface:mosaic_id" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="mesh_id" type="img_surface:mesh_id" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="stereo_match_id" type="img_surface:stereo_match_id" minOccurs="0" maxOccurs="1"> </xs:element>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="Mars_Surface_Imaging_Parameters">
+  <xs:complexType name="Instrument_Information">
     <xs:annotation>
-      <xs:documentation>Attributes specific to Mars Surface Imaging data
-        products</xs:documentation>
+      <xs:documentation>The Instrument_Information class specifies
+        information about the configuration of the instrument as it
+        acquired this observation.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="image_id" type="img_surf:image_id" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="image_type" type="img_surf:image_type" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="image_observation_type" type="img_surf:image_observation_type" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="stereo_match_id" type="img_surf:stereo_match_id" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="flight_software_version_id" type="img_surf:flight_software_version_id" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="command_source_id" type="img_surf:command_source_id" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="download_priority" type="img_surf:download_priority" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="image_data_size" type="img_surf:image_data_size" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="product_completion_status" type="img_surf:product_completion_status" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="surface_gravity" type="img_surf:surface_gravity" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="telemetry_application_id" type="img_surf:telemetry_application_id" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="telemetry_application_name" type="img_surf:telemetry_application_name" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="telemetry_provider_id" type="img_surf:telemetry_provider_id" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="telemetry_source_name" type="img_surf:telemetry_source_name" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="telemetry_transport_protocol" type="img_surf:telemetry_transport_protocol" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="expected_packets" type="img_surf:expected_packets" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="received_packets" type="img_surf:received_packets" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="instrument_mode_id" type="img_surf:instrument_mode_id" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="Autoexposure_Algorithm_Parameters" type="img_surf:Autoexposure_Algorithm_Parameters" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="Derived_Product_Parameters" type="img_surf:Derived_Product_Parameters" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="Error_Model_Information" type="img_surf:Error_Model_Information" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="Geometry_Projection_Parameters" type="img_surf:Geometry_Projection_Parameters" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="Stereo_Product_Parameters" type="img_surf:Stereo_Product_Parameters" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="Coordinate_Space_Reference" type="img_surf:Coordinate_Space_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
-    </xs:sequence>
-    <!-- Begin assert statements for schematron - Enumerated Values -->
-    <!-- <xs:assert test="img_surf:telemetry_transport_protocol = ('SFDU')"/> -->
-    <!-- End assert statements for schematron - Enumerated Values -->
-  </xs:complexType>
-
-  <xs:complexType name="Maurice_2012_Autoexposure">
-    <xs:annotation>
-      <xs:documentation>The Maurice_2012_Autoexposure class contains
-        attributes used as necessary inputs for the Maurice 2012
-        Histogram Autoexposure (or Thresholding) algorithm. Autoexposure
-        is performed using histogramming in a manner similar to that
-        described in "The ChemCam Instrument Suite on the Mars Science
-        Laboratory (MSL) Rover: Science Objectives and Mast Unit
-        Description", Smith, P. H., et al., Journal of Geophysical
-        Research, 102(E2), 1997.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="autoexposure_dn_min_threshold" type="img_surf:autoexposure_dn_min_threshold" minOccurs="1" maxOccurs="1"> </xs:element>
-      <xs:element name="autoexposure_dn_max_threshold" type="img_surf:autoexposure_dn_max_threshold" minOccurs="1" maxOccurs="1"> </xs:element>
-      <xs:choice minOccurs="1" maxOccurs="1">
-        <xs:element name="autoexposure_duration_seed" type="img_surf:autoexposure_duration_seed"> </xs:element>
-        <xs:element name="autoexposure_duration_seed_counts" type="img_surf:autoexposure_duration_seed_counts"> </xs:element>
-    </xs:choice>
+      <xs:element name="image_type" type="img_surface:image_type" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="image_acquire_mode" type="img_surface:image_acquire_mode" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="instrument_type" type="img_surface:instrument_type" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="instrument_mode_id" type="img_surface:instrument_mode_id" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="instrument_serial_number" type="img_surface:instrument_serial_number" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="instrument_version_number" type="img_surface:instrument_version_number" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="camera_product_id" type="img_surface:camera_product_id" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="camera_product_id_count" type="img_surface:camera_product_id_count" minOccurs="0" maxOccurs="1"> </xs:element>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="Smith_1997_Autoexposure">
+  <xs:complexType name="Placement_Target_Instrument">
     <xs:annotation>
-      <xs:documentation>The Smith_1997_Autoexposure class contains
-        attributes used as necessary inputs for the Smith 1997 Histogram
-        Autoexposure (or Thresholding) algorithm. Autoexposure is
-        performed using histogramming in a manner similar to that
-        described in "The Imager for Mars Pathfinder experiment", Smith,
-        P. H., et al., Journal of Geophysical Research, 102(E2),
-        1997.</xs:documentation>
+      <xs:documentation>Indicates the instrument that is referred to by
+        the product. This is not the same as the instrument that
+        acquired the product. For example, on InSight instrument
+        placement products, it defines which instrument is being
+        placed.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="autoexposure_dn_max_threshold" type="img_surf:autoexposure_dn_max_threshold" minOccurs="1" maxOccurs="1"> </xs:element>
-      <xs:element name="autoexposure_pixel_fraction" type="img_surf:autoexposure_pixel_fraction" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="name" type="pds:name" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element ref="pds:Internal_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Pointing_Correction_Parameters">
+    <xs:annotation>
+      <xs:documentation>The Pointing_Correction_Parameters class
+        contains attributes used to identify and describe the camera
+        model transformations completed in order to update pointing
+        information. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="pointing_model_name" type="img_surface:pointing_model_name" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="pointing_model_solution_id" type="img_surface:pointing_model_solution_id" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Pointing_Model_Parameters" type="img_surface:Pointing_Model_Parameters" minOccurs="0" maxOccurs="unbounded"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Pointing_Model_Parameters">
+    <xs:annotation>
+      <xs:documentation>The Pointing_Model_Parameters class specifies
+        the name and value (numeric) parameters needed by the pointing
+        model identified by the pointing_model_name attribute in the
+        Pointing_Correction_Parameters parent class. The meaning of any
+        given parameter is defined by the pointing model.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="name" type="pds:name" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="value" type="pds:value" minOccurs="1" maxOccurs="1"> </xs:element>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="Stereo_Product_Parameters">
     <xs:annotation>
-      <xs:documentation> The Stereo_Product_Parameters class identifies
-        and describes the stereo partner and corrections performed in
-        order to linearize the image including the linearization mode
-        and the FOV. Stereo partner can be identified using the
-        Internal_Reference class.</xs:documentation>
+      <xs:documentation>The Stereo_Product_Parameters class describes
+        the conditions under which stereo analysis was performed. This
+        includes items such as the stereo baseline (separation between
+        the cameras) and what partner image(s) were used for stereo
+        analysis. If present, stereo partner images can be referenced
+        using either an Internal_Reference or
+        External_Reference.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="stereo_baseline_length" type="img_surf:stereo_baseline_length" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:choice minOccurs="1" maxOccurs="1">
+      <xs:element name="stereo_baseline_length" type="img_surface:stereo_baseline_length" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="pds:External_Reference"> </xs:element>
+        <xs:element ref="pds:Internal_Reference"> </xs:element>
       </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Surface_Imaging_Parameters">
+    <xs:annotation>
+      <xs:documentation>Attributes specific to imaging instruments on
+        surface missions.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Image_Identifiers" type="img_surface:Image_Identifiers" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Instrument_Information" type="img_surface:Instrument_Information" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Derived_Product_Parameters" type="img_surface:Derived_Product_Parameters" minOccurs="0" maxOccurs="unbounded"> </xs:element>
+      <xs:element name="Error_Model_Information" type="img_surface:Error_Model_Information" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Geometry_Projection_Parameters" type="img_surface:Geometry_Projection_Parameters" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Stereo_Product_Parameters" type="img_surface:Stereo_Product_Parameters" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Coordinate_Space_Reference" type="geom:Coordinate_Space_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Error_Pixel" type="img_surface:Error_Pixel" minOccurs="0" maxOccurs="unbounded"> </xs:element>
     </xs:sequence>
   </xs:complexType>
 
@@ -248,9 +229,9 @@ This XML schema file has been generated from the PDS4 Information Model.
         Coordinate_Space_Reference class.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="x_position" type="img_surf:x_position" minOccurs="1" maxOccurs="1"> </xs:element>
-      <xs:element name="y_position" type="img_surf:y_position" minOccurs="1" maxOccurs="1"> </xs:element>
-      <xs:element name="z_position" type="img_surf:z_position" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="x_position" type="img_surface:x_position" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="y_position" type="img_surface:y_position" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="z_position" type="img_surface:z_position" minOccurs="1" maxOccurs="1"> </xs:element>
     </xs:sequence>
   </xs:complexType>
 
@@ -258,121 +239,15 @@ This XML schema file has been generated from the PDS4 Information Model.
       <xs:documentation>This section contains the simpleTypes that provide more constraints
         than those at the base data type level. The simpleTypes defined here build on the base data
         types. This is another component of the common dictionary and therefore falls within the
-        pds namespace.
+        common namespace.
       </xs:documentation>
     </xs:annotation>
 
-  <xs:simpleType name="autoexposure_dn_max_threshold">
+  <xs:simpleType name="camera_product_id">
     <xs:annotation>
-      <xs:documentation> The autoexposure_dn_max_threshold attribute
-        specifies the target value for the maximum DN value for
-        autoexposure. The fraction is specified using the
-        autoexposure_pixel_fraction attribute. Note that this value has
-        also been called "data cut".</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_NonNegative_Integer">
-    	<xs:pattern value='[0-9]+'/>
-     <xs:minInclusive value="0"/>
-     <xs:maxInclusive value="18446744073709551615"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="autoexposure_dn_min_threshold">
-    <xs:annotation>
-      <xs:documentation> The autoexposure_dn_min_threshold attribute
-        specifies the target value for the minimum DN value for
-        autoexposure.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_NonNegative_Integer">
-    	<xs:pattern value='[0-9]+'/>
-     <xs:minInclusive value="0"/>
-     <xs:maxInclusive value="18446744073709551615"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="autoexposure_duration_seed_WO_Units">
-    <xs:restriction base="pds:ASCII_NonNegative_Integer">
-    	<xs:pattern value='[0-9]+'/>
-     <xs:minInclusive value="1"/>
-     <xs:maxInclusive value="18446744073709551615"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:complexType name="autoexposure_duration_seed">
-    <xs:annotation>
-      <xs:documentation> The autoexposure_duration_seed specifies the
-        initial exposure time for the autoexpose algorithm in
-        seconds.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleContent>
-      <xs:extension base="img_surf:autoexposure_duration_seed_WO_Units">
-        <xs:attribute name="unit" type="pds:Units_of_Time" use="required" />
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-
-  <xs:simpleType name="autoexposure_duration_seed_counts">
-    <xs:annotation>
-      <xs:documentation> The autoexposure_duration_seed specifies the
-        initial exposure time for the autoexpose algorithm in raw
-        counts.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_NonNegative_Integer">
-    	<xs:pattern value='[0-9]+'/>
-     <xs:minInclusive value="1"/>
-     <xs:maxInclusive value="18446744073709551615"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="autoexposure_max_iterations">
-    <xs:annotation>
-      <xs:documentation> The autoexposure_max_iterations specifies the
-        maximum number of iterations allowed in the autoexpose
-        algorithm.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_NonNegative_Integer">
-    	<xs:pattern value='[0-9]+'/>
-     <xs:minInclusive value="0"/>
-     <xs:maxInclusive value="18446744073709551615"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="autoexposure_percent">
-    <xs:annotation>
-      <xs:documentation> The autoexposure_percent specifies an early
-        termination percentage for the autoexpose algorithm. If the
-        measured DN threshold and the autoexposure_dn_max_threshold are
-        within autoexposure_percent of each other, the algorithm treats
-        the current trial as a success and terminates
-        early.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_Real">
-    	<xs:pattern value='[-+]?[0-9]+(\.?[0-9]+)?([eE][-+]?[0-9]+)?'/>
-     <xs:minInclusive value="0.0"/>
-     <xs:maxInclusive value="100.0"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="autoexposure_pixel_fraction">
-    <xs:annotation>
-      <xs:documentation> The autoexposure_pixel_fraction attribute
-        specifies the percentage of pixels that are allowed to exceed
-        the autoexposure_dn_max. Together with
-        autoexposure_dn_max_threshold define the target brightness for
-        the autoexposure algorithm.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_Real">
-    	<xs:pattern value='[-+]?[0-9]+(\.?[0-9]+)?([eE][-+]?[0-9]+)?'/>
-     <xs:minInclusive value="0.0"/>
-     <xs:maxInclusive value="100.0"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="command_source_id">
-    <xs:annotation>
-      <xs:documentation> The command_source_id attribute specifies the
-        flight software element that was the source of a particular
-        command. </xs:documentation>
+      <xs:documentation>The camera_product_id attribute specifies a
+        numeric identifier assigned by the instrument to this specific
+        observation.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="pds:ASCII_Short_String_Collapsed">
      <xs:minLength value="1"/>
@@ -380,53 +255,30 @@ This XML schema file has been generated from the PDS4 Information Model.
 	   </xs:restriction>
   </xs:simpleType>
 
-  <xs:complexType name="coordinate_space_frame_type">
+  <xs:simpleType name="camera_product_id_count">
     <xs:annotation>
-      <xs:documentation>The coordinate_space_frame_type attribute
-        identifies the type of frame being described, such as SITE,
-        LOCAL_LEVEL, LANDER, ROVER, ARM, etc. When combined with
-        Coordinate_Space_Index and the optional solution_id in the
-        Coordinate_Space_Indexed class, this serves to fully name an
-        instance of a coordinate space. </xs:documentation>
+      <xs:documentation>The camera_product_id_count attribute specifies
+        the number of times a specific camera_product_id has been
+        used.</xs:documentation>
     </xs:annotation>
-    <xs:simpleContent>
-      <xs:extension base="pds:ASCII_Short_String_Collapsed">
-        <xs:attribute name="nilReason" type="pds:nil_reason" use="optional" />
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
+    <xs:restriction base="pds:ASCII_NonNegative_Integer">
+    	<xs:pattern value='[0-9]+'/>
+     <xs:minInclusive value="0"/>
+     <xs:maxInclusive value="18446744073709551615"/>
+	   </xs:restriction>
+  </xs:simpleType>
 
-  <xs:simpleType name="derived_image_type">
+  <xs:simpleType name="derived_image_type_name">
     <xs:annotation>
-      <xs:documentation>The derived_image_type attribute specifies how
-        to interpret the pixel values in a derived image (or
+      <xs:documentation>The derived_image_type_name attribute specifies
+        how to interpret the pixel values in a derived image (or
         colloquially, the type of the derived image itself). Valid
-        values vary per mission depending on the products produced.
-        Example values from MSL include 'Image' (Standard Image),
-        'Mask', 'Disparity Map', 'XYZ Map', 'Roughness Map',
-        etc.</xs:documentation>
+        values vary per mission depending on the products
+        produced.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="pds:ASCII_Short_String_Collapsed">
      <xs:minLength value="1"/>
      <xs:maxLength value="255"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="download_priority">
-    <xs:annotation>
-      <xs:documentation> The download_priority attribute specifies which
-        data to downlink/transmit, based on order of importance. The
-        lower numerical priority (higher-ranked number) data products
-        are transmitted before higher numerical priority (lower-ranked
-        number) data products. For example, an image with a downlink
-        priority of 1 will be transmitted from the rover before an image
-        with a downlink priority of 6. Value of 0 specifies use of
-        on-board default.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_NonNegative_Integer">
-    	<xs:pattern value='[0-9]+'/>
-     <xs:minInclusive value="1"/>
-     <xs:maxInclusive value="6"/>
 	   </xs:restriction>
   </xs:simpleType>
 
@@ -434,11 +286,8 @@ This XML schema file has been generated from the PDS4 Information Model.
     <xs:annotation>
       <xs:documentation>The error_model_name attribute specifies the
         method or algorithm used to create the error estimate. Each
-        mission will define their own set of possible values. For MSL,
-        the error estimation algorithm (XYZ and Range) are new, and will
-        be continuously modified well past landing. Implemented
-        algorithm names and descriptions are in the file pointed to by
-        ^ERROR_DESC. The initial value is
+        mission will define their own set of possible values. Algorithms
+        will be added over time. The initial value is
         MIPL_CONST_DISPARITY_PROJECTED_V1, which means an arbitrary
         constant disparity error is assumed (in ERROR_MODEL_PARMS),
         which is projected through the camera models to approximate an
@@ -452,41 +301,13 @@ This XML schema file has been generated from the PDS4 Information Model.
 	   </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="expected_packets">
-    <xs:annotation>
-      <xs:documentation>The expected_packets attribute provides the
-        total number of telemetry packets which constitute a complete
-        data product, i.e., a data product without missing
-        data.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_NonNegative_Integer">
-    	<xs:pattern value='[0-9]+'/>
-     <xs:minInclusive value="0"/>
-     <xs:maxInclusive value="18446744073709551615"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="flight_software_version_id">
-    <xs:annotation>
-      <xs:documentation>The flight_software_version_id attribute
-        identifies the version of the instrument flight software used to
-        acquire the image.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
-     <xs:minLength value="1"/>
-     <xs:maxLength value="255"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
   <xs:simpleType name="geometry_projection_type">
     <xs:annotation>
-      <xs:documentation> The geometry_projection_type attribute
-        specifies the state of the pixels in an image before a
-        re-projection has been applied. Describes if or how the pixels
-        have been reprojected. Raw indicates reprojection has not been
-        done; the pixels are as they came from the camera. These types
-        may vary by mission so the permissible values should be set by
-        the mission dictionaries.</xs:documentation>
+      <xs:documentation>The geometry_projection_type attribute specifies
+        how pixels in a file have been reprojected to correct for camera
+        distortion, linearization, or rubber-sheeting (it is not the
+        intent of this field to capture map projections). "Raw"
+        indicates no projection has been done.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="pds:ASCII_Short_String_Collapsed">
      <xs:minLength value="1"/>
@@ -506,39 +327,20 @@ This XML schema file has been generated from the PDS4 Information Model.
     <xs:annotation>
       <xs:documentation>The horizon_mask_elevation attribute specifies
         the elevation (in degrees) used as the horizontal cutoff in a
-        mask file that, when applied to another image file, prevents the
-        horizon and sky features in the image from being processed. If
-        this attribute is not present in the product label, no horizon
-        mask was used.</xs:documentation>
+        mask file that prevents the horizon and sky features in the
+        image from being processed. If this attribute is not present in
+        the product label, no horizon mask was used.</xs:documentation>
     </xs:annotation>
     <xs:simpleContent>
-      <xs:extension base="img_surf:horizon_mask_elevation_WO_Units">
+      <xs:extension base="img_surface:horizon_mask_elevation_WO_Units">
         <xs:attribute name="unit" type="pds:Units_of_Angle" use="required" />
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
 
-  <xs:simpleType name="image_data_size">
+  <xs:simpleType name="image_acquire_mode">
     <xs:annotation>
-      <xs:documentation>The image_data_size specifies number of bytes in
-        the compressed image, not including the IDPH</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_NonNegative_Integer">
-    	<xs:pattern value='[0-9]+'/>
-     <xs:minInclusive value="0"/>
-     <xs:maxInclusive value="18446744073709551615"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="image_id">
-    <xs:annotation>
-      <xs:documentation>The image_id is a 32-bit integer token set in
-        the command sent from the ground, and returned in the image
-        telemetry. It contains five subfields, each of which has its own
-        label attributes: sequence_id, mesh_id, mosaic_id, stereo_id,
-        and camera eye (frame_id). See each attribute for its usage.
-        Note that image_id values are not unique (multiple images may
-        share the same ID).</xs:documentation>
+<xs:documentation>TBD</xs:documentation>
     </xs:annotation>
     <xs:restriction base="pds:ASCII_Short_String_Collapsed">
      <xs:minLength value="1"/>
@@ -546,16 +348,14 @@ This XML schema file has been generated from the PDS4 Information Model.
 	   </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="image_observation_type">
+  <xs:simpleType name="image_id">
     <xs:annotation>
-      <xs:documentation> The image_observation_type attribute identifies
-        the type or purpose of an observation that may be associated
-        with an image. Image observation types may include limb, black
-        sky, spacecraft calibration, or other image attribute that may
-        be used for identification. Observation types should not include
-        features, regions, or standard target names. The set of
-        permissible values should be set by a mission
-        dictionary.</xs:documentation>
+      <xs:documentation>The image_id is an arbitrary string identifier
+        that is associated with this image. The specific interpretation
+        of it is mission-dependent, and it need not be unique to this
+        image. For example, missions may use it as an image counter, a
+        round-trip token indicating how to process the image, or a
+        FSW-assigned value identifying the image.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="pds:ASCII_Short_String_Collapsed">
      <xs:minLength value="1"/>
@@ -566,19 +366,12 @@ This XML schema file has been generated from the PDS4 Information Model.
   <xs:simpleType name="image_type">
     <xs:annotation>
       <xs:documentation>The image_type attribute specifies the type of
-        image acquired. This may be used to describe characteristics
-        that differentiate one group of images from another such as the
-        nature of the data in the image file, the purpose for which the
-        image was acquired, or the way in which it was acquired. This
-        attribute is very similar to the image_observation_type
-        attribute, but is designed to resolve ambiguities in cases where
-        missions utilize a naming convention for both specific images
-        and more general observations, which consist of multiple images.
-        In those cases, the latter may be described by the
-        image_observation_type attribute. Some example values from MSL
-        include 'Regular', 'Thumbnail', 'Reference Pixels', 'Histogram'.
-        The set of permissible values should be set by a mission
-        dictionary.</xs:documentation>
+        image acquired. The intent is to distinguish between different
+        kinds of image-related data that may differ in how they are
+        interpreted. Some types are not standard images, but they are
+        stored in an image structure. Examples include Regular,
+        Thumbnail, Reference Pixels, Histogram, Row Sum, and Column
+        Sum.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="pds:ASCII_Short_String_Collapsed">
      <xs:minLength value="1"/>
@@ -601,6 +394,59 @@ This XML schema file has been generated from the PDS4 Information Model.
 	   </xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="instrument_serial_number">
+    <xs:annotation>
+      <xs:documentation>The instrument serial number element provides
+        the manufacturer's serial number assigned to an instrument. This
+        number may be used to uniquely identify a particular instrument
+        for tracing its components or determining its calibration
+        history, for example.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="instrument_type">
+    <xs:annotation>
+      <xs:documentation>The instrument_type attribute specifies the type
+        of an instrument, for example IMAGING CAMERA, SPECTROMETER,
+        IMAGING SPECTROMETER, RADIOMETER, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="instrument_version_number">
+    <xs:annotation>
+      <xs:documentation> The instrument_version_number element
+        identifies the specific model of an instrument used to obtain
+        data. For example, this keyword could be used to distinguish
+        between an engineering model of a camera used to acquire test
+        data, and a flight model of a camera used to acquire science
+        data during a mission.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="line">
+    <xs:annotation>
+      <xs:documentation>The line attribute specifies the line number in
+        the image.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_NonNegative_Integer">
+    	<xs:pattern value='[0-9]+'/>
+     <xs:minInclusive value="1"/>
+     <xs:maxInclusive value="18446744073709551615"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
   <xs:simpleType name="linearization_mode">
     <xs:annotation>
       <xs:documentation> The linearization_mode attribute specifies what
@@ -616,7 +462,7 @@ This XML schema file has been generated from the PDS4 Information Model.
   <xs:simpleType name="linearization_mode_fov">
     <xs:annotation>
       <xs:documentation> The linearization_mode_fov attribute specifies
-        how the linearized camera model's field of view (FOV) w as
+        how the linearized camera model's field of view (FOV) as
         constructed (corresponding to the "cahv_fov" parameter in MIPL
         software). </xs:documentation>
     </xs:annotation>
@@ -626,15 +472,12 @@ This XML schema file has been generated from the PDS4 Information Model.
 	   </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="product_completion_status">
+  <xs:simpleType name="mesh_id">
     <xs:annotation>
-      <xs:documentation>The product_completion_status attribute
-        indicates whether or not a product is complete or is in one of a
-        number of incomplete states. Sample values might indicate that
-        all portions of the product have been downlinked and received
-        correctly, that all portions have not yet been received, or that
-        the product contains transmission errors. The specific values
-        are mission-dependent.</xs:documentation>
+      <xs:documentation>The mesh_id attribute specifies which terrain
+        mesh this image should be automatically included in. This does
+        not constrain which mesh(es) the image may be included in
+        outside a pipeline environment.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="pds:ASCII_Short_String_Collapsed">
      <xs:minLength value="1"/>
@@ -642,42 +485,72 @@ This XML schema file has been generated from the PDS4 Information Model.
 	   </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="received_packets">
+  <xs:simpleType name="mosaic_id">
     <xs:annotation>
-      <xs:documentation>The received_packets attribute provides the
-        total number of telemetry packets which constitute a
-        reconstructed data product, cf.
-        expected_packets.</xs:documentation>
+      <xs:documentation>The mosaic_id attribute specifies which mosaic
+        this image should be automatically included in. This does not
+        constrain which mosaic(s) the image may be included in outside a
+        pipeline environment.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="pointing_model_name">
+    <xs:annotation>
+      <xs:documentation>The pointing_model_name attribute specifies
+        which of several "pointing models" were used to transform the
+        camera model based on updated pointing information. These
+        updates are typically derived from mosaic seam corrections. This
+        attribute and the associated Pointing_Model_Index classes define
+        what the updated pointing information is, providing enough
+        information to re-create the camera model from calibration data.
+        If present, this attribute overrides the default pointing based
+        on telemetry. The special value "NONE" shall be interpreted the
+        same as if the attribute is absent (i.e. the default pointing
+        model should be used). New model names can be created at any
+        time; the models themselves should be described in a
+        mission-specific ancillary file. See also the geom:solution_id
+        attribute within the geom:Camera_Model_Parameters
+        class.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="pointing_model_solution_id">
+    <xs:annotation>
+      <xs:documentation>The pointing_model_solution_id attribute
+        specifies the identifier of the pointing correction solution
+        used to derive the model specified via the enclosing
+        Pointing_Correction_Parameters class. This identifier should
+        also appear in the pointing correction file referenced by the
+        Data_Correction_File. If there is only one identifier in the
+        correction file, then pointing_model_solution_id may be omitted.
+        The pointing_model_solution_id attribute may be reused in the
+        context of pointing corrections, although uniqueness is
+        recommended. The pointing correction solution ID namespace is
+        separate from the coordinate system namespace.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="sample">
+    <xs:annotation>
+      <xs:documentation>The sample attribute specifies the sample number
+        in the image.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="pds:ASCII_NonNegative_Integer">
     	<xs:pattern value='[0-9]+'/>
-     <xs:minInclusive value="0"/>
+     <xs:minInclusive value="1"/>
      <xs:maxInclusive value="18446744073709551615"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="solution_id">
-    <xs:annotation>
-      <xs:documentation>The solution_id attribute specifies the unique
-        identifier for the solution set to which the values in the group
-        belong. For certain kinds of information, such as pointing
-        correction (pointing models) and rover localization (coordinate
-        system definitions), the "true" value is unknown and only
-        estimates of the true value exist. Thus, more than one set of
-        estimates may exist simultaneously, each valid for its intended
-        purpose. Each of these sets is called a "solution" to the
-        unknown true value. The solution_id attribute is used to
-        identify which solution is being expressed by the containing
-        group. No specific naming convention is defined here, however it
-        is recommended that projects adopt one. The intent is to be able
-        to identify who created the solution, and why. Possible
-        components of the naming convention include user, institution,
-        purpose, request ID, version, program, date/time. The value is
-        not case-sensitive. </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
-     <xs:minLength value="1"/>
-     <xs:maxLength value="255"/>
 	   </xs:restriction>
   </xs:simpleType>
 
@@ -696,7 +569,7 @@ This XML schema file has been generated from the PDS4 Information Model.
         the stereo image. </xs:documentation>
     </xs:annotation>
     <xs:simpleContent>
-      <xs:extension base="img_surf:stereo_baseline_length_WO_Units">
+      <xs:extension base="img_surface:stereo_baseline_length_WO_Units">
         <xs:attribute name="unit" type="pds:Units_of_Length" use="required" />
       </xs:extension>
     </xs:simpleContent>
@@ -708,96 +581,6 @@ This XML schema file has been generated from the PDS4 Information Model.
         other image this image matches with for stereo processing. If
         used for a mission, the two images making up a stereo pair
         should share the same stereo_match_id value. </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
-     <xs:minLength value="1"/>
-     <xs:maxLength value="255"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="surface_gravity_WO_Units">
-    <xs:restriction base="pds:ASCII_Real">
-    	<xs:pattern value='[-+]?[0-9]+(\.?[0-9]+)?([eE][-+]?[0-9]+)?'/>
-     <xs:minInclusive value="0.0"/>
-     <xs:maxInclusive value="1.7976931348623157e308"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:complexType name="surface_gravity">
-    <xs:annotation>
-      <xs:documentation>The surface_gravity attribute specifies the
-        acceleration of gravity (magnitude, not
-        direction).</xs:documentation>
-    </xs:annotation>
-    <xs:simpleContent>
-      <xs:extension base="img_surf:surface_gravity_WO_Units">
-        <xs:attribute name="unit" type="pds:Units_of_Acceleration" use="required" />
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-
-  <xs:simpleType name="telemetry_application_id">
-    <xs:annotation>
-      <xs:documentation>The telemetry_application_id attribute
-        identifies the process, or source, which created the data. This
-        can include information such as an identification of the
-        instrument which generated the telemetry stream, its operating
-        mode at the time of data acquisition, and any onboard
-        compression of the data.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_NonNegative_Integer">
-    	<xs:pattern value='[0-9]+'/>
-     <xs:minInclusive value="0"/>
-     <xs:maxInclusive value="18446744073709551615"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="telemetry_application_name">
-    <xs:annotation>
-      <xs:documentation>The telemetry_source_name attribute provides the
-        name associated with the source or process which created the
-        data.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
-     <xs:minLength value="1"/>
-     <xs:maxLength value="255"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="telemetry_provider_id">
-    <xs:annotation>
-      <xs:documentation>The telemetry_provider_id attribute identifies
-        the organization or subsystem that supplied the telemetry data
-        product to the producer of the raw (EDR) PDS data product. This
-        is typically (but not always) the organization responsible for
-        reassembling packetized data into a single product. These may
-        vary by mission so the permissible values should be set by the
-        mission dictionaries. </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
-     <xs:minLength value="1"/>
-     <xs:maxLength value="255"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="telemetry_source_name">
-    <xs:annotation>
-      <xs:documentation>The telemetry_source_name specifies the name
-        source of the telemetry data described in the parent
-        class.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
-     <xs:minLength value="1"/>
-     <xs:maxLength value="255"/>
-	   </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="telemetry_transport_protocol">
-    <xs:annotation>
-      <xs:documentation>The telemetry_transport_protocol attribute
-        specifies the protocol used in the creation of the telemetry
-        data products by the subsystem which generates the telemetry
-        stream. </xs:documentation>
     </xs:annotation>
     <xs:restriction base="pds:ASCII_Short_String_Collapsed">
      <xs:minLength value="1"/>
@@ -819,7 +602,7 @@ This XML schema file has been generated from the PDS4 Information Model.
         vector.</xs:documentation>
     </xs:annotation>
     <xs:simpleContent>
-      <xs:extension base="img_surf:x_position_WO_Units">
+      <xs:extension base="img_surface:x_position_WO_Units">
         <xs:attribute name="unit" type="pds:Units_of_Length" use="required" />
       </xs:extension>
     </xs:simpleContent>
@@ -839,7 +622,7 @@ This XML schema file has been generated from the PDS4 Information Model.
         vector.</xs:documentation>
     </xs:annotation>
     <xs:simpleContent>
-      <xs:extension base="img_surf:y_position_WO_Units">
+      <xs:extension base="img_surface:y_position_WO_Units">
         <xs:attribute name="unit" type="pds:Units_of_Length" use="required" />
       </xs:extension>
     </xs:simpleContent>
@@ -859,7 +642,7 @@ This XML schema file has been generated from the PDS4 Information Model.
         vector.</xs:documentation>
     </xs:annotation>
     <xs:simpleContent>
-      <xs:extension base="img_surf:z_position_WO_Units">
+      <xs:extension base="img_surface:z_position_WO_Units">
         <xs:attribute name="unit" type="pds:Units_of_Length" use="required" />
       </xs:extension>
     </xs:simpleContent>
@@ -871,8 +654,8 @@ This XML schema file has been generated from the PDS4 Information Model.
   {
     "dataDictionary": {
       "Title": "PDS4 Data Dictionary" ,
-      "Version": "1.9.0.0" ,
-      "Date": "Tue Jan 23 16:37:46 PST 2018" ,
+      "Version": "1.10.1.0" ,
+      "Date": "Mon Jul 30 16:11:37 PDT 2018" ,
       "Description": "This document is a dump of the contents of the PDS4 Data Dictionary" ,
       "PropertyMapDictionary": [
       ]
