@@ -1,23 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model 
-    href="http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1900.sch"
-    schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1B10.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1B10_1700.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
 <Ingest_LDD 
     xmlns="http://pds.nasa.gov/pds4/pds/v1"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:img_surface="http://pds.nasa.gov/pds4/mission/img_surface/v1" 
+    xmlns:img_surface="http://pds.nasa.gov/pds4/img_surface/v1" 
+    xmlns:geom="http://pds.nasa.gov/pds4/geom/v1"
     xmlns:pds="http://pds.nasa.gov/pds4/pds/v1"
-    xsi:schemaLocation="https://pds.nasa.gov/pds4/pds/v1 
-    https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1900.xsd">
+    xsi:schemaLocation="https://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1B10.xsd     http://pds.nasa.gov/pds4/geom/v1 https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1B10_1700.xsd   ">
     <name>Surface Imaging</name>
-    <ldd_version_id>1.0.0.0</ldd_version_id>
+    <ldd_version_id>1.1.0.0</ldd_version_id>
     <full_name>Cristina De Cesare</full_name>
     <steward_id>img</steward_id>
     <namespace_id>img_surface</namespace_id>
-    <last_modification_date_time>2018-03-23T11:02:00</last_modification_date_time>
+    <comment>
+      ## CHANGE LOG ##
+      1.0.0.0
+      - Initial version
+      
+      1.1.0.0
+      - Upgraded to v1B10 of the IM.
+      - Re-classified this dictionary as a Discipline Dictionary, instead of Mission Dictionary.
+      - Renamed Surface_Imaging_Parameters to Surface_Imaging, Error_Model_Information to Error_Model, 
+        Geometry_Projection_Parameters to Geometry_Projection, and Pointing_Correction_Parameters to Pointing_Correction.
+      - Added new attribute to Instrument_Information: ops_instrument_key
+    </comment>
+    <last_modification_date_time>2019-05-02T14:00:00</last_modification_date_time>
   
-  <!-- Start attribute definitions -->
+<!-- Start attribute definitions -->
   
 <!-- Start attributes for Image_Identifiers class -->
   <DD_Attribute>
@@ -306,6 +317,22 @@
       <unit_of_measure_type>Units_of_None</unit_of_measure_type>
     </DD_Value_Domain>
   </DD_Attribute>
+  
+  <DD_Attribute>
+    <name>ops_instrument_key</name>
+    <version_id>1.0</version_id>
+    <local_identifier>ops_instrument_key</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Cristina De Cesare</submitter_name>
+    <definition>The ops_instrument_key attribute specifies the identifier or key 
+      for the instrument that was used during operations to look up instrument 
+      parameters or calibration.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_Short_String_Preserved</value_data_type>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
   <!-- End attributes for Instrument_Information -->
   
   <!-- Start attributes for Derived_Product_Parameters   -->
@@ -343,7 +370,7 @@
   </DD_Attribute>
   <!-- End attributes for Derived_Product_Parameters   -->
   
-  <!-- Start attributes for Error_Model_Information -->
+  <!-- Start attributes for Error_Model -->
   <DD_Attribute>
     <name>error_model_name</name>
     <version_id>1.0</version_id>
@@ -361,9 +388,9 @@
     </DD_Value_Domain>
   </DD_Attribute>
   
-  <!-- End attributes for Error_Model_Information-->
+  <!-- End attributes for Error_Model-->
   
-  <!-- Start attributes for Geometry_Projection_Parameters class -->
+  <!-- Start attributes for Geometry_Projection class -->
   <DD_Attribute>
     <name>linearization_mode</name>
     <version_id>1.0</version_id>
@@ -459,7 +486,7 @@
       </DD_Permissible_Value>
     </DD_Value_Domain>
   </DD_Attribute>
-  <!-- End attributes for Geometry_Projection_Parameters class -->
+  <!-- End attributes for Geometry_Projection class -->
   
   <!-- Start attributes for Stereo_Product_Parameters  -->
   <DD_Attribute>
@@ -552,7 +579,7 @@
   </DD_Attribute>
   <!-- End attributes for Vector_Range_Origin Parameters -->
   
-  <!-- Attributes: Pointing_Correction_Parameters   -->
+  <!-- Attributes: Pointing_Correction   -->
   <DD_Attribute>
     <name>pointing_model_name</name>
     <version_id>1.0</version_id>
@@ -583,7 +610,7 @@
     <submitter_name>Jordan Padams</submitter_name>
     <definition>The pointing_model_solution_id attribute specifies the identifier of the pointing
       correction solution used to derive the model specified via the enclosing
-      Pointing_Correction_Parameters class. This identifier should also appear in the pointing
+      Pointing_Correction class. This identifier should also appear in the pointing
       correction file referenced by the Data_Correction_File. If there is only one identifier in the
       correction file, then pointing_model_solution_id may be omitted. The
       pointing_model_solution_id attribute may be reused in the context of pointing corrections,
@@ -630,11 +657,11 @@
 
   <!-- Begin Class definitions -->
   
-  <!--  Surface_Imaging_Parameters Class Definition -->
+  <!--  Surface_Imaging Class Definition -->
   <DD_Class>
-    <name>Surface_Imaging_Parameters</name>
+    <name>Surface_Imaging</name>
     <version_id>1.0</version_id>
-    <local_identifier>Surface_Imaging_Parameters</local_identifier>
+    <local_identifier>Surface_Imaging</local_identifier>
     <submitter_name>Jordan Padams</submitter_name>
     <definition>Attributes specific to imaging instruments on surface missions.</definition>
     <element_flag>true</element_flag>
@@ -657,13 +684,13 @@
       <maximum_occurrences>*</maximum_occurrences>
     </DD_Association>
     <DD_Association>
-      <identifier_reference>Error_Model_Information</identifier_reference>
+      <identifier_reference>Error_Model</identifier_reference>
       <reference_type>component_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>1</maximum_occurrences>
     </DD_Association>
     <DD_Association>
-      <identifier_reference>Geometry_Projection_Parameters</identifier_reference>
+      <identifier_reference>Geometry_Projection</identifier_reference>
       <reference_type>component_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>1</maximum_occurrences>
@@ -687,7 +714,7 @@
       <maximum_occurrences>*</maximum_occurrences>
     </DD_Association>
   </DD_Class>
-  <!-- End of Surface_Imaging_Parameters Class Definition -->
+  <!-- End of Surface_Imaging Class Definition -->
     
    
   <!-- Start Image_Identifiers class definition -->
@@ -781,6 +808,12 @@
       <maximum_occurrences>1</maximum_occurrences>
     </DD_Association>
     <DD_Association>
+      <identifier_reference>ops_instrument_key</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
       <identifier_reference>camera_product_id</identifier_reference>
       <reference_type>attribute_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
@@ -828,7 +861,7 @@
       <maximum_occurrences>1</maximum_occurrences>
     </DD_Association>
     <DD_Association>
-      <identifier_reference>Pointing_Correction_Parameters</identifier_reference>
+      <identifier_reference>Pointing_Correction</identifier_reference>
       <reference_type>component_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>1</maximum_occurrences>
@@ -865,13 +898,13 @@
     </DD_Association>
   </DD_Class>
   
-  <!--  Error_Model_Information Class Definition -->
+  <!--  Error_Model Class Definition -->
   <DD_Class>
-    <name>Error_Model_Information</name>
+    <name>Error_Model</name>
     <version_id>1.0</version_id>
-    <local_identifier>Error_Model_Information</local_identifier>
+    <local_identifier>Error_Model</local_identifier>
     <submitter_name>Jordan Padams</submitter_name>
-    <definition>The Error_Model_Information class specifies the name of the error model used, a reference to the algorithm descriptions, and the parameters needed for that algorithm. The specific
+    <definition>The Error_Model class specifies the name of the error model used, a reference to the algorithm descriptions, and the parameters needed for that algorithm. The specific
       set of values is determined by each individual missions.</definition>
     <DD_Association>
       <identifier_reference>error_model_name</identifier_reference>
@@ -892,7 +925,7 @@
       <maximum_occurrences>1</maximum_occurrences>
     </DD_Association>
   </DD_Class>
-  <!-- End of Error_Model_Information Class Definition -->
+  <!-- End of Error_Model Class Definition -->
   
   <!--  Error_Model_Parameter Class Definition -->
   <DD_Class>
@@ -917,13 +950,13 @@
   </DD_Class>
   <!--  End of Error_Model_Parameter Class Definition -->
   
-  <!--  Start Geometry_Projection_Parameters Class Definition -->
+  <!--  Start Geometry_Projection Class Definition -->
   <DD_Class>
-    <name>Geometry_Projection_Parameters</name>
+    <name>Geometry_Projection</name>
     <version_id>1.0</version_id>
-    <local_identifier>Geometry_Projection_Parameters</local_identifier>
+    <local_identifier>Geometry_Projection</local_identifier>
     <submitter_name>Cristina De Cesare</submitter_name>
-    <definition>The Geometry_Projection_Parameters describes the geometric projection or 
+    <definition>The Geometry_Projection describes the geometric projection or 
       warping the image has undergone. It is not the intent of this class to describe map
       projections, but rather image warps such as linearization (stereo epipolar alignment), 
       geometric sensor correction, or rubber-sheeting. If present, a linearization partner image 
@@ -955,7 +988,7 @@
       <maximum_occurrences>1</maximum_occurrences>
     </DD_Association>
   </DD_Class>
-  <!--  End Geometry_Projection_Parameters Class Definition -->
+  <!--  End Geometry_Projection Class Definition -->
   
   <!-- Class: Stereo_Product_Parameters  -->
   <DD_Class>
@@ -1040,13 +1073,13 @@
   <!-- End of Vector_Range_Origin class defintion    -->
   
   
-  <!-- Class: Pointing_Correction_Parameters    -->
+  <!-- Class: Pointing_Correction    -->
   <DD_Class>
-    <name>Pointing_Correction_Parameters</name>
+    <name>Pointing_Correction</name>
     <version_id>1.0</version_id>
-    <local_identifier>Pointing_Correction_Parameters</local_identifier>
+    <local_identifier>Pointing_Correction</local_identifier>
     <submitter_name>Jordan Padams</submitter_name>
-    <definition>The Pointing_Correction_Parameters class contains attributes used to identify and
+    <definition>The Pointing_Correction class contains attributes used to identify and
       describe the camera model transformations completed in order to update pointing information. </definition>
     <DD_Association>
       <identifier_reference>pointing_model_name</identifier_reference>
@@ -1061,22 +1094,22 @@
       <maximum_occurrences>1</maximum_occurrences>
     </DD_Association>
     <DD_Association>
-      <identifier_reference>Pointing_Model_Parameters</identifier_reference>
+      <identifier_reference>Pointing_Model_Parameter</identifier_reference>
       <reference_type>component_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>*</maximum_occurrences>
     </DD_Association>
   </DD_Class>
   
-  <!-- Class: Pointing_Model_Parameters    -->
+  <!-- Class: Pointing_Model_Parameter    -->
   <DD_Class>
-    <name>Pointing_Model_Parameters</name>
+    <name>Pointing_Model_Parameter</name>
     <version_id>1.0</version_id>
-    <local_identifier>Pointing_Model_Parameters</local_identifier>
+    <local_identifier>Pointing_Model_Parameter</local_identifier>
     <submitter_name>Jordan Padams</submitter_name>
-    <definition>The Pointing_Model_Parameters class specifies the name and value (numeric) parameters
+    <definition>The Pointing_Model_Parameter class specifies the name and value (numeric) parameters
       needed by the pointing model identified by the pointing_model_name attribute in the
-      Pointing_Correction_Parameters parent class. The meaning of any given parameter is defined by
+      Pointing_Correction parent class. The meaning of any given parameter is defined by
       the pointing model. </definition>
     <DD_Association>
       <identifier_reference>pds.name</identifier_reference>
@@ -1110,32 +1143,21 @@
   
   <DD_Rule>
     <local_identifier>internal_reference_type_check_linearization_partner</local_identifier>
-    <rule_context>//img_surface:Geometry_Projection_Parameters/pds:Internal_Reference</rule_context>
+    <rule_context>//img_surface:Geometry_Projection/pds:Internal_Reference</rule_context>
     <DD_Rule_Statement>
       <rule_type>Assert</rule_type>
       <rule_test>pds:reference_type = 'data_to_linearization_partner'</rule_test>
-      <rule_message>In img_surface:Geometry_Projection_Parameters, Internal_Reference.reference_type must be equal to 'data_to_linearization_partner'.</rule_message>
+      <rule_message>In img_surface:Geometry_Projection, Internal_Reference.reference_type must be equal to 'data_to_linearization_partner'.</rule_message>
     </DD_Rule_Statement>
   </DD_Rule>
   
   <DD_Rule>
     <local_identifier>local_reference_type_check</local_identifier>
-    <rule_context>//img_surface:Surface_Imaging_Parameters/pds:Local_Internal_Reference</rule_context>
+    <rule_context>//img_surface:Surface_Imaging/pds:Local_Internal_Reference</rule_context>
     <DD_Rule_Statement>
       <rule_type>Assert</rule_type>
-      <rule_test>pds:local_reference_type = 'mars_surface_imaging_parameters_to_image_object'</rule_test>
-      <rule_message>In img_surface:Surface_Imaging_Parameters, Local_Internal_Reference.local_reference_type must have value 'mars_surface_imaging_parameters_to_image_object'</rule_message>
-    </DD_Rule_Statement>
-  </DD_Rule>
-  
-  
-  <DD_Rule>
-    <local_identifier>autoexposure_check</local_identifier>
-    <rule_context>//img_surface:Autoexposure_Parameters</rule_context>
-    <DD_Rule_Statement>
-      <rule_type>Assert</rule_type>
-      <rule_test>(img_surface:autoexposure_algorithm = 'Maki 2003' and exists(//img_surface:Maki_2003_Autoexposure)) or  (img_surface:autoexposure_algorithm = 'Smith 1997' and exists(//img_surface:Smith_1997_Autoexposure)) or  (img_surface:autoexposure_algorithm = 'Maurice 2012' and exists(//img_surface:Maurice_2012_Autoexposure))</rule_test>
-      <rule_message>img_surface:error:autoexposure_check: img_surface:autoexposure_algorithm must be accompanied by the associated *_Autoexposure class.</rule_message>
+      <rule_test>pds:local_reference_type = 'mars_surface_imaging_to_image_object'</rule_test>
+      <rule_message>In img_surface:Surface_Imaging, Local_Internal_Reference.local_reference_type must have value 'mars_surface_imaging_to_image_object'</rule_message>
     </DD_Rule_Statement>
   </DD_Rule>
   
@@ -1148,6 +1170,26 @@
       <rule_message>IMG_SURFACE:error:derived_image_type_name: The attribute img_surface:derived_image_type_name must be equal to one of the following values: 'IMAGE', 'DISPARITY_MAP', 'DISPARITY_LINE_MAP', 'DISPARITY_SAMPLE_MAP', 'DISPARITY_ERROR_MAP', 'DELTA_DISPARITY_MAP', 'DELTA_DISPARITY_LINE_MAP', 'DELTA_DISPARITY_SAMPLE_MAP', 'MASK', 'XYZ_MAP', 'XYZ_ERROR_MAP', 'X_MAP', 'Y_MAP', 'Z_MAP', 'ANGLE_MAP', 'RANGE_MAP', 'RANGE_ERROR_MAP', 'UVW_MAP', 'U_MAP', 'V_MAP', 'W_MAP', 'ROUGHNESS_MAP', 'REACHABILITY_MAP', 'PRELOAD_MAP', 'SLOPE_MAP', 'RADIAL_SLOPE_MAP', 'SLOPE_HEADING_MAP', 'SLOPE_MAGNITUDE_MAP', 'NORTHERLY_TILT_MAP', 'SOLAR_ENERGY_MAP', 'IEP_MAP', 'TERRAIN_PROBABILITY_MAP', 'TERRAIN_CLASSIFICATION_MAP', 'AEGIS_MAP', 'ICM_MAP', 'IDX_MAP', 'INST_TILT_MAP', 'INST_DELTA_TILT_MAP', 'INST_Z_MAP', 'INST_UVW_MAP', 'INST_ROUGHNESS_MAP', 'INST_WORKSPACE_MAP', 'GOODNESS_MAP', 'XYZ_MAP', 'ELEVATION_MAP'.</rule_message>
     </DD_Rule_Statement>
   </DD_Rule>
+  
+  <DD_Rule>
+    <local_identifier>local_reference_type_check_placement_instrument</local_identifier>
+    <rule_context>//img_surface:Placement_Target_Instrument/pds:Internal_Reference</rule_context>
+    <DD_Rule_Statement>
+      <rule_type>Assert</rule_type>
+      <rule_test>pds:reference_type = 'data_to_placement_instrument'</rule_test>
+      <rule_message>In img_surface:Placement_Target_Instrument, Internal_Reference.reference_type must be equal to 'data_to_placement_instrument'.</rule_message>
+    </DD_Rule_Statement>
+  </DD_Rule>
+  
+  <DD_Rule>
+    <local_identifier>local_reference_type_check_error_model</local_identifier>
+    <rule_context>//img_surface:Error_Model/pds:Internal_Reference</rule_context>
+    <DD_Rule_Statement>
+      <rule_type>Assert</rule_type>
+      <rule_test>pds:reference_type = 'data_to_error_model'</rule_test>
+      <rule_message>In img_surface:Error_Model, Internal_Reference.reference_type must be equal to 'data_to_error_model'.</rule_message>
+    </DD_Rule_Statement>
+  </DD_Rule>
   <!-- End rule defintions -->
-    
+  
 </Ingest_LDD>

@@ -1,32 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 XML/Schema for Name Space Id:img_surface  Version:1.10.1.0 - Mon Jul 30 16:11:37 PDT 2018 -->
-  <!-- Generated from the PDS4 Information Model Version 1.10.1.0 - System Build 8b -->
+  <!-- PDS4 XML/Schema for Name Space Id:img_surface  Version:1.1.0.0 - Fri May 03 12:25:11 PDT 2019 -->
+  <!-- Generated from the PDS4 Information Model Version 1.11.1.0 - System Build 9b -->
   <!-- *** This PDS4 product schema is an operational deliverable. *** -->
   <!--                                                                           -->
   <!--               Dictionary Stack                                            -->
-  <!-- 1.10.1.0 - pds: - Common Dictionary - N/A                                 -->
-  <!-- 1.10.1.0 - geom: - Geometry Dictionary Full - input-PDS4_GEOM_1A10_1530.x -->
-  <!-- 1.10.1.0 - img_surface: - Surface Imaging - PDS4_IMG_SURFACE_IngestLDD_1A -->
+  <!-- 1.11.1.0 - pds: - Common Dictionary - N/A                                 -->
+  <!-- 1.7.0.0 - geom: - Geometry Dictionary Full - /Users/decesare/Documents/De -->
+  <!-- 1.1.0.0 - img_surface: - Surface Imaging - PDS4_IMG_SURFACE_IngestLDD_1B1 -->
   <!--                                                                           -->
   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://pds.nasa.gov/pds4/mission/img_surface/v1"
-    xmlns:img_surface="http://pds.nasa.gov/pds4/mission/img_surface/v1"
+    targetNamespace="http://pds.nasa.gov/pds4/img_surface/v1"
+    xmlns:img_surface="http://pds.nasa.gov/pds4/img_surface/v1"
     xmlns:pds="http://pds.nasa.gov/pds4/pds/v1"
     xmlns:geom="http://pds.nasa.gov/pds4/geom/v1"
     elementFormDefault="qualified"
     attributeFormDefault="unqualified"
-    version="1.10.1.0">
+    version="1.1.0.0">
  
-    <xs:import namespace="http://pds.nasa.gov/pds4/pds/v1" schemaLocation="http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1A10.xsd"/>
-    <xs:import namespace="http://pds.nasa.gov/pds4/geom/v1" schemaLocation="http://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1A10.xsd"/>
+    <xs:import namespace="http://pds.nasa.gov/pds4/pds/v1" schemaLocation="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1B10.xsd"/>
+    <xs:import namespace="http://pds.nasa.gov/pds4/geom/v1" schemaLocation="https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1B10_1700.xsd"/>
  
   <xs:annotation>
     <xs:documentation>
-This XML schema file has been generated from the Information Model.
+
+      ## CHANGE LOG ##
+      1.0.0.0
+      - Initial version
+      
+      1.1.0.0
+      - Upgraded to v1B10 of the IM.
+      - Re-classified this dictionary as a Discipline Dictionary, instead of Mission Dictionary.
+      - Renamed Surface_Imaging_Parameters to Surface_Imaging, Error_Model_Information to Error_Model, 
+        Geometry_Projection_Parameters to Geometry_Projection, and Pointing_Correction_Parameters to Pointing_Correction.
+      - Added new attribute to Instrument_Information: ops_instrument_key
+    
     </xs:documentation>
   </xs:annotation>
  
-  <xs:element name="Surface_Imaging_Parameters" type="img_surface:Surface_Imaging_Parameters"> </xs:element>
+  <xs:element name="Surface_Imaging" type="img_surface:Surface_Imaging"> </xs:element>
 
   <xs:complexType name="Derived_Product_Parameters">
     <xs:annotation>
@@ -36,21 +47,21 @@ This XML schema file has been generated from the Information Model.
         product.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="derived_image_type_name" type="img_surface:derived_image_type_name" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="derived_image_type_name" type="img_surface:derived_image_type_name" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="horizon_mask_elevation" type="img_surface:horizon_mask_elevation" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="Placement_Target_Instrument" type="img_surface:Placement_Target_Instrument" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="Vector_Range_Origin" type="img_surface:Vector_Range_Origin" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="Pointing_Correction_Parameters" type="img_surface:Pointing_Correction_Parameters" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="Coordinate_Space_Reference" type="geom:Coordinate_Space_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Pointing_Correction" type="img_surface:Pointing_Correction" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element ref="geom:Coordinate_Space_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="Error_Model_Information">
+  <xs:complexType name="Error_Model">
     <xs:annotation>
-      <xs:documentation>The Error_Model_Information class specifies the
-        name of the error model used, a reference to the algorithm
-        descriptions, and the parameters needed for that algorithm. The
-        specific set of values is determined by each individual
+      <xs:documentation>The Error_Model class specifies the name of the
+        error model used, a reference to the algorithm descriptions, and
+        the parameters needed for that algorithm. The specific set of
+        values is determined by each individual
         missions.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
@@ -83,16 +94,15 @@ This XML schema file has been generated from the Information Model.
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="Geometry_Projection_Parameters">
+  <xs:complexType name="Geometry_Projection">
     <xs:annotation>
-      <xs:documentation>The Geometry_Projection_Parameters describes the
-        geometric projection or warping the image has undergone. It is
-        not the intent of this class to describe map projections, but
-        rather image warps such as linearization (stereo epipolar
-        alignment), geometric sensor correction, or rubber-sheeting. If
-        present, a linearization partner image can be referenced using
-        either an Internal_Reference or
-        External_Reference.</xs:documentation>
+      <xs:documentation>The Geometry_Projection describes the geometric
+        projection or warping the image has undergone. It is not the
+        intent of this class to describe map projections, but rather
+        image warps such as linearization (stereo epipolar alignment),
+        geometric sensor correction, or rubber-sheeting. If present, a
+        linearization partner image can be referenced using either an
+        Internal_Reference or External_Reference.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element name="linearization_mode" type="img_surface:linearization_mode" minOccurs="0" maxOccurs="1"> </xs:element>
@@ -105,6 +115,7 @@ This XML schema file has been generated from the Information Model.
     </xs:sequence>
     <!-- Begin assert statements for schematron - Enumerated Values -->
     <!-- <xs:assert test="img_surface:linearization_mode = ('Actual', 'Nominal', 'None')"/> -->
+    <!-- <xs:assert test="img_surface:linearization_mode_fov = ('Linear', 'Max', 'Min', 'None')"/> -->
     <!-- <xs:assert test="img_surface:geometry_projection_type = ('Linearized', 'Raw')"/> -->
     <!-- End assert statements for schematron - Enumerated Values -->
   </xs:complexType>
@@ -136,6 +147,7 @@ This XML schema file has been generated from the Information Model.
       <xs:element name="instrument_mode_id" type="img_surface:instrument_mode_id" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="instrument_serial_number" type="img_surface:instrument_serial_number" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="instrument_version_number" type="img_surface:instrument_version_number" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="ops_instrument_key" type="img_surface:ops_instrument_key" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="camera_product_id" type="img_surface:camera_product_id" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="camera_product_id_count" type="img_surface:camera_product_id_count" minOccurs="0" maxOccurs="1"> </xs:element>
     </xs:sequence>
@@ -155,28 +167,27 @@ This XML schema file has been generated from the Information Model.
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="Pointing_Correction_Parameters">
+  <xs:complexType name="Pointing_Correction">
     <xs:annotation>
-      <xs:documentation>The Pointing_Correction_Parameters class
-        contains attributes used to identify and describe the camera
-        model transformations completed in order to update pointing
+      <xs:documentation>The Pointing_Correction class contains
+        attributes used to identify and describe the camera model
+        transformations completed in order to update pointing
         information. </xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element name="pointing_model_name" type="img_surface:pointing_model_name" minOccurs="1" maxOccurs="1"> </xs:element>
       <xs:element name="pointing_model_solution_id" type="img_surface:pointing_model_solution_id" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="Pointing_Model_Parameters" type="img_surface:Pointing_Model_Parameters" minOccurs="0" maxOccurs="unbounded"> </xs:element>
+      <xs:element name="Pointing_Model_Parameter" type="img_surface:Pointing_Model_Parameter" minOccurs="0" maxOccurs="unbounded"> </xs:element>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="Pointing_Model_Parameters">
+  <xs:complexType name="Pointing_Model_Parameter">
     <xs:annotation>
-      <xs:documentation>The Pointing_Model_Parameters class specifies
-        the name and value (numeric) parameters needed by the pointing
-        model identified by the pointing_model_name attribute in the
-        Pointing_Correction_Parameters parent class. The meaning of any
-        given parameter is defined by the pointing model.
-        </xs:documentation>
+      <xs:documentation>The Pointing_Model_Parameter class specifies the
+        name and value (numeric) parameters needed by the pointing model
+        identified by the pointing_model_name attribute in the
+        Pointing_Correction parent class. The meaning of any given
+        parameter is defined by the pointing model. </xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element name="name" type="pds:name" minOccurs="1" maxOccurs="1"> </xs:element>
@@ -203,7 +214,7 @@ This XML schema file has been generated from the Information Model.
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="Surface_Imaging_Parameters">
+  <xs:complexType name="Surface_Imaging">
     <xs:annotation>
       <xs:documentation>Attributes specific to imaging instruments on
         surface missions.</xs:documentation>
@@ -212,10 +223,10 @@ This XML schema file has been generated from the Information Model.
       <xs:element name="Image_Identifiers" type="img_surface:Image_Identifiers" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="Instrument_Information" type="img_surface:Instrument_Information" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="Derived_Product_Parameters" type="img_surface:Derived_Product_Parameters" minOccurs="0" maxOccurs="unbounded"> </xs:element>
-      <xs:element name="Error_Model_Information" type="img_surface:Error_Model_Information" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="Geometry_Projection_Parameters" type="img_surface:Geometry_Projection_Parameters" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Error_Model" type="img_surface:Error_Model" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Geometry_Projection" type="img_surface:Geometry_Projection" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="Stereo_Product_Parameters" type="img_surface:Stereo_Product_Parameters" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="Coordinate_Space_Reference" type="geom:Coordinate_Space_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element ref="geom:Coordinate_Space_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="Error_Pixel" type="img_surface:Error_Pixel" minOccurs="0" maxOccurs="unbounded"> </xs:element>
     </xs:sequence>
   </xs:complexType>
@@ -317,7 +328,6 @@ This XML schema file has been generated from the Information Model.
 
   <xs:simpleType name="horizon_mask_elevation_WO_Units">
     <xs:restriction base="pds:ASCII_Real">
-    	<xs:pattern value='[-+]?[0-9]+(\.?[0-9]+)?([eE][-+]?[0-9]+)?'/>
      <xs:minInclusive value="-1.7976931348623157e308"/>
      <xs:maxInclusive value="1.7976931348623157e308"/>
 	   </xs:restriction>
@@ -498,6 +508,19 @@ This XML schema file has been generated from the Information Model.
 	   </xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="ops_instrument_key">
+    <xs:annotation>
+      <xs:documentation>The ops_instrument_key attribute specifies the
+        identifier or key for the instrument that was used during
+        operations to look up instrument parameters or
+        calibration.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Preserved">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
   <xs:simpleType name="pointing_model_name">
     <xs:annotation>
       <xs:documentation>The pointing_model_name attribute specifies
@@ -527,8 +550,8 @@ This XML schema file has been generated from the Information Model.
       <xs:documentation>The pointing_model_solution_id attribute
         specifies the identifier of the pointing correction solution
         used to derive the model specified via the enclosing
-        Pointing_Correction_Parameters class. This identifier should
-        also appear in the pointing correction file referenced by the
+        Pointing_Correction class. This identifier should also appear in
+        the pointing correction file referenced by the
         Data_Correction_File. If there is only one identifier in the
         correction file, then pointing_model_solution_id may be omitted.
         The pointing_model_solution_id attribute may be reused in the
@@ -556,7 +579,6 @@ This XML schema file has been generated from the Information Model.
 
   <xs:simpleType name="stereo_baseline_length_WO_Units">
     <xs:restriction base="pds:ASCII_Real">
-    	<xs:pattern value='[-+]?[0-9]+(\.?[0-9]+)?([eE][-+]?[0-9]+)?'/>
      <xs:minInclusive value="0"/>
      <xs:maxInclusive value="1.7976931348623157e308"/>
 	   </xs:restriction>
@@ -590,7 +612,6 @@ This XML schema file has been generated from the Information Model.
 
   <xs:simpleType name="x_position_WO_Units">
     <xs:restriction base="pds:ASCII_Real">
-    	<xs:pattern value='[-+]?[0-9]+(\.?[0-9]+)?([eE][-+]?[0-9]+)?'/>
      <xs:minInclusive value="-1.7976931348623157e308"/>
      <xs:maxInclusive value="1.7976931348623157e308"/>
 	   </xs:restriction>
@@ -610,7 +631,6 @@ This XML schema file has been generated from the Information Model.
 
   <xs:simpleType name="y_position_WO_Units">
     <xs:restriction base="pds:ASCII_Real">
-    	<xs:pattern value='[-+]?[0-9]+(\.?[0-9]+)?([eE][-+]?[0-9]+)?'/>
      <xs:minInclusive value="-1.7976931348623157e308"/>
      <xs:maxInclusive value="1.7976931348623157e308"/>
 	   </xs:restriction>
@@ -630,7 +650,6 @@ This XML schema file has been generated from the Information Model.
 
   <xs:simpleType name="z_position_WO_Units">
     <xs:restriction base="pds:ASCII_Real">
-    	<xs:pattern value='[-+]?[0-9]+(\.?[0-9]+)?([eE][-+]?[0-9]+)?'/>
      <xs:minInclusive value="-1.7976931348623157e308"/>
      <xs:maxInclusive value="1.7976931348623157e308"/>
 	   </xs:restriction>
@@ -654,8 +673,8 @@ This XML schema file has been generated from the Information Model.
   {
     "dataDictionary": {
       "Title": "PDS4 Data Dictionary" ,
-      "Version": "1.10.1.0" ,
-      "Date": "Mon Jul 30 16:11:37 PDT 2018" ,
+      "Version": "1.11.1.0" ,
+      "Date": "Fri May 03 12:25:11 PDT 2019" ,
       "Description": "This document is a dump of the contents of the PDS4 Data Dictionary" ,
       "PropertyMapDictionary": [
       ]

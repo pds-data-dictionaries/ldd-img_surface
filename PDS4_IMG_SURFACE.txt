@@ -1,30 +1,37 @@
 PDS4 Local Data Dictionary Processing Report
 
 Configuration:
-   LDDTool Version        0.2.1.5
-   Time                   Tue Oct 30 17:32:20 PDT 2018
-   Core Schemas           [PDS4_PDS_1A10.xsd]
-   Core Schematrons       [PDS4_PDS_1A10.sch]
-   Common Model Version   1.10.1.0
-   Object Model           [UpperModel.pont]
-   Data Dictionary        [dd11179.pins]
-   Configuration File     [MDPTNConfigClassDisp.xml]
-   Glossary               [Glossary.pins]
-   Document Spec          [DMDocument.pins]
+   LDDTool Version        0.2.2.4
+   LDD Version Id:        1.1.0.0
+   LDD Label Version Id:  1.0
+   LDD Discipline (T/F):  true
+   LDD Namespace URL:     http://pds.nasa.gov/pds4/
+   LDD URN Prefix:        urn:nasa:pds:
+   Time                   Fri May 03 12:25:11 PDT 2019
+   Common Schema          [PDS4_PDS_1B10.xsd]
+   Common Schematron      [PDS4_PDS_1B10.sch]
+   IM Version Id:         1.11.1.0
+   IM Namespace Id:       pds
+   IM Label Version Id:   1.17
+   IM Object Model        [UpperModel.pont]
+   IM Data Dictionary     [dd11179.pins]
+   IM Configuration File  [MDPTNConfigClassDisp.xml]
+   IM Glossary            [Glossary.pins]
+   IM Document Spec       [DMDocument.pins]
 
 Parameters:
-   Input File             [PDS4_IMG_SURFACE_IngestLDD_1A10.xml]
+   Input File             [PDS4_IMG_SURFACE_IngestLDD_1B10.xml]
    PDS Processing         true
    LDD Processing         true
-   Discipline LDD         false
-   Mission LDD            true
+   Discipline LDD         true
+   Mission LDD            false
    Write Attr Elements    false
    Merge with Master      false
 
 Summary:
    Classes                15
-   Attributes             28
-   Associations           53
+   Attributes             29
+   Associations           54
    Error messages         0
    Warning messages       3
    Information messages   5
@@ -41,38 +48,49 @@ Detailed validation messages
 
 Parsed Input - Header:
    LDD Name               Surface Imaging
-   LDD Version            1.0.0.0
+   LDD Version            1.1.0.0
    Full Name              Cristina De Cesare
    Steward                img
    Namespace Id           img_surface
-   Comment                TBD_Ingest_LDD
-   Last Modification Time 2018-03-23T11:02:00
+   Comment                
+      ## CHANGE LOG ##
+      1.0.0.0
+      - Initial version
+      
+      1.1.0.0
+      - Upgraded to v1B10 of the IM.
+      - Re-classified this dictionary as a Discipline Dictionary, instead of Mission Dictionary.
+      - Renamed Surface_Imaging_Parameters to Surface_Imaging, Error_Model_Information to Error_Model, 
+        Geometry_Projection_Parameters to Geometry_Projection, and Pointing_Correction_Parameters to Pointing_Correction.
+      - Added new attribute to Instrument_Information: ops_instrument_key
+    
+   Last Modification Time 2019-05-02T14:00:00
    PDS4 Merge Flag        false
 
 Parsed Input - Attributes:
 
    name                   image_id
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description            The image_id is an arbitrary string identifier that is associated with this image. The specific interpretation of it is mission-dependent, and it need not be unique to this image. For example, missions may use it as an image counter, a round-trip token indicating how to process the image, or a FSW-assigned value identifying the image.
 
    name                   mosaic_id
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description            The mosaic_id attribute specifies which mosaic this image should be automatically included in. This does not constrain which mosaic(s) the image may be included in outside a pipeline environment.
 
    name                   mesh_id
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description            The mesh_id attribute specifies which terrain mesh this image should be automatically included in. This does not constrain which mesh(es) the image may be included in outside a pipeline environment.
 
    name                   stereo_match_id
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description             The stereo_match_id attribute specifies which other image this image matches with for stereo processing. If used for a mission, the two images making up a stereo pair should share the same stereo_match_id value. 
 
    name                   image_type
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description            The image_type attribute specifies the type of image acquired. The intent is to distinguish between different kinds of image-related data that may differ in how they are interpreted. Some types are not standard images, but they are stored in an image structure. Examples include Regular, Thumbnail, Reference Pixels, Histogram, Row Sum, and Column Sum.
    permissible value - value meaning
@@ -86,58 +104,63 @@ Parsed Input - Attributes:
       HEALTH - state of health
 
    name                   image_acquire_mode
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description            TBD
 
    name                   instrument_type
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description            The instrument_type attribute specifies the type of an instrument, for example IMAGING CAMERA, SPECTROMETER, IMAGING SPECTROMETER, RADIOMETER, etc.
 
    name                   instrument_mode_id
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description             The instrument_mode_id attribute provides an instrument-dependent designation of operating mode. This may be simply a number, letter or code, or a word such as 'normal', 'full resolution', 'near encounter', or 'fixed grating'. These types may vary by mission so the permissible values should be set by the mission dictionaries.
 
    name                   instrument_serial_number
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description            The instrument serial number element provides the manufacturer's serial number assigned to an instrument. This number may be used to uniquely identify a particular instrument for tracing its components or determining its calibration history, for example.
 
    name                   instrument_version_number
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description             The instrument_version_number element identifies the specific model of an instrument used to obtain data. For example, this keyword could be used to distinguish between an engineering model of a camera used to acquire test data, and a flight model of a camera used to acquire science data during a mission.
 
    name                   camera_product_id
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description            The camera_product_id attribute specifies a numeric identifier assigned by the instrument to this specific observation.
 
    name                   camera_product_id_count
-   version                1.10
+   version                1.11
    value data type        ASCII_NonNegative_Integer
    description            The camera_product_id_count attribute specifies the number of times a specific camera_product_id has been used.
 
+   name                   ops_instrument_key
+   version                1.11
+   value data type        ASCII_Short_String_Preserved
+   description            The ops_instrument_key attribute specifies the identifier or key for the instrument that was used during operations to look up instrument parameters or calibration.
+
    name                   horizon_mask_elevation
-   version                1.10
+   version                1.11
    value data type        ASCII_Real
    description            The horizon_mask_elevation attribute specifies the elevation (in degrees) used as the horizontal cutoff in a mask file that prevents the horizon and sky features in the image from being processed. If this attribute is not present in the product label, no horizon mask was used.
    unit of measure type   Units_of_Angle
 
    name                   derived_image_type_name
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description            The derived_image_type_name attribute specifies how to interpret the pixel values in a derived image (or colloquially, the type of the derived image itself). Valid values vary per mission depending on the products produced.
 
    name                   error_model_name
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description            The error_model_name attribute specifies the method or algorithm used to create the error estimate. Each mission will define their own set of possible values. Algorithms will be added over time. The initial value is MIPL_CONST_DISPARITY_PROJECTED_V1, which means an arbitrary constant disparity error is assumed (in ERROR_MODEL_PARMS), which is projected through the camera models to approximate an error ellipse, which is then projected to the XYZ or range/crossrange axes depending on the file type. 
 
    name                   linearization_mode
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description             The linearization_mode attribute specifies what kind of stereo partner was used to linearize the image (the process requires two camera models). 
    permissible value - value meaning
@@ -146,7 +169,7 @@ Parsed Input - Attributes:
       None - Linearization has not been performed.
 
    name                   linearization_mode_fov
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description             The linearization_mode_fov attribute specifies how the linearized camera model's field of view (FOV) as constructed (corresponding to the "cahv_fov" parameter in MIPL software). 
    permissible value - value meaning
@@ -156,7 +179,7 @@ Parsed Input - Attributes:
       None - Linearization has not been performed.
 
    name                   geometry_projection_type
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description            The geometry_projection_type attribute specifies how pixels in a file have been reprojected to correct for camera distortion, linearization, or rubber-sheeting (it is not the intent of this field to capture map projections). "Raw" indicates no projection has been done.
    permissible value - value meaning
@@ -164,51 +187,51 @@ Parsed Input - Attributes:
       Linearized - Indicates reprojection has been performed to linearize the camera model (thus removing things like lens distortion). For images using the CAHV family of camera models, the image uses a CAHV model instead of CAHVOR or CAHVORE.
 
    name                   stereo_baseline_length
-   version                1.10
+   version                1.11
    value data type        ASCII_Real
    description             The stereo_baseline_length attribute specifies the separation between the two cameras used for processing of the stereo image. 
    minimum value          0
    unit of measure type   Units_of_Length
 
    name                   line
-   version                1.10
+   version                1.11
    value data type        ASCII_NonNegative_Integer
    description            The line attribute specifies the line number in the image.
    minimum value          1
 
    name                   sample
-   version                1.10
+   version                1.11
    value data type        ASCII_NonNegative_Integer
    description            The sample attribute specifies the sample number in the image.
    minimum value          1
 
    name                   x_position
-   version                1.10
+   version                1.11
    value data type        ASCII_Real
    description            The x component of a Cartesian position vector.
    unit of measure type   Units_of_Length
 
    name                   y_position
-   version                1.10
+   version                1.11
    value data type        ASCII_Real
    description            The y component of a Cartesian position vector.
    unit of measure type   Units_of_Length
 
    name                   z_position
-   version                1.10
+   version                1.11
    value data type        ASCII_Real
    description            The z component of a Cartesian position vector.
    unit of measure type   Units_of_Length
 
    name                   pointing_model_name
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
    description            The pointing_model_name attribute specifies which of several "pointing models" were used to transform the camera model based on updated pointing information. These updates are typically derived from mosaic seam corrections. This attribute and the associated Pointing_Model_Index classes define what the updated pointing information is, providing enough information to re-create the camera model from calibration data. If present, this attribute overrides the default pointing based on telemetry. The special value "NONE" shall be interpreted the same as if the attribute is absent (i.e. the default pointing model should be used). New model names can be created at any time; the models themselves should be described in a mission-specific ancillary file. See also the geom:solution_id attribute within the geom:Camera_Model_Parameters class.
 
    name                   pointing_model_solution_id
-   version                1.10
+   version                1.11
    value data type        ASCII_Short_String_Collapsed
-   description            The pointing_model_solution_id attribute specifies the identifier of the pointing correction solution used to derive the model specified via the enclosing Pointing_Correction_Parameters class. This identifier should also appear in the pointing correction file referenced by the Data_Correction_File. If there is only one identifier in the correction file, then pointing_model_solution_id may be omitted. The pointing_model_solution_id attribute may be reused in the context of pointing corrections, although uniqueness is recommended. The pointing correction solution ID namespace is separate from the coordinate system namespace.
+   description            The pointing_model_solution_id attribute specifies the identifier of the pointing correction solution used to derive the model specified via the enclosing Pointing_Correction class. This identifier should also appear in the pointing correction file referenced by the Data_Correction_File. If there is only one identifier in the correction file, then pointing_model_solution_id may be omitted. The pointing_model_solution_id attribute may be reused in the context of pointing corrections, although uniqueness is recommended. The pointing correction solution ID namespace is separate from the coordinate system namespace.
 
    name                   index_name
    version                1.0
@@ -222,7 +245,7 @@ Parsed Input - Attributes:
 
 Parsed Input - Classes:
 
-   name                   Surface_Imaging_Parameters
+   name                   Surface_Imaging
    description            Attributes specific to imaging instruments on surface missions.
    is abstract            false
    is choice              false
@@ -245,12 +268,12 @@ Parsed Input - Classes:
       maximum occurrences   *
       reference type        component_of
 
-      local identifier      Error_Model_Information
+      local identifier      Error_Model
       minimum occurrences   0
       maximum occurrences   1
       reference type        component_of
 
-      local identifier      Geometry_Projection_Parameters
+      local identifier      Geometry_Projection
       minimum occurrences   0
       maximum occurrences   1
       reference type        component_of
@@ -336,6 +359,11 @@ Parsed Input - Classes:
       maximum occurrences   1
       reference type        attribute_of
 
+      local identifier      ops_instrument_key
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
       local identifier      camera_product_id
       minimum occurrences   0
       maximum occurrences   1
@@ -374,7 +402,7 @@ Parsed Input - Classes:
       maximum occurrences   1
       reference type        component_of
 
-      local identifier      Pointing_Correction_Parameters
+      local identifier      Pointing_Correction
       minimum occurrences   0
       maximum occurrences   1
       reference type        component_of
@@ -402,8 +430,8 @@ Parsed Input - Classes:
       maximum occurrences   1
       reference type        component_of
 
-   name                   Error_Model_Information
-   description            The Error_Model_Information class specifies the name of the error model used, a reference to the algorithm descriptions, and the parameters needed for that algorithm. The specific set of values is determined by each individual missions.
+   name                   Error_Model
+   description            The Error_Model class specifies the name of the error model used, a reference to the algorithm descriptions, and the parameters needed for that algorithm. The specific set of values is determined by each individual missions.
    is abstract            false
    is choice              false
    subclass of            USER
@@ -443,8 +471,8 @@ Parsed Input - Classes:
       maximum occurrences   1
       reference type        attribute_of
 
-   name                   Geometry_Projection_Parameters
-   description            The Geometry_Projection_Parameters describes the geometric projection or warping the image has undergone. It is not the intent of this class to describe map projections, but rather image warps such as linearization (stereo epipolar alignment), geometric sensor correction, or rubber-sheeting. If present, a linearization partner image can be referenced using either an Internal_Reference or External_Reference.
+   name                   Geometry_Projection
+   description            The Geometry_Projection describes the geometric projection or warping the image has undergone. It is not the intent of this class to describe map projections, but rather image warps such as linearization (stereo epipolar alignment), geometric sensor correction, or rubber-sheeting. If present, a linearization partner image can be referenced using either an Internal_Reference or External_Reference.
    is abstract            false
    is choice              true
    subclass of            USER
@@ -566,8 +594,8 @@ Parsed Input - Classes:
       maximum occurrences   1
       reference type        attribute_of
 
-   name                   Pointing_Correction_Parameters
-   description            The Pointing_Correction_Parameters class contains attributes used to identify and describe the camera model transformations completed in order to update pointing information. 
+   name                   Pointing_Correction
+   description            The Pointing_Correction class contains attributes used to identify and describe the camera model transformations completed in order to update pointing information. 
    is abstract            false
    is choice              false
    subclass of            USER
@@ -584,13 +612,13 @@ Parsed Input - Classes:
       maximum occurrences   1
       reference type        attribute_of
 
-      local identifier      Pointing_Model_Parameters
+      local identifier      Pointing_Model_Parameter
       minimum occurrences   0
       maximum occurrences   *
       reference type        component_of
 
-   name                   Pointing_Model_Parameters
-   description            The Pointing_Model_Parameters class specifies the name and value (numeric) parameters needed by the pointing model identified by the pointing_model_name attribute in the Pointing_Correction_Parameters parent class. The meaning of any given parameter is defined by the pointing model. 
+   name                   Pointing_Model_Parameter
+   description            The Pointing_Model_Parameter class specifies the name and value (numeric) parameters needed by the pointing model identified by the pointing_model_name attribute in the Pointing_Correction parent class. The meaning of any given parameter is defined by the pointing model. 
    is abstract            false
    is choice              false
    subclass of            USER
