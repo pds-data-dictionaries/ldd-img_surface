@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1B10.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1B10_1700.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1E00.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1E00_1800.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
 <Ingest_LDD 
     xmlns="http://pds.nasa.gov/pds4/pds/v1"
@@ -8,10 +8,11 @@
     xmlns:img_surface="http://pds.nasa.gov/pds4/img_surface/v1" 
     xmlns:geom="http://pds.nasa.gov/pds4/geom/v1"
     xmlns:pds="http://pds.nasa.gov/pds4/pds/v1"
-    xsi:schemaLocation="https://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1B10.xsd     http://pds.nasa.gov/pds4/geom/v1 https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1B10_1700.xsd   ">
+    xsi:schemaLocation="https://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1E00.xsd     http://pds.nasa.gov/pds4/geom/v1 https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1E00_1800.xsd   ">
     <name>Surface Imaging</name>
-    <ldd_version_id>1.1.1.0</ldd_version_id>
-    <full_name>Cristina De Cesare</full_name>
+    <ldd_version_id>1.2.0.0</ldd_version_id>
+    <dictionary_type>Discipline</dictionary_type>
+    <full_name>Trent Hare</full_name>
     <steward_id>img</steward_id>
     <namespace_id>img_surface</namespace_id>
     <comment>
@@ -28,8 +29,15 @@
       
       1.1.1.0
       - Removed Pointing_Correction and its child attributes/classes (moved to IMG)
+      
+      1.2.0.0
+      - updated to PDS IM v 1E00 and GEOM 1E00_1800
+      - updated ops_instrument_key to be unbounded and updated definition.
+      - added Commanded_Parameters using existing classes as children
+      - added image_id_2 attribute to Image_Identifiers
+      - added start_image_id, observation_number, parameter_table_number to Image_Identifiers
     </comment>
-    <last_modification_date_time>2019-05-02T14:00:00</last_modification_date_time>
+    <last_modification_date_time>2019-06-17T14:00:00</last_modification_date_time>
   
 <!-- Start attribute definitions -->
   
@@ -44,6 +52,19 @@
       The specific interpretation of it is mission-dependent, and it need not be unique to this image. 
       For example, missions may use it as an image counter, a round-trip token indicating how to process 
       the image, or a FSW-assigned value identifying the image.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
+  <DD_Attribute>
+    <name>image_id_2</name>
+    <version_id>1.0</version_id>
+    <local_identifier>image_id_2</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>The image_id_2 allows a second image_id for missions with two, same use cases.</definition>
     <DD_Value_Domain>
       <enumeration_flag>false</enumeration_flag>
       <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
@@ -95,7 +116,46 @@
       <unit_of_measure_type>Units_of_None</unit_of_measure_type>
     </DD_Value_Domain>
   </DD_Attribute>
-  
+  <DD_Attribute>
+    <name>start_image_id</name>
+    <version_id>1.0</version_id>
+    <local_identifier>start_image_id</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Specifies the starting image ID for some operation.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
+  <DD_Attribute>
+    <name>observation_number</name>
+    <version_id>1.0</version_id>
+    <local_identifier>observation_number</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Identifies which observation of many this data product pertains to.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
+  <DD_Attribute>
+    <name>parameter_table_number</name>
+    <version_id>1.0</version_id>
+    <local_identifier>parameter_table_number</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Specifies which table of parameters to use. Tables are necessarily defined 
+      in a mission- and instrument-specific manner.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
   <!-- End attributes for Image_Identifiers class -->
   
   
@@ -323,13 +383,15 @@
   
   <DD_Attribute>
     <name>ops_instrument_key</name>
-    <version_id>1.0</version_id>
+    <version_id>1.1</version_id>
     <local_identifier>ops_instrument_key</local_identifier>
     <nillable_flag>false</nillable_flag>
     <submitter_name>Cristina De Cesare</submitter_name>
     <definition>The ops_instrument_key attribute specifies the identifier or key 
       for the instrument that was used during operations to look up instrument 
-      parameters or calibration.</definition>
+      parameters or calibration. The key in Commanded_Parameters may differ from 
+      the primary ops_instrument_key in that the command may apply to a stereo 
+      camera as a pair (e.g. MCAMZ_BOTH) rather than a specific left or right eye.</definition>
     <DD_Value_Domain>
       <enumeration_flag>false</enumeration_flag>
       <value_data_type>ASCII_Short_String_Preserved</value_data_type>
@@ -581,9 +643,8 @@
     </DD_Value_Domain>
   </DD_Attribute>
   <!-- End attributes for Vector_Range_Origin Parameters -->
-
-
-  <!-- Begin Class definitions -->
+  
+   <!-- Begin Class definitions -->
   
   <!--  Surface_Imaging Class Definition -->
   <DD_Class>
@@ -648,7 +709,7 @@
   <!-- Start Image_Identifiers class definition -->
   <DD_Class>
     <name>Image_Identifiers</name>
-    <version_id>1.0</version_id>
+    <version_id>1.1</version_id>
     <local_identifier>Image_Identifiers</local_identifier>
     <submitter_name>Cristina De Cesare</submitter_name>
     <definition>The Image_Identifiers class contains items that
@@ -656,6 +717,12 @@
       image.</definition>
     <DD_Association>
       <identifier_reference>image_id</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>image_id_2</identifier_reference>
       <reference_type>attribute_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>1</maximum_occurrences>
@@ -678,6 +745,24 @@
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>1</maximum_occurrences>
     </DD_Association>
+    <DD_Association>
+      <identifier_reference>start_image_id</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>observation_number</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>parameter_table_number</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
   </DD_Class>
   <!-- End Image_Identifiers class definition -->
   
@@ -687,7 +772,7 @@
   <!--  Start Instrument_Information Class Definition -->
   <DD_Class>
     <name>Instrument_Information</name>
-    <version_id>1.0</version_id>
+    <version_id>1.1</version_id>
     <local_identifier>Instrument_Information</local_identifier>
     <submitter_name>Cristina De Cesare</submitter_name>
     <definition>The Instrument_Information class specifies information 
@@ -739,7 +824,7 @@
       <identifier_reference>ops_instrument_key</identifier_reference>
       <reference_type>attribute_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
-      <maximum_occurrences>1</maximum_occurrences>
+      <maximum_occurrences>*</maximum_occurrences>
     </DD_Association>
     <DD_Association>
       <identifier_reference>camera_product_id</identifier_reference>
@@ -993,7 +1078,30 @@
     </DD_Association>
   </DD_Class>
   <!-- End of Vector_Range_Origin class defintion    -->
-  
+
+  <!-- Commanded_Parameters class defintion    -->
+  <DD_Class>
+    <name>Commanded_Parameters</name>
+    <version_id>1.0</version_id>
+    <local_identifier>Commanded_Parameters</local_identifier>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>The Commanded_Parameters class specifies TBD</definition>
+    <abstract_flag>false</abstract_flag>
+    <DD_Association>
+      <identifier_reference>Instrument_Information</identifier_reference>
+      <reference_type>component_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>Image_Identifiers</identifier_reference>
+      <reference_type>component_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+  </DD_Class>
+  <!-- End of Commanded_Parameters class defintion    -->
+
   <!-- End class definitions -->
   <!--                       -->
   
