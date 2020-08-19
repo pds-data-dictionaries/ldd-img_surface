@@ -1085,7 +1085,11 @@
     <version_id>1.0</version_id>
     <local_identifier>Commanded_Parameters</local_identifier>
     <submitter_name>Trent Hare</submitter_name>
-    <definition>The Commanded_Parameters class specifies TBD</definition>
+    <definition>The Commanded_Parameters class contains attributes used to 
+      identify or describe the commands sent to a spacecraft to perform one or 
+      more actions resulting in the acquisition of the current data product. 
+      These are distinct from similar values in the root Surface_Imaging class 
+      which indicate the state of the image as acquired</definition>
     <abstract_flag>false</abstract_flag>
     <DD_Association>
       <identifier_reference>Instrument_Information</identifier_reference>
