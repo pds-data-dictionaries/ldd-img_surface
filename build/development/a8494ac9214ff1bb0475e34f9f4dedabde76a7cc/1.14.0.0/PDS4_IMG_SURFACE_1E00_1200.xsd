@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 XML/Schema for Name Space Id:img_surface  Version:1.1.1.0 - Tue Aug 04 22:36:58 UTC 2020 -->
+  <!-- PDS4 XML/Schema for Name Space Id:img_surface  Version:1.2.0.0 - Tue Aug 25 04:05:44 UTC 2020 -->
   <!-- Generated from the PDS4 Information Model Version 1.14.0.0 - System Build 10b -->
   <!-- *** This PDS4 product schema is an operational deliverable. *** -->
   <!--                                                                           -->
   <!--               Dictionary Stack                                            -->
   <!-- 1.14.0.0 - pds: - Common Dictionary                                       -->
-  <!-- 1.1.1.0 - img_surface: - Surface Imaging                                  -->
+  <!-- 1.2.0.0 - img_surface: - Surface Imaging                                  -->
   <!--   file:/home/runner/work/ldd-img_surface/ldd-img_surface/src/PDS4_IMG_SUR -->
   <!--                                                                           -->
   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -14,7 +14,7 @@
     xmlns:pds="http://pds.nasa.gov/pds4/pds/v1"
     elementFormDefault="qualified"
     attributeFormDefault="unqualified"
-    version="1.1.1.0">
+    version="1.2.0.0">
  
     <xs:import namespace="http://pds.nasa.gov/pds4/pds/v1" schemaLocation="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1E00.xsd"/>
  
@@ -34,11 +34,35 @@
       
       1.1.1.0
       - Removed Pointing_Correction and its child attributes/classes (moved to IMG)
+      
+      1.2.0.0
+      - updated to PDS IM v 1E00 and GEOM 1E00_1800
+      - updated ops_instrument_key to be unbounded and updated definition.
+      - added Commanded_Parameters using existing classes as children
+      - added image_id_2 attribute to Image_Identifiers
+      - added start_image_id, observation_number, parameter_table_number to Image_Identifiers
+      - added camera_model_serial_number attribute to Instrument_Information class 
+      
     
     </xs:documentation>
   </xs:annotation>
  
   <xs:element name="Surface_Imaging" type="img_surface:Surface_Imaging"> </xs:element>
+
+  <xs:complexType name="Commanded_Parameters">
+    <xs:annotation>
+      <xs:documentation>The Commanded_Parameters class contains
+        attributes used to identify or describe the commands sent to a
+        spacecraft to perform one or more actions resulting in the
+        acquisition of the current data product. These are distinct from
+        similar values in the root Surface_Imaging class which indicate
+        the state of the image as acquired</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Instrument_Information" type="img_surface:Instrument_Information" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Image_Identifiers" type="img_surface:Image_Identifiers" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
 
   <xs:complexType name="Derived_Product_Parameters">
     <xs:annotation>
@@ -127,9 +151,13 @@
     </xs:annotation>
     <xs:sequence>
       <xs:element name="image_id" type="img_surface:image_id" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="image_id_2" type="img_surface:image_id_2" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="mosaic_id" type="img_surface:mosaic_id" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="mesh_id" type="img_surface:mesh_id" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="stereo_match_id" type="img_surface:stereo_match_id" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="start_image_id" type="img_surface:start_image_id" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="observation_number" type="img_surface:observation_number" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="parameter_table_number" type="img_surface:parameter_table_number" minOccurs="0" maxOccurs="1"> </xs:element>
     </xs:sequence>
   </xs:complexType>
 
@@ -146,9 +174,10 @@
       <xs:element name="instrument_mode_id" type="img_surface:instrument_mode_id" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="instrument_serial_number" type="img_surface:instrument_serial_number" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="instrument_version_number" type="img_surface:instrument_version_number" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="ops_instrument_key" type="img_surface:ops_instrument_key" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="ops_instrument_key" type="img_surface:ops_instrument_key" minOccurs="0" maxOccurs="unbounded"> </xs:element>
       <xs:element name="camera_product_id" type="img_surface:camera_product_id" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="camera_product_id_count" type="img_surface:camera_product_id_count" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="camera_model_serial_number" type="img_surface:camera_model_serial_number" minOccurs="0" maxOccurs="1"> </xs:element>
     </xs:sequence>
   </xs:complexType>
 
@@ -223,6 +252,20 @@
         common namespace.
       </xs:documentation>
     </xs:annotation>
+
+  <xs:simpleType name="camera_model_serial_number">
+    <xs:annotation>
+      <xs:documentation>Specifies the manufacturer's serial number for
+        the camera for which the camera model was derived. This should
+        match instrument_serial_number in most cases; generally speaking
+        a mismatch should only occur during
+        testing/development.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
 
   <xs:simpleType name="camera_product_id">
     <xs:annotation>
@@ -336,6 +379,17 @@
         image. For example, missions may use it as an image counter, a
         round-trip token indicating how to process the image, or a
         FSW-assigned value identifying the image.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="image_id_2">
+    <xs:annotation>
+      <xs:documentation>The image_id_2 allows a second image_id for
+        missions with two, same use cases.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="pds:ASCII_Short_String_Collapsed">
      <xs:minLength value="1"/>
@@ -478,14 +532,40 @@
 	   </xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="observation_number">
+    <xs:annotation>
+      <xs:documentation>Identifies which observation of many this data
+        product pertains to.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
   <xs:simpleType name="ops_instrument_key">
     <xs:annotation>
       <xs:documentation>The ops_instrument_key attribute specifies the
         identifier or key for the instrument that was used during
-        operations to look up instrument parameters or
-        calibration.</xs:documentation>
+        operations to look up instrument parameters or calibration. The
+        key in Commanded_Parameters may differ from the primary
+        ops_instrument_key in that the command may apply to a stereo
+        camera as a pair (e.g. MCAMZ_BOTH) rather than a specific left
+        or right eye.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="pds:ASCII_Short_String_Preserved">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="parameter_table_number">
+    <xs:annotation>
+      <xs:documentation>Specifies which table of parameters to use.
+        Tables are necessarily defined in a mission- and
+        instrument-specific manner.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
      <xs:minLength value="1"/>
      <xs:maxLength value="255"/>
 	   </xs:restriction>
@@ -500,6 +580,17 @@
     	<xs:pattern value='[0-9]+'/>
      <xs:minInclusive value="1"/>
      <xs:maxInclusive value="18446744073709551615"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="start_image_id">
+    <xs:annotation>
+      <xs:documentation>Specifies the starting image ID for some
+        operation.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
 	   </xs:restriction>
   </xs:simpleType>
 
@@ -592,21 +683,4 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
- 
-  <xs:annotation>
-    <xs:documentation>
-[
-  {
-    "dataDictionary": {
-      "Title": "PDS4 Data Dictionary" ,
-      "Version": "1.14.0.0" ,
-      "Date": "Tue Aug 04 22:36:58 UTC 2020" ,
-      "Description": "This document is a dump of the contents of the PDS4 Data Dictionary" ,
-      "PropertyMapDictionary": [
-      ]
-    }
-  }
-]
-    </xs:documentation>
-  </xs:annotation>
 </xs:schema>

@@ -3,10 +3,57 @@
     "dataDictionary": {
       "Title": "PDS4 Data Dictionary" ,
       "Version": "1.14.0.0" ,
-      "Date": "Tue Aug 04 22:36:58 UTC 2020" ,
+      "Date": "Tue Aug 25 04:05:44 UTC 2020" ,
       "Description": "This document is a dump of the contents of the PDS4 Data Dictionary" ,
       "classDictionary": [
         {
+          "class": {
+            "identifier": "0001_NASA_PDS_1.img_surface.Commanded_Parameters" ,
+            "title": "Commanded_Parameters" ,
+            "registrationAuthorityId": "0001_NASA_PDS_1" ,
+            "nameSpaceId": "img_surface" ,
+            "steward": "img" ,
+            "versionId": "1.0.0.0" ,
+            "isAbstract": "false" ,
+            "isDeprecated": "false" ,
+            "description": "The Commanded_Parameters class contains attributes used to identify or describe the commands sent to a spacecraft to perform one or more actions resulting in the acquisition of the current data product. These are distinct from similar values in the root Surface_Imaging class which indicate the state of the image as acquired"
+              , "associationList": [
+             {"association": {
+                "identifier": "0001_NASA_PDS_1.img_surface.Commanded_Parameters.img_surface.Instrument_Information" ,
+                "title": "Instrument_Information" ,
+                "assocType": "component_of" ,
+                "isAttribute": "false" ,
+                "isChoice": "false" ,
+                "isAny": "false" ,
+                "groupName": "null" ,
+                "minimumCardinality": "0" ,
+                "maximumCardinality": "1" ,
+                "classOrder": "1010" ,
+                "classId": [
+                  "0001_NASA_PDS_1.img_surface.Instrument_Information"
+                 ]
+              }
+            }
+           , {"association": {
+                "identifier": "0001_NASA_PDS_1.img_surface.Commanded_Parameters.img_surface.Image_Identifiers" ,
+                "title": "Image_Identifiers" ,
+                "assocType": "component_of" ,
+                "isAttribute": "false" ,
+                "isChoice": "false" ,
+                "isAny": "false" ,
+                "groupName": "null" ,
+                "minimumCardinality": "0" ,
+                "maximumCardinality": "1" ,
+                "classOrder": "1020" ,
+                "classId": [
+                  "0001_NASA_PDS_1.img_surface.Image_Identifiers"
+                 ]
+              }
+            }
+           ]
+          }
+        }
+      , {
           "class": {
             "identifier": "0001_NASA_PDS_1.img_surface.Derived_Product_Parameters" ,
             "title": "Derived_Product_Parameters" ,
@@ -351,6 +398,22 @@
               }
             }
            , {"association": {
+                "identifier": "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.image_id_2" ,
+                "title": "image_id_2" ,
+                "assocType": "attribute_of" ,
+                "isAttribute": "true" ,
+                "isChoice": "false" ,
+                "isAny": "false" ,
+                "groupName": "null" ,
+                "minimumCardinality": "0" ,
+                "maximumCardinality": "1" ,
+                "classOrder": "1020" ,
+                "attributeId": [
+                  "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.image_id_2"
+                 ]
+              }
+            }
+           , {"association": {
                 "identifier": "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.mosaic_id" ,
                 "title": "mosaic_id" ,
                 "assocType": "attribute_of" ,
@@ -360,7 +423,7 @@
                 "groupName": "null" ,
                 "minimumCardinality": "0" ,
                 "maximumCardinality": "1" ,
-                "classOrder": "1020" ,
+                "classOrder": "1030" ,
                 "attributeId": [
                   "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.mosaic_id"
                  ]
@@ -376,7 +439,7 @@
                 "groupName": "null" ,
                 "minimumCardinality": "0" ,
                 "maximumCardinality": "1" ,
-                "classOrder": "1030" ,
+                "classOrder": "1040" ,
                 "attributeId": [
                   "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.mesh_id"
                  ]
@@ -392,9 +455,57 @@
                 "groupName": "null" ,
                 "minimumCardinality": "0" ,
                 "maximumCardinality": "1" ,
-                "classOrder": "1040" ,
+                "classOrder": "1050" ,
                 "attributeId": [
                   "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.stereo_match_id"
+                 ]
+              }
+            }
+           , {"association": {
+                "identifier": "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.start_image_id" ,
+                "title": "start_image_id" ,
+                "assocType": "attribute_of" ,
+                "isAttribute": "true" ,
+                "isChoice": "false" ,
+                "isAny": "false" ,
+                "groupName": "null" ,
+                "minimumCardinality": "0" ,
+                "maximumCardinality": "1" ,
+                "classOrder": "1060" ,
+                "attributeId": [
+                  "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.start_image_id"
+                 ]
+              }
+            }
+           , {"association": {
+                "identifier": "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.observation_number" ,
+                "title": "observation_number" ,
+                "assocType": "attribute_of" ,
+                "isAttribute": "true" ,
+                "isChoice": "false" ,
+                "isAny": "false" ,
+                "groupName": "null" ,
+                "minimumCardinality": "0" ,
+                "maximumCardinality": "1" ,
+                "classOrder": "1070" ,
+                "attributeId": [
+                  "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.observation_number"
+                 ]
+              }
+            }
+           , {"association": {
+                "identifier": "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.parameter_table_number" ,
+                "title": "parameter_table_number" ,
+                "assocType": "attribute_of" ,
+                "isAttribute": "true" ,
+                "isChoice": "false" ,
+                "isAny": "false" ,
+                "groupName": "null" ,
+                "minimumCardinality": "0" ,
+                "maximumCardinality": "1" ,
+                "classOrder": "1080" ,
+                "attributeId": [
+                  "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.parameter_table_number"
                  ]
               }
             }
@@ -518,7 +629,7 @@
                 "isAny": "false" ,
                 "groupName": "null" ,
                 "minimumCardinality": "0" ,
-                "maximumCardinality": "1" ,
+                "maximumCardinality": "*" ,
                 "classOrder": "1070" ,
                 "attributeId": [
                   "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.ops_instrument_key"
@@ -554,6 +665,22 @@
                 "classOrder": "1090" ,
                 "attributeId": [
                   "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_product_id_count"
+                 ]
+              }
+            }
+           , {"association": {
+                "identifier": "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_model_serial_number" ,
+                "title": "camera_model_serial_number" ,
+                "assocType": "attribute_of" ,
+                "isAttribute": "true" ,
+                "isChoice": "false" ,
+                "isAny": "false" ,
+                "groupName": "null" ,
+                "minimumCardinality": "0" ,
+                "maximumCardinality": "1" ,
+                "classOrder": "1100" ,
+                "attributeId": [
+                  "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_model_serial_number"
                  ]
               }
             }
@@ -1124,6 +1251,31 @@
         }
       , {
           "attribute": {
+            "identifier": "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.image_id_2" ,
+            "title": "image_id_2" ,
+            "registrationAuthorityId": "0001_NASA_PDS_1" ,
+            "nameSpaceId": "img_surface" ,
+            "steward": "img" ,
+            "versionId": "1.14" ,
+            "description": "The image_id_2 allows a second image_id for missions with two, same use cases." ,
+            "isNillable": "false" ,
+            "isEnumerated": "false" ,
+            "isDeprecated": "false" ,
+            "dataType": "ASCII_Short_String_Collapsed" ,
+            "dataTypeId": "0001_NASA_PDS_1.pds.ASCII_Short_String_Collapsed" ,
+            "minimumCharacters": "1" ,
+            "maximumCharacters": "255" ,
+            "minimumValue": "Unbounded" ,
+            "maximumValue": "Unbounded" ,
+            "pattern": "null" ,
+            "unitOfMeasure": "null" ,
+            "unitOfMeasureId": "null" ,
+            "unitId": "null" ,
+            "defaultUnitId": "null"
+          }
+        }
+      , {
+          "attribute": {
             "identifier": "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.mesh_id" ,
             "title": "mesh_id" ,
             "registrationAuthorityId": "0001_NASA_PDS_1" ,
@@ -1174,6 +1326,81 @@
         }
       , {
           "attribute": {
+            "identifier": "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.observation_number" ,
+            "title": "observation_number" ,
+            "registrationAuthorityId": "0001_NASA_PDS_1" ,
+            "nameSpaceId": "img_surface" ,
+            "steward": "img" ,
+            "versionId": "1.14" ,
+            "description": "Identifies which observation of many this data product pertains to." ,
+            "isNillable": "false" ,
+            "isEnumerated": "false" ,
+            "isDeprecated": "false" ,
+            "dataType": "ASCII_Short_String_Collapsed" ,
+            "dataTypeId": "0001_NASA_PDS_1.pds.ASCII_Short_String_Collapsed" ,
+            "minimumCharacters": "1" ,
+            "maximumCharacters": "255" ,
+            "minimumValue": "Unbounded" ,
+            "maximumValue": "Unbounded" ,
+            "pattern": "null" ,
+            "unitOfMeasure": "null" ,
+            "unitOfMeasureId": "null" ,
+            "unitId": "null" ,
+            "defaultUnitId": "null"
+          }
+        }
+      , {
+          "attribute": {
+            "identifier": "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.parameter_table_number" ,
+            "title": "parameter_table_number" ,
+            "registrationAuthorityId": "0001_NASA_PDS_1" ,
+            "nameSpaceId": "img_surface" ,
+            "steward": "img" ,
+            "versionId": "1.14" ,
+            "description": "Specifies which table of parameters to use. Tables are necessarily defined in a mission- and instrument-specific manner." ,
+            "isNillable": "false" ,
+            "isEnumerated": "false" ,
+            "isDeprecated": "false" ,
+            "dataType": "ASCII_Short_String_Collapsed" ,
+            "dataTypeId": "0001_NASA_PDS_1.pds.ASCII_Short_String_Collapsed" ,
+            "minimumCharacters": "1" ,
+            "maximumCharacters": "255" ,
+            "minimumValue": "Unbounded" ,
+            "maximumValue": "Unbounded" ,
+            "pattern": "null" ,
+            "unitOfMeasure": "null" ,
+            "unitOfMeasureId": "null" ,
+            "unitId": "null" ,
+            "defaultUnitId": "null"
+          }
+        }
+      , {
+          "attribute": {
+            "identifier": "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.start_image_id" ,
+            "title": "start_image_id" ,
+            "registrationAuthorityId": "0001_NASA_PDS_1" ,
+            "nameSpaceId": "img_surface" ,
+            "steward": "img" ,
+            "versionId": "1.14" ,
+            "description": "Specifies the starting image ID for some operation." ,
+            "isNillable": "false" ,
+            "isEnumerated": "false" ,
+            "isDeprecated": "false" ,
+            "dataType": "ASCII_Short_String_Collapsed" ,
+            "dataTypeId": "0001_NASA_PDS_1.pds.ASCII_Short_String_Collapsed" ,
+            "minimumCharacters": "1" ,
+            "maximumCharacters": "255" ,
+            "minimumValue": "Unbounded" ,
+            "maximumValue": "Unbounded" ,
+            "pattern": "null" ,
+            "unitOfMeasure": "null" ,
+            "unitOfMeasureId": "null" ,
+            "unitId": "null" ,
+            "defaultUnitId": "null"
+          }
+        }
+      , {
+          "attribute": {
             "identifier": "0001_NASA_PDS_1.img_surface.Image_Identifiers.img_surface.stereo_match_id" ,
             "title": "stereo_match_id" ,
             "registrationAuthorityId": "0001_NASA_PDS_1" ,
@@ -1181,6 +1408,31 @@
             "steward": "img" ,
             "versionId": "1.14" ,
             "description": " The stereo_match_id attribute specifies which other image this image matches with for stereo processing. If used for a mission, the two images making up a stereo pair should share the same stereo_match_id value. " ,
+            "isNillable": "false" ,
+            "isEnumerated": "false" ,
+            "isDeprecated": "false" ,
+            "dataType": "ASCII_Short_String_Collapsed" ,
+            "dataTypeId": "0001_NASA_PDS_1.pds.ASCII_Short_String_Collapsed" ,
+            "minimumCharacters": "1" ,
+            "maximumCharacters": "255" ,
+            "minimumValue": "Unbounded" ,
+            "maximumValue": "Unbounded" ,
+            "pattern": "null" ,
+            "unitOfMeasure": "null" ,
+            "unitOfMeasureId": "null" ,
+            "unitId": "null" ,
+            "defaultUnitId": "null"
+          }
+        }
+      , {
+          "attribute": {
+            "identifier": "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_model_serial_number" ,
+            "title": "camera_model_serial_number" ,
+            "registrationAuthorityId": "0001_NASA_PDS_1" ,
+            "nameSpaceId": "img_surface" ,
+            "steward": "img" ,
+            "versionId": "1.14" ,
+            "description": "Specifies the manufacturer's serial number for the camera for which the camera model was derived. This should match instrument_serial_number in most cases; generally speaking a mismatch should only occur during testing\/development." ,
             "isNillable": "false" ,
             "isEnumerated": "false" ,
             "isDeprecated": "false" ,
@@ -1405,7 +1657,7 @@
             "nameSpaceId": "img_surface" ,
             "steward": "img" ,
             "versionId": "1.14" ,
-            "description": "The ops_instrument_key attribute specifies the identifier or key for the instrument that was used during operations to look up instrument parameters or calibration." ,
+            "description": "The ops_instrument_key attribute specifies the identifier or key for the instrument that was used during operations to look up instrument parameters or calibration. The key in Commanded_Parameters may differ from the primary ops_instrument_key in that the command may apply to a stereo camera as a pair (e.g. MCAMZ_BOTH) rather than a specific left or right eye." ,
             "isNillable": "false" ,
             "isEnumerated": "false" ,
             "isDeprecated": "false" ,
