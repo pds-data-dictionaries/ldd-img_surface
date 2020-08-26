@@ -7,7 +7,7 @@ Configuration:
    LDD Discipline (T/F):  true
    LDD Namespace URL:     http://pds.nasa.gov/pds4/
    LDD URN Prefix:        urn:nasa:pds:
-   Time                   Tue Aug 25 04:05:44 UTC 2020
+   Time                   Wed Aug 26 19:47:37 UTC 2020
    Common Schema          [PDS4_PDS_1E00.xsd]
    Common Schematron      [PDS4_PDS_1E00.sch]
    IM Version Id:         1.14.0.0
@@ -31,18 +31,21 @@ Parameters:
 Summary:
    Classes                12
    Attributes             30
-   Associations           53
-   Error messages         5
-   Warning messages       1
+   Associations           54
+   Error messages         1
+   Warning messages       8
    Information messages   5
 
 Detailed validation messages
-   ERROR    Class:0001_NASA_PDS_1.img_surface.Surface_Imaging  Association:geom.Coordinate_Space_Reference  Class:geom.Coordinate_Space_Reference - Missing Component Class
-   ERROR    Association: geom.Coordinate_Space_Reference - Missing Component - Reference Type: component_of
-   ERROR    Class:0001_NASA_PDS_1.img_surface.Derived_Product_Parameters  Association:geom.Coordinate_Space_Reference  Class:geom.Coordinate_Space_Reference - Missing Component Class
-   ERROR    Association: geom.Coordinate_Space_Reference - Missing Component - Reference Type: component_of
    ERROR    Attribute: <instrument_type> - The 'type' attribute must have at least one permissible value.
    WARNING  Header:  - New namespace id has been specified:img_surface
+   WARNING  Class: <Coordinate_Space_Reference> - An exposed class was found nested within another exposed class. Nested exposed classes should only be present if there is a specific requirement to expose the additional class.
+   WARNING  Class: <Coordinate_Space_Reference> - An exposed class was found nested within another exposed class. Nested exposed classes should only be present if there is a specific requirement to expose the additional class.
+   WARNING  Class: <Coordinate_Space_Reference> - An exposed class was found nested within another exposed class. Nested exposed classes should only be present if there is a specific requirement to expose the additional class.
+   WARNING  Class: <Coordinate_Space_Reference> - An exposed class was found nested within another exposed class. Nested exposed classes should only be present if there is a specific requirement to expose the additional class.
+   WARNING  Class: <Coordinate_Space_Reference> - An exposed class was found nested within another exposed class. Nested exposed classes should only be present if there is a specific requirement to expose the additional class.
+   WARNING  Class: <Coordinate_Space_Reference> - An exposed class was found nested within another exposed class. Nested exposed classes should only be present if there is a specific requirement to expose the additional class.
+   WARNING  Class: <Coordinate_Space_Reference> - An exposed class was found nested within another exposed class. Nested exposed classes should only be present if there is a specific requirement to expose the additional class.
    INFO     Attribute: <instrument_type> - This local attribute has a duplicate in the PDS4 data dictionary.
    INFO     Attribute: <instrument_serial_number> - This local attribute has a duplicate in the PDS4 data dictionary.
    INFO     Attribute: <stereo_baseline_length> - The default minimum value provided by the attribute's data type is being overridden with 0
@@ -73,7 +76,7 @@ Parsed Input - Header:
       1.2.0.0
       - updated to PDS IM v 1E00 and GEOM 1E00_1800
       - updated ops_instrument_key to be unbounded and updated definition.
-      - added Commanded_Parameters using existing classes as children
+      - added Commanded_Parameters using existing classes as children added to bottom of Surface_Imaging class
       - added image_id_2 attribute to Image_Identifiers
       - added start_image_id, observation_number, parameter_table_number to Image_Identifiers
       - added camera_model_serial_number attribute to Instrument_Information class 
@@ -292,6 +295,11 @@ Parsed Input - Classes:
       maximum occurrences   *
       reference type        component_of
 
+      local identifier      Commanded_Parameters
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        component_of
+
    name                   Image_Identifiers
    description            The Image_Identifiers class contains items that help to identify the image or guide how processing should be done to the image.
    is abstract            false
@@ -383,17 +391,17 @@ Parsed Input - Classes:
       maximum occurrences   *
       reference type        attribute_of
 
+      local identifier      camera_model_serial_number
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
       local identifier      camera_product_id
       minimum occurrences   0
       maximum occurrences   1
       reference type        attribute_of
 
       local identifier      camera_product_id_count
-      minimum occurrences   0
-      maximum occurrences   1
-      reference type        attribute_of
-
-      local identifier      camera_model_serial_number
       minimum occurrences   0
       maximum occurrences   1
       reference type        attribute_of

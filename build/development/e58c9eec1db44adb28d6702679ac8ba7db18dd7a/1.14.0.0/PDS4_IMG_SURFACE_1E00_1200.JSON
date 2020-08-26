@@ -3,7 +3,7 @@
     "dataDictionary": {
       "Title": "PDS4 Data Dictionary" ,
       "Version": "1.14.0.0" ,
-      "Date": "Tue Aug 25 04:05:44 UTC 2020" ,
+      "Date": "Wed Aug 26 19:47:37 UTC 2020" ,
       "Description": "This document is a dump of the contents of the PDS4 Data Dictionary" ,
       "classDictionary": [
         {
@@ -126,6 +126,22 @@
                 "classOrder": "1040" ,
                 "classId": [
                   "0001_NASA_PDS_1.img_surface.Vector_Range_Origin"
+                 ]
+              }
+            }
+           , {"association": {
+                "identifier": "0001_NASA_PDS_1.img_surface.Derived_Product_Parameters.geom.Coordinate_Space_Reference" ,
+                "title": "Coordinate_Space_Reference" ,
+                "assocType": "component_of" ,
+                "isAttribute": "false" ,
+                "isChoice": "false" ,
+                "isAny": "false" ,
+                "groupName": "null" ,
+                "minimumCardinality": "0" ,
+                "maximumCardinality": "1" ,
+                "classOrder": "1050" ,
+                "classId": [
+                  "0001_NASA_PDS_1.geom.Coordinate_Space_Reference"
                  ]
               }
             }
@@ -356,7 +372,7 @@
                 "isAttribute": "false" ,
                 "isChoice": "true" ,
                 "isAny": "false" ,
-                "groupName": "XSChoice#11" ,
+                "groupName": "XSChoice#45" ,
                 "minimumCardinality": "0" ,
                 "maximumCardinality": "1" ,
                 "classOrder": "1050" ,
@@ -637,6 +653,22 @@
               }
             }
            , {"association": {
+                "identifier": "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_model_serial_number" ,
+                "title": "camera_model_serial_number" ,
+                "assocType": "attribute_of" ,
+                "isAttribute": "true" ,
+                "isChoice": "false" ,
+                "isAny": "false" ,
+                "groupName": "null" ,
+                "minimumCardinality": "0" ,
+                "maximumCardinality": "1" ,
+                "classOrder": "1080" ,
+                "attributeId": [
+                  "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_model_serial_number"
+                 ]
+              }
+            }
+           , {"association": {
                 "identifier": "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_product_id" ,
                 "title": "camera_product_id" ,
                 "assocType": "attribute_of" ,
@@ -646,7 +678,7 @@
                 "groupName": "null" ,
                 "minimumCardinality": "0" ,
                 "maximumCardinality": "1" ,
-                "classOrder": "1080" ,
+                "classOrder": "1090" ,
                 "attributeId": [
                   "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_product_id"
                  ]
@@ -662,25 +694,9 @@
                 "groupName": "null" ,
                 "minimumCardinality": "0" ,
                 "maximumCardinality": "1" ,
-                "classOrder": "1090" ,
-                "attributeId": [
-                  "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_product_id_count"
-                 ]
-              }
-            }
-           , {"association": {
-                "identifier": "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_model_serial_number" ,
-                "title": "camera_model_serial_number" ,
-                "assocType": "attribute_of" ,
-                "isAttribute": "true" ,
-                "isChoice": "false" ,
-                "isAny": "false" ,
-                "groupName": "null" ,
-                "minimumCardinality": "0" ,
-                "maximumCardinality": "1" ,
                 "classOrder": "1100" ,
                 "attributeId": [
-                  "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_model_serial_number"
+                  "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_product_id_count"
                  ]
               }
             }
@@ -769,7 +785,7 @@
                 "isAttribute": "false" ,
                 "isChoice": "true" ,
                 "isAny": "false" ,
-                "groupName": "XSChoice#12" ,
+                "groupName": "XSChoice#46" ,
                 "minimumCardinality": "0" ,
                 "maximumCardinality": "*" ,
                 "classOrder": "1030" ,
@@ -891,6 +907,22 @@
               }
             }
            , {"association": {
+                "identifier": "0001_NASA_PDS_1.img_surface.Surface_Imaging.geom.Coordinate_Space_Reference" ,
+                "title": "Coordinate_Space_Reference" ,
+                "assocType": "component_of" ,
+                "isAttribute": "false" ,
+                "isChoice": "false" ,
+                "isAny": "false" ,
+                "groupName": "null" ,
+                "minimumCardinality": "0" ,
+                "maximumCardinality": "1" ,
+                "classOrder": "1070" ,
+                "classId": [
+                  "0001_NASA_PDS_1.geom.Coordinate_Space_Reference"
+                 ]
+              }
+            }
+           , {"association": {
                 "identifier": "0001_NASA_PDS_1.img_surface.Surface_Imaging.img_surface.Error_Pixel" ,
                 "title": "Error_Pixel" ,
                 "assocType": "component_of" ,
@@ -903,6 +935,22 @@
                 "classOrder": "1080" ,
                 "classId": [
                   "0001_NASA_PDS_1.img_surface.Error_Pixel"
+                 ]
+              }
+            }
+           , {"association": {
+                "identifier": "0001_NASA_PDS_1.img_surface.Surface_Imaging.img_surface.Commanded_Parameters" ,
+                "title": "Commanded_Parameters" ,
+                "assocType": "component_of" ,
+                "isAttribute": "false" ,
+                "isChoice": "false" ,
+                "isAny": "false" ,
+                "groupName": "null" ,
+                "minimumCardinality": "0" ,
+                "maximumCardinality": "1" ,
+                "classOrder": "1090" ,
+                "classId": [
+                  "0001_NASA_PDS_1.img_surface.Commanded_Parameters"
                  ]
               }
             }

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 XML/Schema for Name Space Id:img_surface  Version:1.2.0.0 - Tue Aug 25 04:05:44 UTC 2020 -->
+  <!-- PDS4 XML/Schema for Name Space Id:img_surface  Version:1.2.0.0 - Wed Aug 26 19:47:37 UTC 2020 -->
   <!-- Generated from the PDS4 Information Model Version 1.14.0.0 - System Build 10b -->
   <!-- *** This PDS4 product schema is an operational deliverable. *** -->
   <!--                                                                           -->
   <!--               Dictionary Stack                                            -->
   <!-- 1.14.0.0 - pds: - Common Dictionary                                       -->
+  <!-- 1.8.0.0 - geom: - Geometry Dictionary Full                                -->
+  <!--   file:/home/runner/work/ldd-img_surface/ldd-img_surface/src/dependencies -->
+  <!-- 1.8.0.0 - geom: - Geometry Dictionary Full                                -->
+  <!--   file:/home/runner/work/ldd-img_surface/ldd-img_surface/src/dependencies -->
   <!-- 1.2.0.0 - img_surface: - Surface Imaging                                  -->
   <!--   file:/home/runner/work/ldd-img_surface/ldd-img_surface/src/PDS4_IMG_SUR -->
   <!--                                                                           -->
@@ -12,11 +16,13 @@
     targetNamespace="http://pds.nasa.gov/pds4/img_surface/v1"
     xmlns:img_surface="http://pds.nasa.gov/pds4/img_surface/v1"
     xmlns:pds="http://pds.nasa.gov/pds4/pds/v1"
+    xmlns:geom="http://pds.nasa.gov/pds4/geom/v1"
     elementFormDefault="qualified"
     attributeFormDefault="unqualified"
     version="1.2.0.0">
  
     <xs:import namespace="http://pds.nasa.gov/pds4/pds/v1" schemaLocation="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1E00.xsd"/>
+    <xs:import namespace="http://pds.nasa.gov/pds4/geom/v1" schemaLocation="https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1E00_1700.xsd"/>
  
   <xs:annotation>
     <xs:documentation>
@@ -38,7 +44,7 @@
       1.2.0.0
       - updated to PDS IM v 1E00 and GEOM 1E00_1800
       - updated ops_instrument_key to be unbounded and updated definition.
-      - added Commanded_Parameters using existing classes as children
+      - added Commanded_Parameters using existing classes as children added to bottom of Surface_Imaging class
       - added image_id_2 attribute to Image_Identifiers
       - added start_image_id, observation_number, parameter_table_number to Image_Identifiers
       - added camera_model_serial_number attribute to Instrument_Information class 
@@ -76,6 +82,7 @@
       <xs:element name="horizon_mask_elevation" type="img_surface:horizon_mask_elevation" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="Placement_Target_Instrument" type="img_surface:Placement_Target_Instrument" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="Vector_Range_Origin" type="img_surface:Vector_Range_Origin" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element ref="geom:Coordinate_Space_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
     </xs:sequence>
   </xs:complexType>
 
@@ -175,9 +182,9 @@
       <xs:element name="instrument_serial_number" type="img_surface:instrument_serial_number" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="instrument_version_number" type="img_surface:instrument_version_number" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="ops_instrument_key" type="img_surface:ops_instrument_key" minOccurs="0" maxOccurs="unbounded"> </xs:element>
+      <xs:element name="camera_model_serial_number" type="img_surface:camera_model_serial_number" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="camera_product_id" type="img_surface:camera_product_id" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="camera_product_id_count" type="img_surface:camera_product_id_count" minOccurs="0" maxOccurs="1"> </xs:element>
-      <xs:element name="camera_model_serial_number" type="img_surface:camera_model_serial_number" minOccurs="0" maxOccurs="1"> </xs:element>
     </xs:sequence>
   </xs:complexType>
 
@@ -226,7 +233,9 @@
       <xs:element name="Error_Model" type="img_surface:Error_Model" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="Geometry_Projection" type="img_surface:Geometry_Projection" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="Stereo_Product_Parameters" type="img_surface:Stereo_Product_Parameters" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element ref="geom:Coordinate_Space_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
       <xs:element name="Error_Pixel" type="img_surface:Error_Pixel" minOccurs="0" maxOccurs="unbounded"> </xs:element>
+      <xs:element name="Commanded_Parameters" type="img_surface:Commanded_Parameters" minOccurs="0" maxOccurs="1"> </xs:element>
     </xs:sequence>
   </xs:complexType>
 
