@@ -34,7 +34,7 @@
       1.2.0.0
       - updated to PDS IM v 1E00 and GEOM 1E00_1800
       - updated ops_instrument_key to be unbounded and updated definition.
-      - added Commanded_Parameters using existing classes as children
+      - added Commanded_Parameters using existing classes as children added to bottom of Surface_Imaging class
       - added image_id_2 attribute to Image_Identifiers
       - added start_image_id, observation_number, parameter_table_number to Image_Identifiers
       - added camera_model_serial_number attribute to Instrument_Information class 
@@ -723,6 +723,12 @@
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>*</maximum_occurrences>
     </DD_Association>
+    <DD_Association>
+      <identifier_reference>Commanded_Parameters</identifier_reference>
+      <reference_type>component_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
   </DD_Class>
   <!-- End of Surface_Imaging Class Definition -->
     
@@ -848,6 +854,12 @@
       <maximum_occurrences>*</maximum_occurrences>
     </DD_Association>
     <DD_Association>
+      <identifier_reference>camera_model_serial_number</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
       <identifier_reference>camera_product_id</identifier_reference>
       <reference_type>attribute_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
@@ -855,12 +867,6 @@
     </DD_Association>
     <DD_Association>
       <identifier_reference>camera_product_id_count</identifier_reference>
-      <reference_type>attribute_of</reference_type>
-      <minimum_occurrences>0</minimum_occurrences>
-      <maximum_occurrences>1</maximum_occurrences>
-    </DD_Association>
-    <DD_Association>
-      <identifier_reference>camera_model_serial_number</identifier_reference>
       <reference_type>attribute_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>1</maximum_occurrences>
