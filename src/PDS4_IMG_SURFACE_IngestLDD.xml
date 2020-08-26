@@ -8,7 +8,8 @@
     xmlns:img_surface="http://pds.nasa.gov/pds4/img_surface/v1" 
     xmlns:geom="http://pds.nasa.gov/pds4/geom/v1"
     xmlns:pds="http://pds.nasa.gov/pds4/pds/v1"
-    xsi:schemaLocation="https://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1E00.xsd     http://pds.nasa.gov/pds4/geom/v1 https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1E00_1800.xsd   ">
+    xsi:schemaLocation="https://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1E00.xsd     
+                        http://pds.nasa.gov/pds4/geom/v1 https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1E00_1800.xsd">
     <name>Surface Imaging</name>
     <ldd_version_id>1.2.0.0</ldd_version_id>
     <dictionary_type>Discipline</dictionary_type>
@@ -33,11 +34,13 @@
       1.2.0.0
       - updated to PDS IM v 1E00 and GEOM 1E00_1800
       - updated ops_instrument_key to be unbounded and updated definition.
-      - added Commanded_Parameters using existing classes as children
+      - added Commanded_Parameters using existing classes as children added to bottom of Surface_Imaging class
       - added image_id_2 attribute to Image_Identifiers
       - added start_image_id, observation_number, parameter_table_number to Image_Identifiers
+      - added camera_model_serial_number attribute to Instrument_Information class 
+      
     </comment>
-    <last_modification_date_time>2019-06-17T14:00:00</last_modification_date_time>
+    <last_modification_date_time>2019-06-24T14:00:00</last_modification_date_time>
   
 <!-- Start attribute definitions -->
   
@@ -352,6 +355,7 @@
       <unit_of_measure_type>Units_of_None</unit_of_measure_type>
     </DD_Value_Domain>
   </DD_Attribute>
+  
   <DD_Attribute>
     <name>camera_product_id</name>
     <version_id>1.0</version_id>
@@ -366,6 +370,7 @@
       <unit_of_measure_type>Units_of_None</unit_of_measure_type>
     </DD_Value_Domain>
   </DD_Attribute>
+  
   <DD_Attribute>
     <name>camera_product_id_count</name>
     <version_id>1.0</version_id>
@@ -380,7 +385,23 @@
       <unit_of_measure_type>Units_of_None</unit_of_measure_type>
     </DD_Value_Domain>
   </DD_Attribute>
-  
+
+  <DD_Attribute>
+    <name>camera_model_serial_number</name>
+    <version_id>1.0</version_id>
+    <local_identifier>camera_model_serial_number</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Specifies the manufacturer's serial number for the camera for which the camera model 
+      was derived. This should match instrument_serial_number in most cases; generally speaking a 
+      mismatch should only occur during testing/development.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
+
   <DD_Attribute>
     <name>ops_instrument_key</name>
     <version_id>1.1</version_id>
@@ -702,6 +723,12 @@
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>*</maximum_occurrences>
     </DD_Association>
+    <DD_Association>
+      <identifier_reference>Commanded_Parameters</identifier_reference>
+      <reference_type>component_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
   </DD_Class>
   <!-- End of Surface_Imaging Class Definition -->
     
@@ -825,6 +852,12 @@
       <reference_type>attribute_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>*</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>camera_model_serial_number</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
     </DD_Association>
     <DD_Association>
       <identifier_reference>camera_product_id</identifier_reference>

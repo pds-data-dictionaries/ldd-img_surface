@@ -3,7 +3,7 @@
     "dataDictionary": {
       "Title": "PDS4 Data Dictionary" ,
       "Version": "1.14.0.0" ,
-      "Date": "Tue Aug 25 19:29:45 UTC 2020" ,
+      "Date": "Wed Aug 26 19:47:37 UTC 2020" ,
       "Description": "This document is a dump of the contents of the PDS4 Data Dictionary" ,
       "classDictionary": [
         {
@@ -653,6 +653,22 @@
               }
             }
            , {"association": {
+                "identifier": "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_model_serial_number" ,
+                "title": "camera_model_serial_number" ,
+                "assocType": "attribute_of" ,
+                "isAttribute": "true" ,
+                "isChoice": "false" ,
+                "isAny": "false" ,
+                "groupName": "null" ,
+                "minimumCardinality": "0" ,
+                "maximumCardinality": "1" ,
+                "classOrder": "1080" ,
+                "attributeId": [
+                  "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_model_serial_number"
+                 ]
+              }
+            }
+           , {"association": {
                 "identifier": "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_product_id" ,
                 "title": "camera_product_id" ,
                 "assocType": "attribute_of" ,
@@ -662,7 +678,7 @@
                 "groupName": "null" ,
                 "minimumCardinality": "0" ,
                 "maximumCardinality": "1" ,
-                "classOrder": "1080" ,
+                "classOrder": "1090" ,
                 "attributeId": [
                   "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_product_id"
                  ]
@@ -678,7 +694,7 @@
                 "groupName": "null" ,
                 "minimumCardinality": "0" ,
                 "maximumCardinality": "1" ,
-                "classOrder": "1090" ,
+                "classOrder": "1100" ,
                 "attributeId": [
                   "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_product_id_count"
                  ]
@@ -919,6 +935,22 @@
                 "classOrder": "1080" ,
                 "classId": [
                   "0001_NASA_PDS_1.img_surface.Error_Pixel"
+                 ]
+              }
+            }
+           , {"association": {
+                "identifier": "0001_NASA_PDS_1.img_surface.Surface_Imaging.img_surface.Commanded_Parameters" ,
+                "title": "Commanded_Parameters" ,
+                "assocType": "component_of" ,
+                "isAttribute": "false" ,
+                "isChoice": "false" ,
+                "isAny": "false" ,
+                "groupName": "null" ,
+                "minimumCardinality": "0" ,
+                "maximumCardinality": "1" ,
+                "classOrder": "1090" ,
+                "classId": [
+                  "0001_NASA_PDS_1.img_surface.Commanded_Parameters"
                  ]
               }
             }
@@ -1424,6 +1456,31 @@
             "steward": "img" ,
             "versionId": "1.14" ,
             "description": " The stereo_match_id attribute specifies which other image this image matches with for stereo processing. If used for a mission, the two images making up a stereo pair should share the same stereo_match_id value. " ,
+            "isNillable": "false" ,
+            "isEnumerated": "false" ,
+            "isDeprecated": "false" ,
+            "dataType": "ASCII_Short_String_Collapsed" ,
+            "dataTypeId": "0001_NASA_PDS_1.pds.ASCII_Short_String_Collapsed" ,
+            "minimumCharacters": "1" ,
+            "maximumCharacters": "255" ,
+            "minimumValue": "Unbounded" ,
+            "maximumValue": "Unbounded" ,
+            "pattern": "null" ,
+            "unitOfMeasure": "null" ,
+            "unitOfMeasureId": "null" ,
+            "unitId": "null" ,
+            "defaultUnitId": "null"
+          }
+        }
+      , {
+          "attribute": {
+            "identifier": "0001_NASA_PDS_1.img_surface.Instrument_Information.img_surface.camera_model_serial_number" ,
+            "title": "camera_model_serial_number" ,
+            "registrationAuthorityId": "0001_NASA_PDS_1" ,
+            "nameSpaceId": "img_surface" ,
+            "steward": "img" ,
+            "versionId": "1.14" ,
+            "description": "Specifies the manufacturer's serial number for the camera for which the camera model was derived. This should match instrument_serial_number in most cases; generally speaking a mismatch should only occur during testing\/development." ,
             "isNillable": "false" ,
             "isEnumerated": "false" ,
             "isDeprecated": "false" ,
