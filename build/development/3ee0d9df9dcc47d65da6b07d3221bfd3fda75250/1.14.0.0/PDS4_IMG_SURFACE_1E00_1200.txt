@@ -7,7 +7,7 @@ Configuration:
    LDD Discipline (T/F):  true
    LDD Namespace URL:     http://pds.nasa.gov/pds4/
    LDD URN Prefix:        urn:nasa:pds:
-   Time                   Tue Aug 25 19:29:45 UTC 2020
+   Time                   Wed Aug 26 20:34:09 UTC 2020
    Common Schema          [PDS4_PDS_1E00.xsd]
    Common Schematron      [PDS4_PDS_1E00.sch]
    IM Version Id:         1.14.0.0
@@ -30,8 +30,8 @@ Parameters:
 
 Summary:
    Classes                12
-   Attributes             29
-   Associations           52
+   Attributes             30
+   Associations           54
    Error messages         1
    Warning messages       8
    Information messages   5
@@ -76,11 +76,13 @@ Parsed Input - Header:
       1.2.0.0
       - updated to PDS IM v 1E00 and GEOM 1E00_1800
       - updated ops_instrument_key to be unbounded and updated definition.
-      - added Commanded_Parameters using existing classes as children
+      - added Commanded_Parameters using existing classes as children added to bottom of Surface_Imaging class
       - added image_id_2 attribute to Image_Identifiers
       - added start_image_id, observation_number, parameter_table_number to Image_Identifiers
+      - added camera_model_serial_number attribute to Instrument_Information class 
+      
     
-   Last Modification Time 2019-06-17T14:00:00
+   Last Modification Time 2019-06-24T14:00:00
    PDS4 Merge Flag        false
 
 Parsed Input - Attributes:
@@ -164,6 +166,11 @@ Parsed Input - Attributes:
    version                1.14
    value data type        ASCII_NonNegative_Integer
    description            The camera_product_id_count attribute specifies the number of times a specific camera_product_id has been used.
+
+   name                   camera_model_serial_number
+   version                1.14
+   value data type        ASCII_Short_String_Collapsed
+   description            Specifies the manufacturer's serial number for the camera for which the camera model was derived. This should match instrument_serial_number in most cases; generally speaking a mismatch should only occur during testing/development.
 
    name                   ops_instrument_key
    version                1.14
@@ -288,6 +295,11 @@ Parsed Input - Classes:
       maximum occurrences   *
       reference type        component_of
 
+      local identifier      Commanded_Parameters
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        component_of
+
    name                   Image_Identifiers
    description            The Image_Identifiers class contains items that help to identify the image or guide how processing should be done to the image.
    is abstract            false
@@ -377,6 +389,11 @@ Parsed Input - Classes:
       local identifier      ops_instrument_key
       minimum occurrences   0
       maximum occurrences   *
+      reference type        attribute_of
+
+      local identifier      camera_model_serial_number
+      minimum occurrences   0
+      maximum occurrences   1
       reference type        attribute_of
 
       local identifier      camera_product_id
