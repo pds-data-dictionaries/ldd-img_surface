@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 Schematron for Name Space Id:img_surface  Version:1.2.0.0 - Tue Aug 25 04:05:44 UTC 2020 -->
+  <!-- PDS4 Schematron for Name Space Id:img_surface  Version:1.2.0.0 - Wed Aug 26 19:47:37 UTC 2020 -->
   <!-- Generated from the PDS4 Information Model Version 1.14.0.0 - System Build 10b -->
   <!-- *** This PDS4 schematron file is an operational deliverable. *** -->
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -9,6 +9,7 @@
   <sch:ns uri="http://www.w3.org/2001/XMLSchema-instance" prefix="xsi"/>
   <sch:ns uri="http://pds.nasa.gov/pds4/pds/v1" prefix="pds"/>
   <sch:ns uri="http://pds.nasa.gov/pds4/img_surface/v1" prefix="img_surface"/>
+  <sch:ns uri="http://pds.nasa.gov/pds4/geom/v1" prefix="geom"/>
 
 		   <!-- ================================================ -->
 		   <!-- NOTE:  There are two types of schematron rules.  -->
