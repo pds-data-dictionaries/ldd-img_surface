@@ -11,7 +11,7 @@
     xsi:schemaLocation="https://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1E00.xsd     
                         http://pds.nasa.gov/pds4/geom/v1 https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1E00_1800.xsd">
     <name>Surface Imaging</name>
-    <ldd_version_id>1.2.0.0</ldd_version_id>
+    <ldd_version_id>1.2.1.0</ldd_version_id>
     <dictionary_type>Discipline</dictionary_type>
     <full_name>Trent Hare</full_name>
     <steward_id>img</steward_id>
@@ -31,7 +31,7 @@
       1.1.1.0
       - Removed Pointing_Correction and its child attributes/classes (moved to IMG)
       
-      1.2.0.0
+      1.2.0.0 T.Hare
       - updated to PDS IM v 1E00 and GEOM 1E00_1800
       - updated ops_instrument_key to be unbounded and updated definition.
       - added Commanded_Parameters using existing classes as children added to bottom of Surface_Imaging class
@@ -39,8 +39,14 @@
       - added start_image_id, observation_number, parameter_table_number to Image_Identifiers
       - added camera_model_serial_number attribute to Instrument_Information class 
       
+      1.2.1.0 T.Hare
+      - added correlation_average_scale, correlation_overlap_percentage, correlation_pixel_count attrinutes to
+           Stereo_Product_Parameters Class
+      - added Reachability Class and attributes and classes including these children:
+          Reach_Instruments and Reach_Instrument classes and their attributes
+      
     </comment>
-    <last_modification_date_time>2019-06-24T14:00:00</last_modification_date_time>
+    <last_modification_date_time>2020-10-30T09:00:00</last_modification_date_time>
   
 <!-- Start attribute definitions -->
   
@@ -473,7 +479,6 @@
       <unit_of_measure_type>Units_of_None</unit_of_measure_type>
     </DD_Value_Domain>
   </DD_Attribute>
-  
   <!-- End attributes for Error_Model-->
   
   <!-- Start attributes for Geometry_Projection class -->
@@ -576,6 +581,60 @@
   
   <!-- Start attributes for Stereo_Product_Parameters  -->
   <DD_Attribute>
+    <name>correlation_average_scale</name>
+    <version_id>1.0</version_id>
+    <local_identifier>correlation_average_scale</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Contains the "average" scale factor for the correlation. In other words, 
+      given the reference image, scale it by this amount to match the target image. This 
+      scale factor is not precisely defined; it is determined in different ways by different 
+      correlation programs. The intent is to provide a "hint" for users of the correlation 
+      without requiring a full set of transform coefficients.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_Real</value_data_type>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
+
+  <DD_Attribute>
+    <name>correlation_overlap_percentage</name>
+    <version_id>1.0</version_id>
+    <local_identifier>correlation_overlap_percentage</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Contains the percentage of the reference image that could overlap, geometrically 
+      speaking, with the target image. It does not indicate the actual correlation percentage, 
+      but rather what might correlate ideally. This can be used to distinguish, for example, 
+      nearly perfect correlation in a small overlapping area vs. very poor correlation over the 
+      entire image - both of which could have the same correlation_pixel_count). This percentage 
+      is not precisely defined; it is an approximation intended to facilitate culling of results.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_Real</value_data_type>
+      <minimum_value>0</minimum_value>
+      <maximum_value>100</maximum_value>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
+
+  <DD_Attribute>
+    <name>correlation_pixel_count</name>
+    <version_id>1.0</version_id>
+    <local_identifier>correlation_pixel_count</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Contains a count of the number of pixels that successfully correlated in the image.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_NonNegative_Integer</value_data_type>
+      <minimum_value>0</minimum_value>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
+
+  <DD_Attribute>
     <name>stereo_baseline_length</name>
     <version_id>1.0</version_id>
     <local_identifier>stereo_baseline_length</local_identifier>
@@ -664,7 +723,182 @@
     </DD_Value_Domain>
   </DD_Attribute>
   <!-- End attributes for Vector_Range_Origin Parameters -->
-  
+
+  <!-- Start attributes for Reachability and other "Reach^" Classes Parameters -->
+  <DD_Attribute>
+    <name>band</name>
+    <version_id>1.0</version_id>
+    <local_identifier>band</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Specifies the band number (1-based) of the band in which the data for 
+      the specified instrument resides.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_NonNegative_Integer</value_data_type>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
+
+  <DD_Attribute>
+    <name>device_config</name>
+    <version_id>1.0</version_id>
+    <local_identifier>device_config</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Names a specific configuration of the device. Current MSL and Mars2020 valids: 
+      "ARM_SO_EU_WU", "ARM_SO_EU_WD", "ARM_SO_ED_WU", "ARM_SO_ED_WD", 
+      "ARM_SI_EU_WU", "ARM_SI_EU_WD", "ARM_SI_ED_WU", "ARM_SI_ED_WD" </definition>
+    <DD_Value_Domain>
+      <enumeration_flag>true</enumeration_flag>
+      <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+      <DD_Permissible_Value>
+        <value>ARM_SO_EU_WU</value>
+        <value_meaning>MSL or Mars2020 ARM type, and GRN/GRA/GRC type</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>ARM_SO_EU_WD</value>
+        <value_meaning>MSL or Mars2020 ARM type, and GRN/GRA/GRC type</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>ARM_SO_ED_WU</value>
+        <value_meaning>MSL or Mars2020 ARM type, and GRN/GRA/GRC type</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>ARM_SO_ED_WD</value>
+        <value_meaning>MSL or Mars2020 ARM type, and GRN/GRA/GRC type</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>ARM_SI_EU_WU</value>
+        <value_meaning>MSL or Mars2020 ARM type, and GRN/GRA/GRC type</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>ARM_SI_EU_WD</value>
+        <value_meaning>MSL or Mars2020 ARM type, and GRN/GRA/GRC type</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>ARM_SI_ED_WU</value>
+        <value_meaning>MSL or Mars2020 ARM type, and GRN/GRA/GRC type</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>ARM_SI_ED_WD</value>
+        <value_meaning>MSL or Mars2020 ARM type, and GRN/GRA/GRC type</value_meaning>
+      </DD_Permissible_Value>
+    </DD_Value_Domain>
+  </DD_Attribute>
+
+  <DD_Attribute>
+    <name>device_id</name>
+    <version_id>1.0</version_id>
+    <local_identifier>device_id</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Identifies the device that this Reachability applies to. 
+      Current MSL and Mars2020 valids: "ARM" </definition>
+    <DD_Value_Domain>
+      <enumeration_flag>true</enumeration_flag>
+      <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+      <DD_Permissible_Value>
+        <value>ARM</value>
+        <value_meaning>Named id for the MSL or Mars2020 ARM</value_meaning>
+      </DD_Permissible_Value>
+    </DD_Value_Domain>
+  </DD_Attribute>
+
+  <DD_Attribute>
+    <name>instrument_id</name>
+    <version_id>1.0</version_id>
+    <local_identifier>instrument_id</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Identifies the instrument used in reachability assessment. 
+      Mars2020 valids: "DRILL","GDRT","SHERLOC_WATSON","SHERLOC","PIXL", "FCS". 
+      MSL valids:      "DRILL","DRT","MAHLI","APXS","SCOOP_TIP"
+    </definition>
+    <DD_Value_Domain>
+      <enumeration_flag>true</enumeration_flag>
+      <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+      <DD_Permissible_Value>
+        <value>DRILL</value>
+        <value_meaning>MSL or Mars 2020 instrument</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>GDRT</value>
+        <value_meaning>Mars 2020 instrument</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>SHERLOC_WATSON</value>
+        <value_meaning>Mars 2020 instrument</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>SHERLOC</value>
+        <value_meaning>Mars 2020 instrument</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>PIXL</value>
+        <value_meaning>Mars 2020 instrument</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>FCS</value>
+        <value_meaning>Mars 2020 instrument</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>DRT</value>
+        <value_meaning>MSL instrument</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>MAHLI</value>
+        <value_meaning>MSL instrument</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>APXS</value>
+        <value_meaning>MSL instrument</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>SCOOP_TIP</value>
+        <value_meaning>MSL instrument</value_meaning>
+      </DD_Permissible_Value>
+    </DD_Value_Domain>
+  </DD_Attribute>
+
+  <DD_Attribute>
+    <name>start_bit</name>
+    <version_id>1.0</version_id>
+    <local_identifier>start_bit</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>For Configurations that are bit-packed into a word, specifies 
+      the starting bit for this configuration. Bits are numbered starting at 0 for the least-significant bit.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_NonNegative_Integer</value_data_type>
+      <minimum_value>0</minimum_value>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
+
+  <DD_Attribute>
+    <name>stop_bit</name>
+    <version_id>1.0</version_id>
+    <local_identifier>stop_bit</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>For Configurations that are bit-packed into a word, specifies 
+      the ending bit for this configuration. Bits are numbered starting at 0 for 
+      the least-significant bit. If present, stop_bit must be equal to or less 
+      than start_bit. If absent, start_bit identifies a single bit.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_NonNegative_Integer</value_data_type>
+      <minimum_value>0</minimum_value>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
+  <!-- End attributes for Reachability and other "Reach*" Classes Parameters -->
+
    <!-- Begin Class definitions -->
   
   <!--  Surface_Imaging Class Definition -->
@@ -1030,6 +1264,122 @@
   </DD_Class>
   <!--  End Geometry_Projection Class Definition -->
   
+    <!-- Class: Reachability and child Classes  -->
+  <DD_Class>
+    <name>Configuration</name>
+    <version_id>1.0</version_id>
+    <local_identifier>Configuration</local_identifier>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Defines a single configuration for this reachability assessment.</definition>
+    <DD_Association>
+      <identifier_reference>device_config</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>start_bit</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>stop_bit</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+  </DD_Class>
+
+  <DD_Class>
+    <name>Configurations</name>
+    <version_id>1.0</version_id>
+    <local_identifier>Configurations</local_identifier>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Specifies the configurations of the device used for reachability 
+      assessment. The specific values will be device-dependent but could include 
+      e.g. shoulder in/out, elbow up/down, wrist up/down.</definition>
+    <DD_Association>
+      <identifier_reference>band</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>Configuration</identifier_reference>
+      <reference_type>component_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>*</maximum_occurrences>
+    </DD_Association>
+  </DD_Class>
+
+  <DD_Class>
+    <name>Reach_Instrument</name>
+    <version_id>1.0</version_id>
+    <local_identifier>Reach_Instrument</local_identifier>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Defines a single instrument for this reachability assessment. 
+      For products where each instrument is associated with a band in the output, 
+      the "band" attribute specifies which band it is. For products where instruments 
+      are involved in the computation but not represented individually in the output, 
+      the band should be omitted.</definition>
+    <DD_Association>
+      <identifier_reference>instrument_id</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>band</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+  </DD_Class>
+
+  <DD_Class>
+    <name>Reach_Instruments</name>
+    <version_id>1.0</version_id>
+    <local_identifier>Reach_Instruments</local_identifier>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Lists the instruments involved in this reachability assesment.</definition>
+    <DD_Association>
+      <identifier_reference>Reach_Instrument</identifier_reference>
+      <reference_type>component_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>*</maximum_occurrences>
+    </DD_Association>
+  </DD_Class>
+
+  <DD_Class>
+    <name>Reachability</name>
+    <version_id>1.0</version_id>
+    <local_identifier>Reachability</local_identifier>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>This class describes Reachability products, which define whether 
+      and how a moving device (such as an arm) can contact, view, or otherwise 
+      interact with the world at each pixel of an image.</definition>
+    <DD_Association>
+      <identifier_reference>device_id</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>Reach_Instruments</identifier_reference>
+      <reference_type>component_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>Configurations</identifier_reference>
+      <reference_type>component_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+  </DD_Class>
+  <!-- End Reachability class -->
+  
   <!-- Class: Stereo_Product_Parameters  -->
   <DD_Class>
     <name>Stereo_Product_Parameters</name>
@@ -1041,6 +1391,24 @@
       (separation between the cameras) and what partner image(s) were used for
       stereo analysis. If present, stereo partner images can be referenced using
       either an Internal_Reference or External_Reference.</definition>
+    <DD_Association>
+      <identifier_reference>correlation_average_scale</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>correlation_overlap_percentage</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>correlation_pixel_count</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
     <DD_Association>
       <identifier_reference>stereo_baseline_length</identifier_reference>
       <reference_type>attribute_of</reference_type>
