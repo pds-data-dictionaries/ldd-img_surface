@@ -11,7 +11,7 @@
     xsi:schemaLocation="https://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1E00.xsd     
                         http://pds.nasa.gov/pds4/geom/v1 https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1E00_1800.xsd">
     <name>Surface Imaging</name>
-    <ldd_version_id>1.2.1.0</ldd_version_id>
+    <ldd_version_id>1.2.2.0</ldd_version_id>
     <dictionary_type>Discipline</dictionary_type>
     <full_name>Trent Hare</full_name>
     <steward_id>img</steward_id>
@@ -44,9 +44,13 @@
            Stereo_Product_Parameters Class
       - added Reachability Class and attributes and classes including these children:
           Reach_Instruments and Reach_Instrument classes and their attributes
+          
+      1.2.2.0 T.Hare
+      - build with GEOM v1900
+      - add 3 new reference_types for external under rules
       
     </comment>
-    <last_modification_date_time>2020-10-30T09:00:00</last_modification_date_time>
+    <last_modification_date_time>2020-12-07T08:00:00</last_modification_date_time>
   
 <!-- Start attribute definitions -->
   
@@ -1534,7 +1538,7 @@
   </DD_Rule>
   
   <DD_Rule>
-    <local_identifier>local_reference_type_check</local_identifier>
+    <local_identifier>internal_local_reference_type_check</local_identifier>
     <rule_context>//img_surface:Surface_Imaging/pds:Local_Internal_Reference</rule_context>
     <DD_Rule_Statement>
       <rule_type>Assert</rule_type>
@@ -1542,7 +1546,38 @@
       <rule_message>In img_surface:Surface_Imaging, Local_Internal_Reference.local_reference_type must have value 'mars_surface_imaging_to_image_object'</rule_message>
     </DD_Rule_Statement>
   </DD_Rule>
+
+  <DD_Rule>
+    <local_identifier>external_reference_type_check_stereo_partner</local_identifier>
+    <rule_context>//img_surface:Stereo_Product_Parameters/pds:External_Reference</rule_context>
+    <DD_Rule_Statement>
+      <rule_type>Assert</rule_type>
+      <rule_test>pds:reference_type = 'data_to_stereo_partner'</rule_test>
+      <rule_message>In img_surface:Stereo_Product_Parameters, External_Reference.reference_type must be equal to 'data_to_stereo_partner'.</rule_message>
+    </DD_Rule_Statement>
+  </DD_Rule>
   
+  <DD_Rule>
+    <local_identifier>external_reference_type_check_linearization_partner</local_identifier>
+    <rule_context>//img_surface:Geometry_Projection/pds:External_Reference</rule_context>
+    <DD_Rule_Statement>
+      <rule_type>Assert</rule_type>
+      <rule_test>pds:reference_type = 'data_to_linearization_partner'</rule_test>
+      <rule_message>In img_surface:Geometry_Projection, External_Reference.reference_type must be equal to 'data_to_linearization_partner'.</rule_message>
+    </DD_Rule_Statement>
+  </DD_Rule>
+  
+  <DD_Rule>
+    <local_identifier>external_local_reference_type_check</local_identifier>
+    <rule_context>//img_surface:Surface_Imaging/pds:Local_External_Reference</rule_context>
+    <DD_Rule_Statement>
+      <rule_type>Assert</rule_type>
+      <rule_test>pds:local_reference_type = 'mars_surface_imaging_to_image_object'</rule_test>
+      <rule_message>In img_surface:Surface_Imaging, Local_External_Reference.local_reference_type must have value 'mars_surface_imaging_to_image_object'</rule_message>
+    </DD_Rule_Statement>
+  </DD_Rule>
+
+
   <!-- TODO find a way to make this rule trigger for only InSight labels -->
   <!--
   <DD_Rule>
