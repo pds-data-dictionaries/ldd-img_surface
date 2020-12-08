@@ -41,16 +41,17 @@
       
       1.2.1.0 T.Hare
       - added correlation_average_scale, correlation_overlap_percentage, correlation_pixel_count attrinutes to
-           Stereo_Product_Parameters Class
+        Stereo_Product_Parameters Class
       - added Reachability Class and attributes and classes including these children:
-          Reach_Instruments and Reach_Instrument classes and their attributes
-          
+        Reach_Instruments and Reach_Instrument classes and their attributes
+
       1.2.2.0 T.Hare
-      - build with GEOM v1900
+      - build with GEOM v1900, grabbing the depenancies using:
+          git submodule add https://github.com/pds-data-dictionaries/ldd-geom
       - add 3 new reference_types for external under rules
       
     </comment>
-    <last_modification_date_time>2020-12-07T08:00:00</last_modification_date_time>
+    <last_modification_date_time>2020-12-08T17:00:00</last_modification_date_time>
   
 <!-- Start attribute definitions -->
   
