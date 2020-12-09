@@ -6,7 +6,7 @@ Steward: [IMG Node](https://pds-imaging.jpl.nasa.gov/)
 
 Only one LDD source version is kept such that it can be managed by github.
 
-- [1.E.0.0](src)
+- [src](src)
 
 ## Versions
 
@@ -18,8 +18,8 @@ The build process insures compatiblity of the LDD with the core information mode
 
 This LDD has been released for the following versions of the PDS4 information model:
 
-- [PDS4 IM v1.14.1.0 (IMG_SURFACE LDD v1.2.0.0)](build/release/1.E.0.0_1.2.0.0)
-- [PDS4 IM v1.11.1.0 (IMG_SURFACE LDD v1.1.1.0)](build/release/1.B.1.0_1.1.1.0)
+- [development](build/development/)
+- [releases](build/release/)
 
 
 ## Notes
