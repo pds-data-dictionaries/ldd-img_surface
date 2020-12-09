@@ -48,7 +48,8 @@
       1.2.2.0 T.Hare
       - build with GEOM v1900, grabbing the depenancies using:
           git submodule add https://github.com/pds-data-dictionaries/ldd-geom
-      - add 3 new reference_types for external under rules and instrument_type_value_check
+      - add 3 new reference_types for external under rules
+      - change instrument_type to instrument_type_name
       
     </comment>
     <last_modification_date_time>2020-12-08T17:00:00</last_modification_date_time>
@@ -298,12 +299,12 @@
   </DD_Attribute>
   
   <DD_Attribute>
-    <name>instrument_type</name>
+    <name>instrument_type_name</name>
     <version_id>1.0</version_id>
-    <local_identifier>instrument_type</local_identifier>
+    <local_identifier>instrument_type_name</local_identifier>
     <nillable_flag>false</nillable_flag>
     <submitter_name>Cristina De Cesare</submitter_name>
-    <definition>The instrument_type attribute specifies the type of an instrument, for example 
+    <definition>The instrument_type_name attribute specifies the type of an instrument, for example 
       IMAGING CAMERA, SPECTROMETER, IMAGING SPECTROMETER, RADIOMETER, etc.</definition>
     <DD_Value_Domain>
       <enumeration_flag>false</enumeration_flag>
@@ -1063,7 +1064,7 @@
       <maximum_occurrences>1</maximum_occurrences>
     </DD_Association>
     <DD_Association>
-      <identifier_reference>instrument_type</identifier_reference>
+      <identifier_reference>instrument_type_name</identifier_reference>
       <reference_type>attribute_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>1</maximum_occurrences>
@@ -1612,6 +1613,7 @@
     </DD_Rule_Statement>
   </DD_Rule>
 
+  <!--
   <DD_Rule>
     <local_identifier>instrument_type_value_check</local_identifier>
     <rule_context>//img_surface:Instrument_Information</rule_context>
@@ -1621,6 +1623,7 @@
       <rule_message>In img_surface:Instrument_Information, Instrument_Information.instrument_type must be equal to one of the following values: 'IMAGING CAMERA', 'SPECTROMETER', 'IMAGING SPECTROMETER', 'RADIOMETER'.</rule_message>
     </DD_Rule_Statement>
   </DD_Rule>
-  <!-- End rule defintions -->
+  -->
+<!-- End rule defintions -->
   
 </Ingest_LDD>
