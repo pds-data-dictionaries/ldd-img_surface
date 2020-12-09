@@ -308,7 +308,7 @@
       IMAGING CAMERA, SPECTROMETER, IMAGING SPECTROMETER, or RADIOMETER</definition>
     <!-- PDS3 styled names  -->
     <DD_Value_Domain>
-        <enumeration_flag>false</enumeration_flag>
+        <enumeration_flag>true</enumeration_flag>
         <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
         <DD_Permissible_Value>
          <value>IMAGING CAMERA</value>
