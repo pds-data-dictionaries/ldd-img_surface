@@ -49,10 +49,10 @@
       - build with GEOM v1900, grabbing the depenancies using:
           git submodule add https://github.com/pds-data-dictionaries/ldd-geom
       - add 3 new reference_types for external under rules
-      - update instrument_type to allow nil
+      - update instrument_type to allow nil and added enumerations to meet "_type" attribute rules
       
     </comment>
-    <last_modification_date_time>2020-12-08T17:00:00</last_modification_date_time>
+    <last_modification_date_time>2020-12-08T19:19:00</last_modification_date_time>
   
 <!-- Start attribute definitions -->
   
@@ -304,12 +304,31 @@
     <local_identifier>instrument_type</local_identifier>
     <nillable_flag>true</nillable_flag>
     <submitter_name>Cristina De Cesare</submitter_name>
-    <definition>The instrument_type_name attribute specifies the type of an instrument, for example 
-      IMAGING CAMERA, SPECTROMETER, IMAGING SPECTROMETER, RADIOMETER, etc.</definition>
+    <definition>The instrument_type attribute specifies the type of an instrument, for example 
+      IMAGING CAMERA, SPECTROMETER, IMAGING SPECTROMETER, or RADIOMETER</definition>
+    <!-- PDS3 styled names  -->
     <DD_Value_Domain>
-      <enumeration_flag>false</enumeration_flag>
-      <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
-      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+        <enumeration_flag>false</enumeration_flag>
+        <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
+        <DD_Permissible_Value>
+         <value>IMAGING CAMERA</value>
+         <value_meaning>An optical instrument used to capture an image.</value_meaning>
+        </DD_Permissible_Value>
+        <DD_Permissible_Value>
+         <value>SPECTROMETER</value>
+         <value_meaning>A spectrometer is a device for measuring wavelengths of light over a wide 
+           range of the electromagnetic spectrum.</value_meaning>
+        </DD_Permissible_Value>
+        <DD_Permissible_Value>
+         <value>IMAGING SPECTROMETER</value>
+         <value_meaning> An instrument used in hyperspectral imaging and imaging spectroscopy to acquire a 
+           spectrally-resolved image of an object or scene, often referred to as a datacube due to the 
+           three-dimensional representation of the data.</value_meaning>
+        </DD_Permissible_Value>
+        <DD_Permissible_Value>
+         <value>RADIOMETER</value>
+         <value_meaning>Radiometer is a device used to measure the intensity of radiant energy.</value_meaning>
+        </DD_Permissible_Value>
     </DD_Value_Domain>
   </DD_Attribute>
   
