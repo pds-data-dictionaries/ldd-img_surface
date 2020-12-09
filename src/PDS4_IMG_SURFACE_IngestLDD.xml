@@ -49,7 +49,7 @@
       - build with GEOM v1900, grabbing the depenancies using:
           git submodule add https://github.com/pds-data-dictionaries/ldd-geom
       - add 3 new reference_types for external under rules
-      - change instrument_type to instrument_type_name
+      - update instrument_type to allow nil
       
     </comment>
     <last_modification_date_time>2020-12-08T17:00:00</last_modification_date_time>
@@ -299,10 +299,10 @@
   </DD_Attribute>
   
   <DD_Attribute>
-    <name>instrument_type_name</name>
-    <version_id>1.0</version_id>
-    <local_identifier>instrument_type_name</local_identifier>
-    <nillable_flag>false</nillable_flag>
+    <name>instrument_type</name>
+    <version_id>1.1</version_id>
+    <local_identifier>instrument_type</local_identifier>
+    <nillable_flag>true</nillable_flag>
     <submitter_name>Cristina De Cesare</submitter_name>
     <definition>The instrument_type_name attribute specifies the type of an instrument, for example 
       IMAGING CAMERA, SPECTROMETER, IMAGING SPECTROMETER, RADIOMETER, etc.</definition>
