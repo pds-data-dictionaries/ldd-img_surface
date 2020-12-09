@@ -1614,11 +1614,11 @@
 
   <DD_Rule>
     <local_identifier>instrument_type_value_check</local_identifier>
-    <rule_context>//img_surface:Instrument_Information/instrument_type</rule_context>
+    <rule_context>//img_surface:Instrument_Information</rule_context>
     <DD_Rule_Statement>
       <rule_type>Assert</rule_type>
-      <rule_test>img_surface:instrument_type = ('IMAGING CAMERA', 'SPECTROMETER', 'IMAGING SPECTROMETER', 'RADIOMETER')</rule_test>
-      <rule_message>In img_surface:Instrument_Information, Instrument_Information.instrument_type must be equal to 'IMAGING CAMERA', 'SPECTROMETER', 'IMAGING SPECTROMETER', 'RADIOMETER'.</rule_message>
+      <rule_test>not(img_surface:instrument_type) or img_surface:instrument_type = ('IMAGING CAMERA', 'SPECTROMETER', 'IMAGING SPECTROMETER', 'RADIOMETER')</rule_test>
+      <rule_message>In img_surface:Instrument_Information, Instrument_Information.instrument_type must be equal to one of the following values: 'IMAGING CAMERA', 'SPECTROMETER', 'IMAGING SPECTROMETER', 'RADIOMETER'.</rule_message>
     </DD_Rule_Statement>
   </DD_Rule>
   <!-- End rule defintions -->
