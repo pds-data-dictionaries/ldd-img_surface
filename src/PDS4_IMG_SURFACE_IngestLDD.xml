@@ -51,11 +51,12 @@
       - add 3 new reference_types for external under rules
       - update instrument_type to allow nil and added enumerations to meet "_type" attribute rules
 
-      1.2.3.0 T.Hare
-      - fix: added Reachability class as a child of img_surface:Surface_Imaging.
+      1.2.4.0 T.Hare
+      - fix: added Reachability class as a child of img_surface:Surface_Imaging
+      - updated to Reachability to new loaction in class
 
     </comment>
-    <last_modification_date_time>2020-12-10T12:21:00</last_modification_date_time>
+    <last_modification_date_time>2020-12-10T15:45:00</last_modification_date_time>
   
 <!-- Start attribute definitions -->
   
@@ -932,7 +933,7 @@
   <!--  Surface_Imaging Class Definition -->
   <DD_Class>
     <name>Surface_Imaging</name>
-    <version_id>1.0</version_id>
+    <version_id>1.1</version_id>
     <local_identifier>Surface_Imaging</local_identifier>
     <submitter_name>Jordan Padams</submitter_name>
     <definition>Attributes specific to imaging instruments on surface missions.</definition>
@@ -968,6 +969,12 @@
       <maximum_occurrences>1</maximum_occurrences>
     </DD_Association>
     <DD_Association>
+      <identifier_reference>Reachability</identifier_reference>
+      <reference_type>component_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
       <identifier_reference>Stereo_Product_Parameters</identifier_reference>
       <reference_type>component_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
@@ -987,12 +994,6 @@
     </DD_Association>
     <DD_Association>
       <identifier_reference>Commanded_Parameters</identifier_reference>
-      <reference_type>component_of</reference_type>
-      <minimum_occurrences>0</minimum_occurrences>
-      <maximum_occurrences>1</maximum_occurrences>
-    </DD_Association>
-    <DD_Association>
-      <identifier_reference>Reachability</identifier_reference>
       <reference_type>component_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>1</maximum_occurrences>
