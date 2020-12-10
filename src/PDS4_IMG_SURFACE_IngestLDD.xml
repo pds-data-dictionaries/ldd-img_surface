@@ -11,7 +11,7 @@
     xsi:schemaLocation="https://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1E00.xsd     
                         http://pds.nasa.gov/pds4/geom/v1 https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1E00_1810.xsd">
     <name>Surface Imaging</name>
-    <ldd_version_id>1.2.2.0</ldd_version_id>
+    <ldd_version_id>1.2.3.0</ldd_version_id>
     <dictionary_type>Discipline</dictionary_type>
     <full_name>Trent Hare</full_name>
     <steward_id>img</steward_id>
@@ -50,9 +50,12 @@
           git submodule add https://github.com/pds-data-dictionaries/ldd-geom
       - add 3 new reference_types for external under rules
       - update instrument_type to allow nil and added enumerations to meet "_type" attribute rules
-      
+
+      1.2.3.0 T.Hare
+      - fix: added Reachability class as a child of img_surface:Surface_Imaging.
+
     </comment>
-    <last_modification_date_time>2020-12-09T13:02:00</last_modification_date_time>
+    <last_modification_date_time>2020-12-10T12:21:00</last_modification_date_time>
   
 <!-- Start attribute definitions -->
   
@@ -984,6 +987,12 @@
     </DD_Association>
     <DD_Association>
       <identifier_reference>Commanded_Parameters</identifier_reference>
+      <reference_type>component_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>Reachability</identifier_reference>
       <reference_type>component_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>1</maximum_occurrences>
