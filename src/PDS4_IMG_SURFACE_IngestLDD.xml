@@ -54,6 +54,9 @@
       1.2.4.0 T.Hare
       - fix: added Reachability class as a child of img_surface:Surface_Imaging
       - updated to Reachability to new loaction in class
+      
+      1.2.5.0 T.Hare
+      - added Trapezoid to geometry_projection_type (for cameras like Mars 2020 PIXL MCC)
 
     </comment>
     <last_modification_date_time>2020-12-10T15:45:00</last_modification_date_time>
@@ -603,6 +606,11 @@
           the camera model (thus removing things like lens distortion). For
           images using the CAHV family of camera models, the image uses a CAHV
           model instead of CAHVOR or CAHVORE.</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>Trapezoid</value>
+        <value_meaning>Trapezoidal reprojection, used to compensate for an off-axis 
+          camera such as the Mars 2020 PIXL MCC.</value_meaning>
       </DD_Permissible_Value>
     </DD_Value_Domain>
   </DD_Attribute>
