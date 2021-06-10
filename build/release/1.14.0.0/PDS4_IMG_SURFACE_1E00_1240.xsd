@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 XML/Schema for Name Space Id:img_surface  Version:1.2.4.0 - Tue Jan 12 00:56:29 UTC 2021 -->
+  <!-- PDS4 XML/Schema for Name Space Id:img_surface  Version:1.2.4.0 - Mon May 10 17:07:23 UTC 2021 -->
   <!-- Generated from the PDS4 Information Model Version 1.14.0.0 - System Build 10b -->
   <!-- *** This PDS4 product schema is an operational deliverable. *** -->
   <!--                                                                           -->
   <!--               Dictionary Stack                                            -->
   <!-- 1.14.0.0 - pds: - Common Dictionary                                       -->
-  <!-- 1.9.1.0 - geom: - Geometry Dictionary Full                                -->
+  <!-- 1.9.2.0 - geom: - Geometry Dictionary Full                                -->
   <!--   file:/home/runner/work/ldd-img_surface/ldd-img_surface/src/dependencies -->
-  <!-- 1.9.1.0 - geom: - Geometry Dictionary Full                                -->
+  <!-- 1.9.2.0 - geom: - Geometry Dictionary Full                                -->
   <!--   file:/home/runner/work/ldd-img_surface/ldd-img_surface/src/dependencies -->
   <!-- 1.2.4.0 - img_surface: - Surface Imaging                                  -->
   <!--   file:/home/runner/work/ldd-img_surface/ldd-img_surface/src/PDS4_IMG_SUR -->
@@ -22,7 +22,7 @@
     version="1.2.4.0">
  
     <xs:import namespace="http://pds.nasa.gov/pds4/pds/v1" schemaLocation="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1E00.xsd"/>
-    <xs:import namespace="http://pds.nasa.gov/pds4/geom/v1" schemaLocation="https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1E00_1910.xsd"/>
+    <xs:import namespace="http://pds.nasa.gov/pds4/geom/v1" schemaLocation="https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1E00_1920.xsd"/>
  
   <xs:annotation>
     <xs:documentation>
@@ -64,6 +64,9 @@
       1.2.4.0 T.Hare
       - fix: added Reachability class as a child of img_surface:Surface_Imaging
       - updated to Reachability to new loaction in class
+      
+      1.2.5.0 T.Hare
+      - added Trapezoid to geometry_projection_type (for cameras like Mars 2020 PIXL MCC)
 
     
     </xs:documentation>
@@ -190,7 +193,7 @@
     <!-- Begin assert statements for schematron - Enumerated Values -->
     <!-- <xs:assert test="img_surface:linearization_mode = ('Actual', 'Nominal', 'None')"/> -->
     <!-- <xs:assert test="img_surface:linearization_mode_fov = ('Linear', 'Max', 'Min', 'None')"/> -->
-    <!-- <xs:assert test="img_surface:geometry_projection_type = ('Linearized', 'Raw')"/> -->
+    <!-- <xs:assert test="img_surface:geometry_projection_type = ('Linearized', 'Raw', 'Trapezoid')"/> -->
     <!-- End assert statements for schematron - Enumerated Values -->
   </xs:complexType>
 

@@ -1,18 +1,18 @@
 PDS4 Local Data Dictionary Processing Report
 
 Configuration:
-   LDDTool Version        10.1.0
+   LDDTool Version        13.0.2
    LDD Version Id:        1.2.4.0
    LDD Label Version Id:  1.0
    LDD Discipline (T/F):  true
    LDD Namespace URL:     http://pds.nasa.gov/pds4/
    LDD URN Prefix:        urn:nasa:pds:
-   Time                   Tue Jan 12 00:56:25 UTC 2021
+   Time                   Mon May 10 17:07:20 UTC 2021
    Common Schema          [PDS4_PDS_1D00.xsd]
    Common Schematron      [PDS4_PDS_1D00.sch]
    IM Version Id:         1.13.0.0
    IM Namespace Id:       pds
-   IM Label Version Id:   1.19
+   IM Label Version Id:   1.0
    IM Object Model        [UpperModel.pont]
    IM Data Dictionary     [dd11179.pins]
    IM Configuration File  [MDPTNConfigClassDisp.xml]
@@ -82,6 +82,9 @@ Parsed Input - Header:
       1.2.4.0 T.Hare
       - fix: added Reachability class as a child of img_surface:Surface_Imaging
       - updated to Reachability to new loaction in class
+      
+      1.2.5.0 T.Hare
+      - added Trapezoid to geometry_projection_type (for cameras like Mars 2020 PIXL MCC)
 
     
    Last Modification Time 2020-12-10T15:45:00
