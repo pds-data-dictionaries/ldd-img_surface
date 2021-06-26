@@ -57,6 +57,9 @@
       
       1.2.5.0 T.Hare
       - added Trapezoid to geometry_projection_type (for cameras like Mars 2020 PIXL MCC)
+      
+      1.2.6.0 T. Hare
+      - added tracking_id
 
     </comment>
     <last_modification_date_time>2021-05-10T13:22:00</last_modification_date_time>
@@ -145,6 +148,19 @@
     <nillable_flag>false</nillable_flag>
     <submitter_name>Trent Hare</submitter_name>
     <definition>Specifies the starting image ID for some operation.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
+  <DD_Attribute>
+    <name>tracking_id</name>
+    <version_id>1.0</version_id>
+    <local_identifier>tracking_id</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Specifies the tracking ID for some operation.</definition>
     <DD_Value_Domain>
       <enumeration_flag>false</enumeration_flag>
       <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
@@ -1051,6 +1067,12 @@
     </DD_Association>
     <DD_Association>
       <identifier_reference>start_image_id</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>tracking_id</identifier_reference>
       <reference_type>attribute_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>1</maximum_occurrences>
