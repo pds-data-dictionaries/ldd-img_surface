@@ -6,7 +6,7 @@ on:
    push:
      branches:
        - '**'
-       - '!master'
+       - '!main'
 
 env:
   REGRESSION_TEST_PATH: ${{ format('{0}/{1}/', github.workspace, 'test') }}
@@ -68,7 +68,7 @@ jobs:
 
       - name: Generate LDDs
         id: generate
-        uses: NASA-PDS/gh-action-pds4-ldd@master
+        uses: NASA-PDS/gh-action-pds4-ldd@main
         with:
           data_path: ${{ format('{0}/{1}', env.DEPLOY_PATH, matrix.pds4_version) }}
           pds4_im_version: ${{ matrix.pds4_version }}
@@ -149,7 +149,7 @@ jobs:
           git commit -m "Auto-generated LDD by PDSEN CI Bot"
           
       - name: Push changes
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@main
         with:
           github_token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
           branch: ${{ github.ref }}
