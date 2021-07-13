@@ -15,12 +15,10 @@ The build process insures compatiblity of the LDD with the core information mode
 
 ## Builds
 
-
 This LDD has been released for the following versions of the PDS4 information model:
 
 - [development](build/development/)
 - [releases](build/release/)
-
 
 ## Notes
 
