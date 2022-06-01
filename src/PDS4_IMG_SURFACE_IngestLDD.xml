@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1E00.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1E00_1810.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1H00.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1H00_1950.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
 <Ingest_LDD 
     xmlns="http://pds.nasa.gov/pds4/pds/v1"
@@ -8,61 +8,21 @@
     xmlns:img_surface="http://pds.nasa.gov/pds4/img_surface/v1" 
     xmlns:geom="http://pds.nasa.gov/pds4/geom/v1"
     xmlns:pds="http://pds.nasa.gov/pds4/pds/v1"
-    xsi:schemaLocation="https://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1E00.xsd     
-                        http://pds.nasa.gov/pds4/geom/v1 https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1E00_1810.xsd">
+    xsi:schemaLocation="https://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1H00.xsd     
+                        http://pds.nasa.gov/pds4/geom/v1 https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1H00_1950.xsd">
     <name>Surface Imaging</name>
-    <ldd_version_id>1.2.6.0</ldd_version_id>
+    <ldd_version_id>1.2.7.0</ldd_version_id>
     <dictionary_type>Discipline</dictionary_type>
     <full_name>Trent Hare</full_name>
     <steward_id>img</steward_id>
     <namespace_id>img_surface</namespace_id>
     <comment>
-      ## CHANGE LOG ##
-      1.0.0.0
-      - Initial version
+      The Surface Imaging sub-model is associated with imaging and spectrometer data products of surface missions. 
       
-      1.1.0.0
-      - Upgraded to v1B10 of the IM.
-      - Re-classified this dictionary as a Discipline Dictionary, instead of Mission Dictionary.
-      - Renamed Surface_Imaging_Parameters to Surface_Imaging, Error_Model_Information to Error_Model, 
-        Geometry_Projection_Parameters to Geometry_Projection, and Pointing_Correction_Parameters to Pointing_Correction.
-      - Added new attribute to Instrument_Information: ops_instrument_key
-      
-      1.1.1.0
-      - Removed Pointing_Correction and its child attributes/classes (moved to IMG)
-      
-      1.2.0.0 T.Hare
-      - updated to PDS IM v 1E00 and GEOM 1E00_1800
-      - updated ops_instrument_key to be unbounded and updated definition.
-      - added Commanded_Parameters using existing classes as children added to bottom of Surface_Imaging class
-      - added image_id_2 attribute to Image_Identifiers
-      - added start_image_id, observation_number, parameter_table_number to Image_Identifiers
-      - added camera_model_serial_number attribute to Instrument_Information class 
-      
-      1.2.1.0 T.Hare
-      - added correlation_average_scale, correlation_overlap_percentage, correlation_pixel_count attrinutes to
-        Stereo_Product_Parameters Class
-      - added Reachability Class and attributes and classes including these children:
-        Reach_Instruments and Reach_Instrument classes and their attributes
-
-      1.2.2.0 T.Hare
-      - build with GEOM v1900, grabbing the depenancies using:
-          git submodule add https://github.com/pds-data-dictionaries/ldd-geom
-      - add 3 new reference_types for external under rules
-      - update instrument_type to allow nil and added enumerations to meet "_type" attribute rules
-
-      1.2.4.0 T.Hare
-      - fix: added Reachability class as a child of img_surface:Surface_Imaging
-      - updated to Reachability to new loaction in class
-      
-      1.2.5.0 T.Hare
-      - added Trapezoid to geometry_projection_type (for cameras like Mars 2020 PIXL MCC)
-      
-      1.2.6.0 T. Hare
-      - added tracking_id
-
+      See "CHANGELOG.md" file on GitHub for updates
+      https://github.com/pds-data-dictionaries/ldd-img_surface
     </comment>
-    <last_modification_date_time>2021-07-13T10:21:00</last_modification_date_time>
+    <last_modification_date_time>2022-07-01T12:46:00</last_modification_date_time>
   
 <!-- Start attribute definitions -->
   
@@ -600,7 +560,7 @@
   </DD_Attribute>
   <DD_Attribute>
     <name>geometry_projection_type</name>
-    <version_id>1.0</version_id>
+    <version_id>1.1</version_id>
     <local_identifier>geometry_projection_type</local_identifier>
     <nillable_flag>false</nillable_flag>
     <submitter_name>Jordan Padams</submitter_name>
@@ -629,6 +589,10 @@
         <value>Trapezoid</value>
         <value_meaning>Trapezoidal reprojection, used to compensate for an off-axis 
           camera such as the Mars 2020 PIXL MCC.</value_meaning>
+      </DD_Permissible_Value>
+      <DD_Permissible_Value>
+        <value>Uncorrected</value>
+        <value_meaning>No correction has been applied to the geometry.</value_meaning>
       </DD_Permissible_Value>
     </DD_Value_Domain>
   </DD_Attribute>

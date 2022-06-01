@@ -1,1 +1,1 @@
-Short abstract for the namespace should go here
+The Surface Imaging Sub-model is associated with imaging and spectrometer data products of surface missions.

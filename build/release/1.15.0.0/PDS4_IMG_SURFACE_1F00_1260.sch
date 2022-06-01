@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 Schematron for Name Space Id:img_surface  Version:1.2.6.0 - Mon Nov 01 16:38:21 UTC 2021 -->
+  <!-- PDS4 Schematron for Name Space Id:img_surface  Version:1.2.6.0 - Wed Jun 01 18:02:05 UTC 2022 -->
   <!-- Generated from the PDS4 Information Model Version 1.15.0.0 - System Build 11a -->
   <!-- *** This PDS4 schematron file is an operational deliverable. *** -->
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
