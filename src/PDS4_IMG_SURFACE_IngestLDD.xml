@@ -11,7 +11,7 @@
     xsi:schemaLocation="https://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1H00.xsd     
                         http://pds.nasa.gov/pds4/geom/v1 https://pds.nasa.gov/pds4/geom/v1/PDS4_GEOM_1H00_1950.xsd">
     <name>Surface Imaging</name>
-    <ldd_version_id>1.2.7.0</ldd_version_id>
+    <ldd_version_id>1.2.8.0</ldd_version_id>
     <dictionary_type>Discipline</dictionary_type>
     <full_name>Trent Hare</full_name>
     <steward_id>img</steward_id>
@@ -22,7 +22,7 @@
       See "CHANGELOG.md" file on GitHub for updates
       https://github.com/pds-data-dictionaries/ldd-img_surface
     </comment>
-    <last_modification_date_time>2022-07-01T12:46:00</last_modification_date_time>
+    <last_modification_date_time>2023-01-25T00:00:00</last_modification_date_time>
   
 <!-- Start attribute definitions -->
   
@@ -645,6 +645,27 @@
     <nillable_flag>false</nillable_flag>
     <submitter_name>Trent Hare</submitter_name>
     <definition>Contains a count of the number of pixels that successfully correlated in the image.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_NonNegative_Integer</value_data_type>
+      <minimum_value>0</minimum_value>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
+
+  <DD_Attribute>
+    <name>correlation_pyramid_level</name>
+    <version_id>1.0</version_id>
+    <local_identifier>correlation_pyramid_level</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Trent Hare</submitter_name>
+    <definition>Contains the pyramid level for the correlation. Correlations are often downsampled 
+      by a power of 2 (2, 4, 8, etc) in order to speed computation. If multiple such powers of 2 
+      exist they form a "pyramid", hence the name. This keyword stores the pyramid level for 
+      this correlation, as a power of 2. For example, if the value is 0, it says the correlation 
+      image is the same size as the input image. If the value is 3, it says the correlation 
+      image is 1/2^3 = 1/8 the original image size (fractions are truncated).
+    </definition>
     <DD_Value_Domain>
       <enumeration_flag>false</enumeration_flag>
       <value_data_type>ASCII_NonNegative_Integer</value_data_type>
@@ -1436,6 +1457,12 @@
     </DD_Association>
     <DD_Association>
       <identifier_reference>correlation_pixel_count</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>correlation_pyramid_level</identifier_reference>
       <reference_type>attribute_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>1</maximum_occurrences>
