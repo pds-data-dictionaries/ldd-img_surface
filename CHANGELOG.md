@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.8.0 
+- T. Hare
+- added correlation_pyramid_level to Stereo_Product_Parameters class
+
 ## 1.2.7.0 
 - T. Hare
 - added Uncorrected to geometry_projection_type
