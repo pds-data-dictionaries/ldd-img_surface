@@ -1,13 +1,17 @@
 
->>  INFO LDDTOOL Version: 14.1.2
->>  INFO IM Version Id: 1.17.0.0
+>>  INFO LDDTOOL Version: 14.1.3
+>>  INFO IM Version Id: 1.19.0.0
 >>  INFO IM Namespace Id: pds
->>  INFO IM Label Version Id: 1.23
->>  INFO Date: Wed Jan 25 20:19:27 UTC 2023
->>  INFO PARENT_DIR: /tmp/lddtool-14.1.2
->>  INFO SCRIPT_DIR: /tmp/lddtool-14.1.2/bin
->>  INFO LIB_DIR: /tmp/lddtool-14.1.2/lib
+>>  INFO IM Label Version Id: 1.25
+>>  INFO Date: Tue Apr 18 17:59:22 UTC 2023
+>>  INFO PARENT_DIR: /tmp/lddtool-14.1.3
+>>  INFO SCRIPT_DIR: /tmp/lddtool-14.1.3/bin
+>>  INFO LIB_DIR: /tmp/lddtool-14.1.3/lib
 
+>>> ERROR Class:0001_NASA_PDS_1.img_surface.Surface_Imaging  Association:geom.Coordinate_Space_Reference  Class:geom.Coordinate_Space_Reference - Missing Component Class
+>>> ERROR Association: geom.Coordinate_Space_Reference - Missing Component - Reference Type: component_of
+>>> ERROR Class:0001_NASA_PDS_1.img_surface.Derived_Product_Parameters  Association:geom.Coordinate_Space_Reference  Class:geom.Coordinate_Space_Reference - Missing Component Class
+>>> ERROR Association: geom.Coordinate_Space_Reference - Missing Component - Reference Type: component_of
 >>> INFO Init:  - Config.Properties Namespace Id Found:geom
 >>> INFO Init:  - Config.Properties Namespace Id Using:geom
 >>> INFO Init:  - LDD Dictionary_Type is Discipline
@@ -1485,17 +1489,15 @@
 >>> WARNING Class: <Coordinate_Space_Reference> - An exposed class was found nested within another exposed class. Nested exposed classes should only be present if there is a specific requirement to expose the additional class.
 >>> WARNING Class: <Coordinate_Space_Reference> - An exposed class was found nested within another exposed class. Nested exposed classes should only be present if there is a specific requirement to expose the additional class.
 >>> WARNING Class: <Coordinate_Space_Reference> - An exposed class was found nested within another exposed class. Nested exposed classes should only be present if there is a specific requirement to expose the additional class.
->>> WARNING Class: <Coordinate_Space_Reference> - An exposed class was found nested within another exposed class. Nested exposed classes should only be present if there is a specific requirement to expose the additional class.
->>> WARNING Class: <Coordinate_Space_Reference> - An exposed class was found nested within another exposed class. Nested exposed classes should only be present if there is a specific requirement to expose the additional class.
 
  -- LDDTool Execution Summary --
-     383 warning(s)
-     0 error(s)
+     381 warning(s)
+     4 error(s)
      0 fatal error(s)
 
 Input:
 
-     - IM Version: 1H00
+     - IM Version: 1J00
      - PDS4 Flag: true
      - LDD Flag: true
      - IM Version: true
@@ -1505,9 +1507,9 @@ Input:
 
 Output:
 
-     - ./PDS4_IMG_SURFACE_1H00_1280.xsd
-     - ./PDS4_IMG_SURFACE_1H00_1280.sch
-     - ./PDS4_IMG_SURFACE_1H00_1280.xml
-     - ./PDS4_IMG_SURFACE_1H00_1280.JSON
+     - ./PDS4_IMG_SURFACE_1J00_1280.xsd
+     - ./PDS4_IMG_SURFACE_1J00_1280.sch
+     - ./PDS4_IMG_SURFACE_1J00_1280.xml
+     - ./PDS4_IMG_SURFACE_1J00_1280.JSON
 
->>  INFO Exit(0)
+>>  INFO Exit(1)
