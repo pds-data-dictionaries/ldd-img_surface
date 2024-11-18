@@ -1,0 +1,72 @@
+
+>>  INFO LDDTOOL Version: 15.2.2
+>>  INFO IM Version Id: 1.18.0.0
+>>  INFO IM Namespace Id: pds
+>>  INFO IM Label Version Id: 1.24
+>>  INFO Date: Mon Nov 18 19:21:47 UTC 2024
+>>  INFO PARENT_DIR: /tmp/lddtool-15.2.2/Data/
+
+>>> ERROR Class:0001_NASA_PDS_1.img_surface.Surface_Imaging  Association:geom.Coordinate_Space_Reference  Class:geom.Coordinate_Space_Reference - Missing Component Class
+>>> ERROR Association: geom.Coordinate_Space_Reference - Missing Component - Reference Type: component_of
+>>> ERROR Class:0001_NASA_PDS_1.img_surface.Derived_Product_Parameters  Association:geom.Coordinate_Space_Reference  Class:geom.Coordinate_Space_Reference - Missing Component Class
+>>> ERROR Association: geom.Coordinate_Space_Reference - Missing Component - Reference Type: component_of
+>>> INFO Init:  - Config.Properties Namespace Id Found:geom
+>>> INFO Init:  - Config.Properties Namespace Id Using:geom
+>>> INFO Init:  - LDD Dictionary_Type is Discipline
+>>> INFO Init:  - Config.Properties Namespace Id Found:img_surface
+>>> INFO Init:  - Config.Properties Namespace Id Using:img_surface
+>>> INFO Init:  - LDD Dictionary_Type is Discipline
+>>> INFO Attribute: <instrument_type> - A 'nillable' attribute was found that is not a required attribute in at least one class.
+>>> INFO Attribute: <instrument_type> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <instrument_serial_number> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <correlation_overlap_percentage> - The default minimum value provided by the attribute's data type is being overridden with 0
+>>> INFO Attribute: <correlation_overlap_percentage> - The default maximum value provided by the attribute's data type is being overridden with 100
+>>> INFO Attribute: <correlation_pixel_count> - The default minimum value provided by the attribute's data type is being overridden with 0
+>>> INFO Attribute: <correlation_pyramid_level> - The default minimum value provided by the attribute's data type is being overridden with 0
+>>> INFO Attribute: <stereo_baseline_length> - The default minimum value provided by the attribute's data type is being overridden with 0
+>>> INFO Attribute: <line> - The default minimum value provided by the attribute's data type is being overridden with 1
+>>> INFO Attribute: <sample> - The default minimum value provided by the attribute's data type is being overridden with 1
+>>> INFO Attribute: <instrument_id> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <start_bit> - The default minimum value provided by the attribute's data type is being overridden with 0
+>>> INFO Attribute: <start_bit> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <stop_bit> - The default minimum value provided by the attribute's data type is being overridden with 0
+>>> INFO Attribute: <stop_bit> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <instrument_type> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <instrument_serial_number> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <correlation_overlap_percentage> - The default minimum value provided by the attribute's data type is being overridden with 0
+>>> INFO Attribute: <correlation_overlap_percentage> - The default maximum value provided by the attribute's data type is being overridden with 100
+>>> INFO Attribute: <correlation_pixel_count> - The default minimum value provided by the attribute's data type is being overridden with 0
+>>> INFO Attribute: <correlation_pyramid_level> - The default minimum value provided by the attribute's data type is being overridden with 0
+>>> INFO Attribute: <stereo_baseline_length> - The default minimum value provided by the attribute's data type is being overridden with 0
+>>> INFO Attribute: <line> - The default minimum value provided by the attribute's data type is being overridden with 1
+>>> INFO Attribute: <sample> - The default minimum value provided by the attribute's data type is being overridden with 1
+>>> INFO Attribute: <instrument_id> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <start_bit> - The default minimum value provided by the attribute's data type is being overridden with 0
+>>> INFO Attribute: <start_bit> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <stop_bit> - The default minimum value provided by the attribute's data type is being overridden with 0
+>>> INFO Attribute: <stop_bit> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> WARNING Attribute: <image_type> - An attribute with the enumeration_flag = false must not have any permissible values.
+
+ -- LDDTool Execution Summary --
+     1 warning(s)
+     4 error(s)
+     0 fatal error(s)
+
+Input:
+
+     - IM Version: 1I00
+     - PDS4 Flag: true
+     - LDD Flag: true
+     - IM Version: true
+     - Export JSON Flag: true
+
+     - Ingest LDD(s): /home/runner/work/ldd-img_surface/ldd-img_surface/src/dependencies/ldd-geom/src/PDS4_GEOM_IngestLDD.xml, /home/runner/work/ldd-img_surface/ldd-img_surface/src/PDS4_IMG_SURFACE_IngestLDD.xml
+
+Output:
+
+     - ./PDS4_IMG_SURFACE_1I00_1280.xsd
+     - ./PDS4_IMG_SURFACE_1I00_1280.sch
+     - ./PDS4_IMG_SURFACE_1I00_1280.xml
+     - ./export/PDS4_PDS_1I00.JSON
+
+>>  INFO Exit(0)
