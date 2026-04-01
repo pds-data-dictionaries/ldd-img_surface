@@ -19,14 +19,43 @@
     <comment>
       The Surface Imaging sub-model is associated with imaging and spectrometer data products of surface missions. 
       
-      See "CHANGELOG.md" file on GitHub for updates
-      https://github.com/pds-data-dictionaries/ldd-img_surface
+      ## CHANGE LOG ##
+      1.9.4.0 Namrata Malarout
+      - Added additional fields activity_id, command_id and payload id to Image_Identifiers class (for PHX)
     </comment>
-    <last_modification_date_time>2023-01-25T00:00:00</last_modification_date_time>
+    <last_modification_date_time>2026-03-24T00:00:00</last_modification_date_time>
   
 <!-- Start attribute definitions -->
   
 <!-- Start attributes for Image_Identifiers class -->
+  <DD_Attribute>
+    <name>activity_id</name>
+    <version_id>1.0</version_id>
+    <local_identifier>activity_id</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Namrata Malarout</submitter_name>
+    <definition>The activity id identifies the imaging activity in which the image was commanded.
+      This identifier can be used to link related images from the same activity.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_Numeric_Base16</value_data_type>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
+  <DD_Attribute>
+    <name>command_id</name>
+    <version_id>1.0</version_id>
+    <local_identifier>command_id</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Namrata Malarout</submitter_name>
+    <definition>The command id identifies the specific command within an imaging activity that commanded the camera to take the picture.
+      This identifier can be used to link related images from the same imaging command.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_Integer</value_data_type>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
   <DD_Attribute>
     <name>image_id</name>
     <version_id>1.0</version_id>
@@ -83,6 +112,20 @@
     <DD_Value_Domain>
       <enumeration_flag>false</enumeration_flag>
       <value_data_type>ASCII_Short_String_Collapsed</value_data_type>
+      <unit_of_measure_type>Units_of_None</unit_of_measure_type>
+    </DD_Value_Domain>
+  </DD_Attribute>
+  <DD_Attribute>
+    <name>payload_id</name>
+    <version_id>1.0</version_id>
+    <local_identifier>payload_id</local_identifier>
+    <nillable_flag>false</nillable_flag>
+    <submitter_name>Namrata Malarout</submitter_name>
+    <definition>The payload id identifies the hardware payload or imaging system that was in use when the image was taken.
+      This identifier can be used to link related images from the same payload.</definition>
+    <DD_Value_Domain>
+      <enumeration_flag>false</enumeration_flag>
+      <value_data_type>ASCII_Numeric_Base16</value_data_type>
       <unit_of_measure_type>Units_of_None</unit_of_measure_type>
     </DD_Value_Domain>
   </DD_Attribute>
@@ -1023,6 +1066,18 @@
       help to identify the image or guide how processing should be done to the
       image.</definition>
     <DD_Association>
+      <identifier_reference>activity_id</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>command_id</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
       <identifier_reference>image_id</identifier_reference>
       <reference_type>attribute_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
@@ -1042,6 +1097,12 @@
     </DD_Association>
     <DD_Association>
       <identifier_reference>mesh_id</identifier_reference>
+      <reference_type>attribute_of</reference_type>
+      <minimum_occurrences>0</minimum_occurrences>
+      <maximum_occurrences>1</maximum_occurrences>
+    </DD_Association>
+    <DD_Association>
+      <identifier_reference>payload_id</identifier_reference>
       <reference_type>attribute_of</reference_type>
       <minimum_occurrences>0</minimum_occurrences>
       <maximum_occurrences>1</maximum_occurrences>
