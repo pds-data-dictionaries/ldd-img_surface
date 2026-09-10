@@ -23,7 +23,7 @@
       1.2.9.0 Namrata Malarout
       - Added additional fields activity_id, command_id and payload id to Image_Identifiers class (for PHX)
     </comment>
-    <last_modification_date_time>2026-09-08T00:00:00</last_modification_date_time>
+    <last_modification_date_time>2026-09-10T00:00:00</last_modification_date_time>
   
 <!-- Start attribute definitions -->
   
@@ -125,7 +125,7 @@
       This identifier can be used to link related images from the same payload.</definition>
     <DD_Value_Domain>
       <enumeration_flag>false</enumeration_flag>
-      <value_data_type>ASCII_Numeric_Base16</value_data_type>
+      <value_data_type>ASCII_Real</value_data_type>
       <unit_of_measure_type>Units_of_None</unit_of_measure_type>
     </DD_Value_Domain>
   </DD_Attribute>
