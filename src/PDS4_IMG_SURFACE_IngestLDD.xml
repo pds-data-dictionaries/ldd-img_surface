@@ -38,7 +38,7 @@
       This identifier can be used to link related images from the same activity.</definition>
     <DD_Value_Domain>
       <enumeration_flag>false</enumeration_flag>
-      <value_data_type>ASCII_Numeric_Base16</value_data_type>
+      <value_data_type>ASCII_Real</value_data_type>
       <unit_of_measure_type>Units_of_None</unit_of_measure_type>
     </DD_Value_Domain>
   </DD_Attribute>
