@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 Schematron for Name Space Id:img_surface  Version:1.2.9.0 - Tue Sep 15 18:45:12 UTC 2026 -->
+  <!-- PDS4 Schematron for Name Space Id:img_surface  Version:1.2.9.0 - Thu Nov 19 22:32:16 UTC 2026 -->
   <!-- Generated from the PDS4 Information Model Version 1.16.0.0 - System Build 11.1 -->
   <!-- *** This PDS4 schematron file is an operational deliverable. *** -->
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -83,13 +83,6 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:rule context="img_surface:Derived_Product_Parameters/img_surface:horizon_mask_elevation">
-      <sch:assert test="@unit = ('arcmin', 'arcsec', 'deg', 'hr', 'mrad', 'rad')">
-        <title>img_surface:Derived_Product_Parameters/img_surface:horizon_mask_elevation/img_surface:horizon_mask_elevation</title>
-        The attribute @unit must be equal to one of the following values 'arcmin', 'arcsec', 'deg', 'hr', 'mrad', 'rad'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:rule context="img_surface:Geometry_Projection/img_surface:geometry_projection_type">
       <sch:assert test=". = ('Linearized', 'Raw', 'Trapezoid', 'Uncorrected')">
         <title>img_surface:Geometry_Projection/img_surface:geometry_projection_type/img_surface:geometry_projection_type</title>
@@ -129,34 +122,6 @@
       <sch:assert test=". = ('ARM')">
         <title>img_surface:Reachability/img_surface:device_id/img_surface:device_id</title>
         The attribute img_surface:Reachability/img_surface:device_id must be equal to the value 'ARM'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="img_surface:Stereo_Product_Parameters/img_surface:stereo_baseline_length">
-      <sch:assert test="@unit = ('AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm')">
-        <title>img_surface:Stereo_Product_Parameters/img_surface:stereo_baseline_length/img_surface:stereo_baseline_length</title>
-        The attribute @unit must be equal to one of the following values 'AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="img_surface:Vector_Range_Origin/img_surface:x_position">
-      <sch:assert test="@unit = ('AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm')">
-        <title>img_surface:Vector_Range_Origin/img_surface:x_position/img_surface:x_position</title>
-        The attribute @unit must be equal to one of the following values 'AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="img_surface:Vector_Range_Origin/img_surface:y_position">
-      <sch:assert test="@unit = ('AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm')">
-        <title>img_surface:Vector_Range_Origin/img_surface:y_position/img_surface:y_position</title>
-        The attribute @unit must be equal to one of the following values 'AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="img_surface:Vector_Range_Origin/img_surface:z_position">
-      <sch:assert test="@unit = ('AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm')">
-        <title>img_surface:Vector_Range_Origin/img_surface:z_position/img_surface:z_position</title>
-        The attribute @unit must be equal to one of the following values 'AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm'.</sch:assert>
     </sch:rule>
   </sch:pattern>
 </sch:schema>
